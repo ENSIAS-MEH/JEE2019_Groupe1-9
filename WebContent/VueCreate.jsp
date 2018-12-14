@@ -11,11 +11,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
-</div>
-<div class="alert alert-danger" role="alert">
-  A simple danger alert—check it out!
-</div>
+
+
+
+
+
+<img src="..." class="img-fluid.max-width: 100%" alt="Responsive image">
+
+<figure class="figure">
+  <img src=".../400x300" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption">A caption for the above image.</figcaption>
+</figure>
+
 </body>
 </html>

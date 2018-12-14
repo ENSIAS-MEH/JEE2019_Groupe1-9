@@ -11,6 +11,9 @@ public class User implements Serializable{
 	public String sexe;
 	public String nationalite;
 	private String mdp;
+	//i have to add the description
+	//theme
+	//photo de profil
 	
 	
 	public User() {
