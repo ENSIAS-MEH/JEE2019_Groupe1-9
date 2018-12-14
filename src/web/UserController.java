@@ -1,5 +1,6 @@
 package web;
 import metier.Creation;
+import metier.CreateImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,10 +18,13 @@ public class UserController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    public void init() throws ServletException{
+    	create = new CreateImpl();
+    } 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("VueCreate.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

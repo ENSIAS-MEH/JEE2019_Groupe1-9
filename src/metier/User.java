@@ -1,6 +1,8 @@
-package web;
+package metier;
 
-public class UserModel {
+import java.io.Serializable;
+
+public class User implements Serializable{
 	public String id;
 	public String nom;
 	public String prenom;
@@ -11,6 +13,22 @@ public class UserModel {
 	private String mdp;
 	
 	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public User(String id, String nom, String prenom, String cin, String mail, String sexe, String nationalite,
+			String mdp) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.mail = mail;
+		this.sexe = sexe;
+		this.nationalite = nationalite;
+		this.mdp = mdp;
+	}
 	public String getId() {
 		return id;
 	}
