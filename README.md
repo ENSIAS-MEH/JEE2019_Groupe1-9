@@ -9,6 +9,9 @@
 ### Supervised by: 
 - [Dr. Mahmoud EL HAMLAOUI](https://www.linkedin.com/in/mahmoud-el-hamlaoui-466b8617/) 
 
+### If you want to use intellij project git it from here: 
+- [Click here :P !!!!!!!!](https://github.com/Bairouk/Sample_polling_system)
+
 ### Some conventions to follow by team members:
 1. Prefix all functions and variables with an underscore.
 2. Before marking a task done, please test it with multiple examples.
