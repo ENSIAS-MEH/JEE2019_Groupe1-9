@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class User extends Person {
+public class User extends Person{
 	private String FirstName;
 	private String LastName;
 	private String BirthDate;
@@ -102,4 +102,3 @@ public class User extends Person {
 		setAge();
 		}
 }
-
