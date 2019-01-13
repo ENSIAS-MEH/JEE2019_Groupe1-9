@@ -10,5 +10,6 @@ public interface interfacePoll {
 		
 	}
 	public ArrayList<Poll>  _search_vote_by_Type(String type);
+	public  Poll  _last_poll_for_user(int i);
 
 }

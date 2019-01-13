@@ -59,5 +59,47 @@ public class implPoll implements interfacePoll {
 	
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+			
+			public  Poll  _last_poll_for_user(int i){
+		Connection con =db_interaction.getConnection();
+		Poll p = null;
+		
+		try {
+		PreparedStatement statement = con.prepareStatement("SELECT pollid, description, duration, category, userid, type FROM POLL WHERE   pollid = (SELECT MAX(pollid) FROM POLL WHERE userid=?) ");
+		statement.setInt(1,i);
+		ResultSet result = statement.executeQuery();
+		
+		while (result.next()) {
+			
+			
+			 p  = new Poll(result.getInt("pollid"), result.getString("description"), result.getInt("duration"), result.getString("category"), result.getInt("userid"),result.getString("type"));
+			
+			
+		}
+		
+		System.out.println("last poll selected");
+		
+		}catch(SQLException e){
+			e.printStackTrace();
+			}
+		
+		
+		return p;
+		
+	
+	}
+	
+	
+			
+			
+			
+	
 }
 

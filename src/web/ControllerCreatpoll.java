@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entities.Choice;
 import entities.Poll;
+import metier.implChoice;
 import metier.implPoll;
 
 /**
@@ -67,16 +68,21 @@ public class ControllerCreatpoll extends HttpServlet {
 		model1.setPoll(model1.getPoll());
 		implPoll pp=new implPoll();
 		pp._create_poll(model1.getPoll());
-		metier.interfacePoll._create_poll(model1.getPoll());
-		metier.interfacePoll._create_poll(new Poll(8,request.getParameter("description"),Integer.parseInt(request.getParameter("duration")),request.getParameter("category"),1,request.getParameter("type")));
+		//metier.interfacePoll._create_poll(model1.getPoll());
+		//metier.interfacePoll._create_poll(new Poll(8,request.getParameter("description"),Integer.parseInt(request.getParameter("duration")),request.getParameter("category"),1,request.getParameter("type")));
 		System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo8");
 		System.out.println(request.getParameter("description"));
 		//choice
 		model1.getChoice().setDescription(request.getParameter("option[]"));
 		model1.getChoice().setNumberOfVoters(0);
-		model1.getChoice().setPollId(model1.getPoll().getPollId());
+		model1.getChoice().setPollId(pp._last_poll_for_user(model1.getPoll().getUserId()).getPollId());
 		model1.getChoice().setChoiceId(1);
-		metier.interfaceChoice._add_choice(model1.getChoice());
+		implChoice oo=new implChoice();
+		oo._add_choice(model1.getChoice());
+		
+		//pp._last_poll_for_user(model1.getPoll().getUserId()).getPollId();
+		//System.out.println(model1.getPoll().getPollId());
+		//metier.interfaceChoice._add_choice(model1.getChoice());
 		
 		
 		
