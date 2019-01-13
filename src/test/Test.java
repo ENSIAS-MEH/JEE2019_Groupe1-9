@@ -34,12 +34,12 @@ public class Test {
 		*/
 		  
 		
-		/*//test3:done
-		Poll p=new Poll(5, "description", 50, "tout le monde", 1,"type1");
+		//test3:done
+		Poll p=new Poll(6, "description", 50, "tout le monde", 1,"type1");
 		implPoll pp=new implPoll();
 		
 		pp._create_poll( p);
-		
+		/*
 		ArrayList<Poll> listevote= pp._search_vote_by_Type( "type1");
 		for (int i=0; i<=listevote.size()-1; i++)
 	      {

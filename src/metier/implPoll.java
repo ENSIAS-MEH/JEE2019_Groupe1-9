@@ -11,19 +11,18 @@ import entities.Poll;
 
 public class implPoll implements interfacePoll {
 
-	@Override
 	public void _create_poll(Poll p) {
 		// TODO Auto-generated method stub
 		Connection connection=db_interaction.getConnection();
 		try{
 		PreparedStatement ps = connection.prepareStatement
-				("insert into poll(POLLID, DESCRIPTION, DURATION, CATEGORY, USERID, TYPE) values (?,?,?,?,?,?)");
-		ps.setInt(1,p.getPollId());
-		ps.setString(2,p.getDescription());
-		ps.setInt(3,p.getDuration());
-		ps.setString(4,p.getCategory());
-		ps.setInt(5,p.getUserId());
-		ps.setString(6,p.getType());
+				("insert into poll( DESCRIPTION, DURATION, CATEGORY, USERID, TYPE) values (?,?,?,?,?)");
+		//ps.setInt(1,p.getPollId());
+		ps.setString(1,p.getDescription());
+		ps.setInt(2,p.getDuration());
+		ps.setString(3,p.getCategory());
+		ps.setInt(4,p.getUserId());
+		ps.setString(5,p.getType());
 
 		ps.executeUpdate();
 		}catch(SQLException e){

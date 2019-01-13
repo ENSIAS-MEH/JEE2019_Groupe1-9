@@ -12,17 +12,16 @@ public class implChoice implements interfaceChoice {
 	
 	
 
-	@Override
 	public void _add_choice(Choice c) {
 		// TODO Auto-generated method stub
 		Connection connection=db_interaction.getConnection();
 		try{
 		PreparedStatement ps = connection.prepareStatement
-				("insert into choice(CHOICEID, DESCRIPTION, VOTERSNUMBER, POLLID) values (?,?,?,?)");
-		ps.setInt(1,c.getChoiceId());
-		ps.setString(2,c.getDescription());
-		ps.setInt(3,c.getNumberOfVoters());
-		ps.setInt(4,c.getPollId());
+				("insert into choice( DESCRIPTION, VOTERSNUMBER, POLLID) values (?,?,?)");
+		//ps.setInt(1,c.getChoiceId());
+		ps.setString(1,c.getDescription());
+		ps.setInt(2,c.getNumberOfVoters());
+		ps.setInt(3,c.getPollId());
 
 
 		ps.executeUpdate();

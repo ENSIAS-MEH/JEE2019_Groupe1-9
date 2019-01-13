@@ -15,17 +15,17 @@ public class implUser implements interfaceUser{
 		Connection connection=db_interaction.getConnection();
 		try{
 		PreparedStatement ps = connection.prepareStatement
-		("insert into user(USERID, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, BIRTHDATE, GENDER, NATIONALITY, ISACTIVE, PROFILEIMAGE) values (?,?,?,?,?,?,?,?,?,?)");
-		ps.setInt(1,u.getId());
-		ps.setString(2,u.getPassword());
-		ps.setString(3,u.getEmail());
-		ps.setString(4,u.getFirstName());
-		ps.setString(5,u.getLastName());
-		ps.setString(6,u.getBirthDate());
-		ps.setString(7,u.getGender());
-		ps.setString(8,u.getNationality());
-		ps.setInt(9,u.isIsActive());
-		ps.setString(10,u.getProfileImage());
+		("insert into user(PASSWORD, EMAIL, FIRSTNAME, LASTNAME, BIRTHDATE, GENDER, NATIONALITY, ISACTIVE, PROFILEIMAGE) values (?,?,?,?,?,?,?,?,?)");
+		//ps.setInt(1,u.getId());
+		ps.setString(1,u.getPassword());
+		ps.setString(2,u.getEmail());
+		ps.setString(3,u.getFirstName());
+		ps.setString(4,u.getLastName());
+		ps.setString(5,u.getBirthDate());
+		ps.setString(6,u.getGender());
+		ps.setString(7,u.getNationality());
+		ps.setInt(8,u.isIsActive());
+		ps.setString(9,u.getProfileImage());
 
 		ps.executeUpdate();
 

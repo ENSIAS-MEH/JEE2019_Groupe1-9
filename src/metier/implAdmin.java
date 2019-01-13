@@ -14,10 +14,10 @@ public class implAdmin implements interfaceAdmin {
 		Connection connection=db_interaction.getConnection();
 		try{
 		PreparedStatement ps = connection.prepareStatement
-		("insert into admin(ADMINID, PASSWORD, EMAIL) values (?,?,?)");
-		ps.setInt(1,a.getId());
-		ps.setString(2,a.getPassword());
-		ps.setString(3,a.getEmail());
+		("insert into admin(PASSWORD, EMAIL) values (?,?)");
+		//ps.setInt(1,a.getId());
+		ps.setString(1,a.getPassword());
+		ps.setString(2,a.getEmail());
 		ps.executeUpdate();
 		System.out.println("test1");
 		}catch(SQLException e){
