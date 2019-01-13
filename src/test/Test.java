@@ -2,15 +2,15 @@ package test;
 
 import java.util.ArrayList;
 
-import entities.Admin;
-import entities.Choice;
-import entities.Poll;
-import entities.User;
-import metier.implAdmin;
-import metier.implChoice;
-import metier.implPoll;
-import metier.implUser;
-import metier.interfaceAdmin;
+import entities._admin;
+import entities._choice;
+import entities._poll;
+import entities._user;
+import metier._implAdmin;
+import metier._implChoice;
+import metier._implPoll;
+import metier._implUser;
+import metier._interfaceAdmin;
 
 public class Test {
 
