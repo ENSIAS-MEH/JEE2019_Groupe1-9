@@ -14,7 +14,7 @@ public class _implPoll implements _interfacePoll {
 
 	public void _create_poll(_poll p) {
 		// TODO Auto-generated method stub
-		Connection connection=db_interaction.getConnection();
+		Connection connection=db_interaction._get_connection();
 		try{
 		PreparedStatement ps = connection.prepareStatement
 				("insert into poll( DESCRIPTION, DURATION, CATEGORY, USERID, TYPE) values (?,?,?,?,?)");
@@ -33,7 +33,7 @@ public class _implPoll implements _interfacePoll {
 
 	@Override
 	public  ArrayList<_poll>  _search_vote_by_Type(String typ){
-		Connection con =db_interaction.getConnection();
+		Connection con =db_interaction._get_connection();
 		ArrayList<_poll> listevote= new ArrayList<_poll>();
 		try {
 		PreparedStatement statement = con.prepareStatement("SELECT pollid, description, duration, category, userid, type FROM POLL WHERE type=? ");
@@ -69,7 +69,7 @@ public class _implPoll implements _interfacePoll {
 	
 			
 			public  _poll  _last_poll_for_user(int i){
-		Connection con =db_interaction.getConnection();
+		Connection con =db_interaction._get_connection();
 		_poll p = null;
 		
 		try {

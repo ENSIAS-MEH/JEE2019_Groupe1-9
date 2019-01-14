@@ -1,7 +1,7 @@
 package web;
 
-import metier._interfaceUser;
-import metier._implUser;
+import metier._user_dao;
+import metier._user_dao_impl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class _controler_servlet extends HttpServlet {
-    _interfaceUser _new_user_dao;
+    _user_dao _new_user_dao;
 
     @Override
     public void init() throws ServletException {

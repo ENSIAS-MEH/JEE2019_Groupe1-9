@@ -31,7 +31,7 @@ public class db_interaction {
 		return connection;
 	}
 
-	public static Connection getConnection() {
+	public static Connection _get_connection() {
 		return instance.createConnection();
 	}
 }

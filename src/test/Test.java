@@ -2,15 +2,16 @@ package test;
 
 import java.util.ArrayList;
 
+
 import entities._admin;
 import entities._choice;
 import entities._poll;
 import entities._user;
-import metier._implAdmin;
-import metier._implChoice;
-import metier._implPoll;
-import metier._implUser;
-import metier._interfaceAdmin;
+//import metier._implAdmin;
+//import metier._implChoice;
+//import metier._implPoll;
+import metier.*;
+//import metier._interfaceAdmin;
 
 public class Test {
 

@@ -11,7 +11,7 @@ public class _implAdmin implements _interfaceAdmin {
 
 	public void _add_admin(_admin a) {
 		// TODO Auto-generated method stub
-		Connection connection=db_interaction.getConnection();
+		Connection connection=db_interaction._get_connection();
 		try{
 		PreparedStatement ps = connection.prepareStatement
 		("insert into admin(PASSWORD, EMAIL) values (?,?)");

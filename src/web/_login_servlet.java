@@ -2,8 +2,8 @@ package web;
 
 import com.sun.xml.internal.bind.v2.TODO;
 import entities._user;
-import metier._interfaceUser;
-import metier._implUser;
+import metier._user_dao;
+import metier._user_dao_impl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,11 +17,11 @@ import java.io.PrintWriter;
 @WebServlet(name = "_login_serv",urlPatterns = {"*.login"})
 public class _login_servlet extends HttpServlet {
 
-	_interfaceUser _new_user_dao;
+    _user_dao _new_user_dao;
     @Override
     public void init() throws ServletException {
         super.init();
-        _new_user_dao = new _implUser();
+        _new_user_dao = new _user_dao_impl();
     }
 
     @Override

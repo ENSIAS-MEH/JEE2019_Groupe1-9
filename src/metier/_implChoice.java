@@ -14,7 +14,7 @@ public class _implChoice implements _interfaceChoice {
 
 	public void _add_choice(_choice c) {
 		// TODO Auto-generated method stub
-		Connection connection=db_interaction.getConnection();
+		Connection connection=db_interaction._get_connection();
 		try{
 		PreparedStatement ps = connection.prepareStatement
 				("insert into choice( DESCRIPTION, VOTERSNUMBER, POLLID) values (?,?,?)");
@@ -33,7 +33,7 @@ public class _implChoice implements _interfaceChoice {
 
 	@Override
 	public  void _vote(_choice c, int d) {
-	    Connection con =db_interaction.getConnection();
+	    Connection con =db_interaction._get_connection();
 	 try {
 	PreparedStatement posted = con.prepareStatement("UPDATE CHOICE SET  VOTERSNUMBER=?  WHERE CHOICEID=?");
 	int p=c.get_number_of_voters() +1;
