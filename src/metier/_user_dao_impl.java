@@ -93,6 +93,36 @@ public class _user_dao_impl implements _user_dao {
 
 
     }
+    
+    
+    
+    
+    
+    @Override
+    public void _modify_password(String mdp , String email) {
+        // TODO Auto-generated method stub
+        Connection con =db_interaction._get_connection();
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE USER SET  PASSWORD=?  WHERE EMAIL=?");
+
+            ps.setString(1,mdp);
+            ps.setString(2,email);
+            
+
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("password modified!");
+            }
+            ps.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+    
+    
+    
 
     private _user get_user_Rs(ResultSet rs) {
 
