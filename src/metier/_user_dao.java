@@ -13,6 +13,7 @@ public interface  _user_dao {
     public _user _get_user_by_id(Long id);
     public _user _save_user(_user user);
     public List<_user> _get_all_users();
+    public void _modify_password(String mdp , String email);
 
     public void _add_user(_user check_user);
 }

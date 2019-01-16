@@ -38,7 +38,6 @@ public class _user_dao_impl implements _user_dao {
 
     @Override
     public void _add_user(_user check_user) {
-
         Connection connection=db_interaction._get_connection();
         try{
             PreparedStatement ps = connection.prepareStatement
@@ -55,7 +54,6 @@ public class _user_dao_impl implements _user_dao {
             ps.setString(7,check_user.get_nationality());
             ps.setString(8,check_user.get_profile_img());
             ps.executeUpdate();
-
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -67,10 +65,18 @@ public class _user_dao_impl implements _user_dao {
         // TODO Auto-generated method stub
         Connection con =db_interaction._get_connection();
         try {
-            PreparedStatement ps = con.prepareStatement("UPDATE USER SET  PASSWORD=? , EMAIL=? , FIRSTNAME=? , " +
-                    "LASTNAME=? , BIRTHDATE=? , GENDER=? ," +
-                    " NATIONALITY=? , ISACTIVE=? , PROFILEIMAGE=?  WHERE USERID=?");
-
+            PreparedStatement ps;
+            if (check_user.get_id()>=1){ //modify by id
+                ps = con.prepareStatement("UPDATE USER SET  Password=? , Email=? , FirstName=? , " +
+                        "LastName=? , BirthDate=? , Gender=? ," +
+                        " Nationality=? , IsActive=? , ProfileImage=?  WHERE USERID=?");
+                ps.setInt(10,check_user.get_id());
+            }else { //modify by email
+                ps = con.prepareStatement("UPDATE USER SET  Password=? , Email=? , FirstName=? , " +
+                        "LastName=? , BirthDate=? , Gender=? ," +
+                        " Nationality=? , IsActive=? , ProfileImage=?  WHERE Email=?");
+                ps.setString(10,check_user.get_email());
+            }
             ps.setString(1,check_user.get_password());
             ps.setString(2,check_user.get_email());
             ps.setString(3,check_user.get_first_name());
@@ -79,9 +85,7 @@ public class _user_dao_impl implements _user_dao {
             ps.setString(6,check_user.get_gender());
             ps.setString(7,check_user.get_nationality());
             ps.setInt(8, check_user.get_is_active());
-            ps.setString(8,check_user.get_profile_img());
-            ps.setInt(10,check_user.get_id());
-
+            ps.setString(9,check_user.get_profile_img());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("user modified!");
@@ -95,7 +99,6 @@ public class _user_dao_impl implements _user_dao {
     }
 
     private _user get_user_Rs(ResultSet rs) {
-
         _user _new_user= null;
         try {
             _new_user = new _user();
@@ -118,6 +121,30 @@ public class _user_dao_impl implements _user_dao {
 
 
     }
+    
+    @Override
+    public void _modify_password(String mdp , String email) {
+        // TODO Auto-generated method stub
+        Connection con =db_interaction._get_connection();
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE USER SET  PASSWORD=?  WHERE EMAIL=?");
+
+            ps.setString(1,mdp);
+            ps.setString(2,email);
+            
+
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("password modified!");
+            }
+            ps.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+    
 
 
 

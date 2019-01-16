@@ -18,9 +18,9 @@
     <meta name="description" content="Login into your account and manage your polls and your subscription." />
     <meta property='og:type' content='website' />
     <meta property='og:url' content='https://ensias.com' />
-    <meta property='og:title' content='Login into your account - Premium Poll Script' />
+    <meta property='og:title' content='Login into your account - Azerf Poll' />
     <meta property='og:description' content='Login into your account and manage your polls and your subscription.' />
-    <title>Login into your account - Premium Poll Script</title>
+    <title>Login into your account - Azerf Poll </title>
 
     <link href="../themes/default/css/bootstrap.min.css" rel="stylesheet">
 
@@ -46,6 +46,12 @@
     <![endif]-->
 </head>
 <body class='dark'>
+<%
+    //this one to  prevent the user from going back to the index.jsp after signing
+    if (session.getAttribute("_current_user")!=null){
+        response.sendRedirect("dashboard.jsp");
+    }
+%>
 <section>
     <div class="container">
         <div class="centered form">

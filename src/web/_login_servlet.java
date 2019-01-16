@@ -31,33 +31,37 @@ public class _login_servlet extends HttpServlet {
         String path = req.getServletPath();
         System.out.println(path);
 
-        if (path.equals("/user.login")){
+        //if the user is trying to login the servlet will take it from here
+
+        if (path.equals("/user.login") || path.equals("/user/user.login")){
             String _email = req.getParameter("email");
             System.out.println("here is your email :"+_email);
             String _password = req.getParameter("password");
             _check_user.set_email(_email);
             _check_user.set_password(_password);
             _user _check_user2 = (_user) _new_user_dao._login(_check_user);
+            //check if the user is valid
             if (_check_user2!=null){
                 System.out.println("This is the right person");
                 ses.setAttribute("_current_user",_check_user2);
-                resp.sendRedirect("userDashboard.jsp");
-                //PrintWriter out = resp.getWriter();
-                //req.setAttribute("user",_check_user);
-                //req.getRequestDispatcher("index.jsp").forward(req,resp);
+                if (path.equals("/user.login")) {
+                    resp.sendRedirect("user/dashboard.jsp");
+                }else resp.sendRedirect("dashboard.jsp");
             }else {
+                //if the user is not valid we redirect the user to the login page
                 System.out.println("this is a null one ");
-                resp.sendRedirect("index.jsp");
+                if (path.equals("/user.login")) {
+                    resp.sendRedirect("index.jsp");
+                }else resp.sendRedirect("login.jsp");
             }
-        }else if (path.equals("/user/register.login")){
-            // TODO add register infos
+
+        }else if (path.equals("/user/register.login")){ //this one if we have new user who's trying to register
 
             String _first_name = req.getParameter("firstname");
             String _last_name = req.getParameter("lastname");
             String _email = req.getParameter("email");
             String _password = req.getParameter("password");
             String _c_password = req.getParameter("cpassword");
-
             if (_password.equals(_c_password)){
                 _check_user.set_first_name(_first_name);
                 _check_user.set_last_name(_last_name);
@@ -65,13 +69,12 @@ public class _login_servlet extends HttpServlet {
                 _check_user.set_password(_password);
                 //add the new user
                 _new_user_dao._add_user(_check_user);
-
             }
             _user _check_user2 = (_user) _new_user_dao._login(_check_user);
             if (_check_user2!=null){
                 System.out.println("This is the right person");
                 ses.setAttribute("_current_user",_check_user2);
-                resp.sendRedirect("userDashboard.jsp");
+                resp.sendRedirect("dashboard.jsp");
                 //PrintWriter out = resp.getWriter();
                 //req.setAttribute("user",_check_user);
                 //req.getRequestDispatcher("index.jsp").forward(req,resp);
@@ -81,12 +84,11 @@ public class _login_servlet extends HttpServlet {
             }
         }
 
-
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 
     }
 }
