@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2019 at 02:37 PM
+-- Generation Time: Jan 16, 2019 at 02:53 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.1.19
 
@@ -60,8 +60,8 @@ CREATE TABLE `poll` (
   `Category` varchar(50) NOT NULL,
   `UserId` int(11) NOT NULL,
   `question` text NOT NULL,
-  `_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `_number_choices` int(2) NOT NULL
+  `pollDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `numChoice` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
