@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import DAO.db_interaction;
+import entities._choice;
 import entities._poll;
+import entities._user;
 
 public class _implPoll implements _interfacePoll {
 
@@ -96,6 +98,49 @@ public class _implPoll implements _interfacePoll {
 		
 	
 	}
+
+			@Override
+			public void _delete_poll(long _id) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public ArrayList<_poll> _get_recent_polls(int _number_of_polls) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public ArrayList<_choice> _get_choice_for_poll(_poll _p) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public int _get_number_of_voters(_poll _p) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+
+			@Override
+			public _user _get_user_of_poll(_poll _p) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public int _get_number_of_polls() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+
+
+			@Override
+			public _poll _get_poll_by_id(long _id) {
+				// TODO Auto-generated method stub
+				return null;
+			}
 	
 	
 			

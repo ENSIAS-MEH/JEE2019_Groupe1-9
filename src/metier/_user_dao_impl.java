@@ -2,13 +2,18 @@ package metier;
 
 import DAO.db_interaction;
 import com.sun.xml.internal.bind.v2.TODO;
+
+import entities._choice;
 import entities._person;
+import entities._poll;
 import entities._user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class _user_dao_impl implements _user_dao {
@@ -149,9 +154,31 @@ public class _user_dao_impl implements _user_dao {
 
 
     @Override
-    public _user _get_user_by_id(Long id) {
-        return null;
-    }
+    public _user _get_user_by_id(int id) {
+    	_user user = new _user();
+		try{
+			conn = db_interaction._get_connection();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM USER WHERE USERID = ?");
+			ps.setLong(1, id);
+			ResultSet res = ps.executeQuery();
+			if(res.next()) {
+				user.set_id(res.getInt("UserId"));
+				user.set_password(res.getString("Password"));
+				user.set_email(res.getString("Email"));
+				user.set_first_name(res.getString("FirstName"));
+				user.set_last_name(res.getString("LastName"));
+				user.set_birth_date(res.getString("BirthDate"));
+				user.set_gender(res.getString("Gender"));
+				user.set_nationality(res.getString("Nationality"));
+				user.set_is_active(res.getInt("IsActive"));
+				user.set_profile_img(res.getString("ProfileImage"));
+				System.out.println(user);
+			}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		return user;}
 
     @Override
     public _user _save_user(_user user) {
@@ -159,9 +186,106 @@ public class _user_dao_impl implements _user_dao {
     }
 
     @Override
-    public List<_user> _get_all_users() {
-        return null;
+    public ArrayList<_user> _get_all_users(){
+        	conn = db_interaction._get_connection();
+        	List<_user> _user_list= new ArrayList<_user>();
+        	try {
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM USER WHERE 1");
+			ResultSet res = ps.executeQuery();
+			while(res.next()) {
+				System.out.print("here");
+				_user user = new _user();
+				user.set_id(res.getInt("UserId"));
+				user.set_password(res.getString("Password"));
+				user.set_email(res.getString("Email"));
+				user.set_first_name(res.getString("FirstName"));
+				user.set_last_name(res.getString("LastName"));
+				user.set_birth_date(res.getString("BirthDate"));
+				user.set_gender(res.getString("Gender"));
+				user.set_nationality(res.getString("Nationality"));
+				user.set_is_active(res.getInt("IsActive"));
+				user.set_profile_img(res.getString("ProfileImage"));
+				_user_list.add(user);
+				System.out.println(user);
+			}
+        	}catch(SQLException e) {
+        		e.printStackTrace();}
+			return (ArrayList<_user>) _user_list;
     }
+
+	@Override
+	public void _delete_user(_user u)  {
+		conn = db_interaction._get_connection();
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement("DELETE FROM USER WHERE USERID = ?");
+			ps.setLong(1, u.get_id());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public ArrayList<_poll> _get_poll_of_user(_user u) {
+		
+		return null;
+	}
+
+	@Override
+	public HashMap<_poll, _choice> _get_vote_of_user(_user u) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<_user> _get_recent_users(int _number_of_users) {
+		conn = db_interaction._get_connection();
+    	List<_user> _user_list= new ArrayList<_user>();
+    	try {
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM USER ORDER BY USERID DESC");
+		ResultSet res = ps.executeQuery();
+		int i = 0;
+		while((res.next()) && (i<_number_of_users) ) {
+			_user user = new _user();
+			user.set_id(res.getInt("UserId"));
+			user.set_password(res.getString("Password"));
+			user.set_email(res.getString("Email"));
+			user.set_first_name(res.getString("FirstName"));
+			user.set_last_name(res.getString("LastName"));
+			user.set_birth_date(res.getString("BirthDate"));
+			user.set_gender(res.getString("Gender"));
+			user.set_nationality(res.getString("Nationality"));
+			user.set_is_active(res.getInt("IsActive"));
+			user.set_profile_img(res.getString("ProfileImage"));
+			_user_list.add(user);
+			i++;
+			System.out.println(user);
+		}
+    	}catch(SQLException e) {
+    		e.printStackTrace();}
+		return (ArrayList<_user>) _user_list;
+	}
+
+	@Override
+	public int _get_number_of_users() {
+		int _number_of_users = 0;
+		try{
+			conn = db_interaction._get_connection();
+			PreparedStatement ps = conn.prepareStatement("SELECT Count(*) AS NUMBER FROM USER ");
+			ResultSet res = ps.executeQuery();
+			if(res.next()) {
+				_number_of_users = res.getInt("NUMBER");
+				System.out.println(_number_of_users);
+			}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		return _number_of_users;
+	}
+
 
 
 

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import DAO.db_interaction;
 import entities._choice;
+import entities._poll;
 
 public class _implChoice implements _interfaceChoice {
 
@@ -47,6 +48,18 @@ public class _implChoice implements _interfaceChoice {
 	}catch(SQLException e){
 		e.printStackTrace();
 		}
+	}
+
+	@Override
+	public _poll _get_poll(_choice _c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int _number_of_voters_of_choice(_choice _c) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }	
 

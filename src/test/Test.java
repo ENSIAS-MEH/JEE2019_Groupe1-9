@@ -63,6 +63,14 @@ public class Test {
 		uu. _add_user( u);
 		 uu._modify_user(u1);
 */
+		_user_dao metier = new _user_dao_impl();
+		_user user = new _user();
+		ArrayList<_user> _user_list = metier._get_all_users();
+		metier._get_number_of_users();
+		user= metier._get_user_by_id(1);
+		 _user_list = metier._get_all_users();
+		 metier._get_number_of_users();
+		 metier._get_recent_users(1);
 	}
 
 }
