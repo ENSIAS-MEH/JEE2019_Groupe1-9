@@ -66,7 +66,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
 
-                        <li><a href="create_poll.jsp" class="active">Create your Poll</a></li>
+                        <li><a href="create_poll_signed_in.jsp" class="active">Create your Poll</a></li>
                         <li><a href="user.logout">Logout</a></li>
 
                     </ul>

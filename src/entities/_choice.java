@@ -15,7 +15,8 @@ public class _choice implements Serializable{
 		_numberOfVoters = numberOfVoters;
 		_pollId = pollId;
 	}
-	
+
+
 	public _choice() {
 		// TODO Auto-generated constructor stub
 	}

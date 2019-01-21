@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -45,6 +46,12 @@
   <![endif]-->
 </head>
 <body>
+<%
+  //this one to  prevent the user from going back to the index.jsp after signing
+  if (session.getAttribute("_current_user")!=null){
+    response.sendRedirect("user/dashboard.jsp");
+  }
+%>
 <header>
   <div class="navbar" role="navigation">
     <div class="container">
@@ -69,7 +76,7 @@
       <div class="col-md-8 promo">
         <h2>Simple. Beautiful. Modern.</h2>
         <p>Create beautifully designed polls in under a minute. Choose from a library of templates or customize your own template. With many types of customization, you will make the poll <strong>your</strong> poll. Create an account to unlock even more features.</p>
-        <a href="create.html" class="btn btn-transparent btn-lg">Create your Poll</a>
+        <a href="user/create_poll.jsp" class="btn btn-transparent btn-lg">Create your Poll</a>
       </div>
       <div class="col-md-4">
         <div class="box-holder">

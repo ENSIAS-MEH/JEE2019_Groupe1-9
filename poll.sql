@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2019 at 02:53 PM
+-- Generation Time: Jan 21, 2019 at 05:48 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.1.19
 
@@ -56,13 +56,18 @@ CREATE TABLE `choice` (
 CREATE TABLE `poll` (
   `PollId` int(11) NOT NULL,
   `Description` text NOT NULL,
-  `Duration` int(11) NOT NULL,
   `Category` varchar(50) NOT NULL,
   `UserId` int(11) NOT NULL,
-  `question` text NOT NULL,
   `pollDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `numChoice` int(11) NOT NULL
+  `expires` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `poll`
+--
+
+INSERT INTO `poll` (`PollId`, `Description`, `Category`, `UserId`, `pollDate`, `expires`) VALUES
+(1, 'This is the description of the poll', 'this is the category', 5, '2019-01-16 15:43:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -93,7 +98,8 @@ INSERT INTO `user` (`UserId`, `Password`, `Email`, `FirstName`, `LastName`, `Bir
 (3, 'anass123', 'bairouk@gmail.com', 'bihy', 'bihy', '22-12-2012', 'male', 'amazigh', 1, 'http://ensias.com/nothing'),
 (4, 'password', 'email@gmail.com', 'firstName', 'lastName', 'maroc', 'hoooooomme', '1999-01-01', 1, 'profileImage'),
 (5, 'qwerty', 'bairoukanasa5@gmail.com', 'Anass', 'BAIROUK', NULL, NULL, NULL, 1, NULL),
-(6, 'qwerty', 'bairoukanasa5@hotmail.com', 'Anass', 'BAIROUK', NULL, NULL, NULL, 1, NULL);
+(6, 'qwerty', 'bairoukanasa5@hotmail.com', 'Anass', 'BAIROUK', NULL, NULL, NULL, 1, NULL),
+(7, 'qwerty', 'akofi@gmail.com', 'ikhan ', 'test', NULL, NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -165,13 +171,13 @@ ALTER TABLE `choice`
 -- AUTO_INCREMENT for table `poll`
 --
 ALTER TABLE `poll`
-  MODIFY `PollId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PollId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -36,6 +36,30 @@ public class _user_dao_impl implements _user_dao {
         return _new_user;
     }
 
+    public  _user _get_user_by_id(int user_id){
+
+        conn = db_interaction._get_connection();
+        _user _new_user = null;
+        String sql = "select * from user where UserId= ? ";
+        PreparedStatement pstmnt = null;
+        try {
+            pstmnt = conn.prepareStatement(sql);
+            pstmnt.setInt(1,user_id);
+            ResultSet rs = pstmnt.executeQuery();
+            if(rs.next()) {
+                _new_user = new _user();
+                _new_user = get_user_Rs(rs);
+                return _new_user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return _new_user;
+
+
+    }
+
     @Override
     public void _add_user(_user check_user) {
         Connection connection=db_interaction._get_connection();
@@ -45,6 +69,7 @@ public class _user_dao_impl implements _user_dao {
                             "( PASSWORD, EMAIL, FIRSTNAME, LASTNAME, BIRTHDATE," +
                             " GENDER, NATIONALITY, ISACTIVE, PROFILEIMAGE) " +
                             "values (?,?,?,?,?,?,?,1,?)");
+
             ps.setString(1,check_user.get_password());
             ps.setString(2,check_user.get_email());
             ps.setString(3,check_user.get_first_name());
@@ -95,7 +120,6 @@ public class _user_dao_impl implements _user_dao {
             e.printStackTrace();
         }
 
-
     }
 
     private _user get_user_Rs(ResultSet rs) {
@@ -121,37 +145,7 @@ public class _user_dao_impl implements _user_dao {
 
 
     }
-    
-    @Override
-    public void _modify_password(String mdp , String email) {
-        // TODO Auto-generated method stub
-        Connection con =db_interaction._get_connection();
-        try {
-            PreparedStatement ps = con.prepareStatement("UPDATE USER SET  PASSWORD=?  WHERE EMAIL=?");
 
-            ps.setString(1,mdp);
-            ps.setString(2,email);
-            
-
-            int rowsUpdated = ps.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("password modified!");
-            }
-            ps.executeUpdate();
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-
-
-    }
-    
-
-
-
-    @Override
-    public _user _get_user_by_id(Long id) {
-        return null;
-    }
 
     @Override
     public _user _save_user(_user user) {

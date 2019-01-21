@@ -44,6 +44,7 @@ public class _login_servlet extends HttpServlet {
             if (_check_user2!=null){
                 System.out.println("This is the right person");
                 ses.setAttribute("_current_user",_check_user2);
+                ses.setAttribute("user_id",_check_user2.get_id());
                 if (path.equals("/user.login")) {
                     resp.sendRedirect("user/dashboard.jsp");
                 }else resp.sendRedirect("dashboard.jsp");
@@ -74,6 +75,7 @@ public class _login_servlet extends HttpServlet {
             if (_check_user2!=null){
                 System.out.println("This is the right person");
                 ses.setAttribute("_current_user",_check_user2);
+                ses.setAttribute("user_id",_check_user2.get_id());
                 resp.sendRedirect("dashboard.jsp");
                 //PrintWriter out = resp.getWriter();
                 //req.setAttribute("user",_check_user);
