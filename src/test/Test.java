@@ -84,6 +84,11 @@ public class Test {
 		
 		
 		//Connection conn = DAO.db_interaction._get_connection();
+		
+		_implChoice metier_choice = new _implChoice();
+		_choice c = new _choice();
+		c.set_choiceId(3);
+		metier_choice._list_of_voters(c);
 	}
 
 }

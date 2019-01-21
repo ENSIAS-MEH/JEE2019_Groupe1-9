@@ -1,7 +1,9 @@
 package metier;
 
-import entities._choice;
-import entities._poll;
+import java.util.ArrayList;
+
+import entities.*;
+
 
 public interface _interfaceChoice {
 	public static void _add_choice(_choice c) {
@@ -10,6 +12,5 @@ public interface _interfaceChoice {
 	}
 	public  void _vote(_choice c, int d);
 	
-	public _poll _get_poll(_choice _c);
-	public int _number_of_voters_of_choice(_choice _c);
-}
+	public ArrayList<_user> _list_of_voters(_choice c);
+	}

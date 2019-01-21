@@ -2,14 +2,18 @@ package metier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import DAO.db_interaction;
 import entities._choice;
 import entities._poll;
+import entities._user;
 
 public class _implChoice implements _interfaceChoice {
-
+	private static Connection conn ;
 	
 	
 
@@ -50,16 +54,28 @@ public class _implChoice implements _interfaceChoice {
 		}
 	}
 
+	
+	
 	@Override
-	public _poll _get_poll(_choice _c) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<_user> _list_of_voters(_choice c) {
+		List<_user> _user_list = new ArrayList<_user>();
+		conn = db_interaction._get_connection();
+    	try {
+		PreparedStatement ps = conn.prepareStatement("SELECT USERID FROM VOTE WHERE CHOICEID = ?");
+		ps.setInt(1, c.get_choiceId());		
+		ResultSet res = ps.executeQuery();
+		int i =0 ;
+		while(res.next()) {
+			_user_dao_impl user_metier = new _user_dao_impl();
+			_user user= user_metier._get_user_by_id(res.getInt("USERID"));
+			_user_list.add(user);
+		}}
+    	catch(SQLException e){
+    		e.printStackTrace();
+    	}
+		return (ArrayList<_user>) _user_list;
 	}
 
-	@Override
-	public int _number_of_voters_of_choice(_choice _c) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 }	
 
