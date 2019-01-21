@@ -229,8 +229,30 @@ public class _user_dao_impl implements _user_dao {
 
 	@Override
 	public ArrayList<_poll> _get_poll_of_user(_user u) {
-		
-		return null;
+		conn = db_interaction._get_connection();
+    	List<_poll> _poll_list= new ArrayList<_poll>();
+    	try {
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM USER WHERE 1");
+		ResultSet res = ps.executeQuery();
+		while(res.next()) {
+			System.out.print("here");
+			_poll poll = new _poll();
+			user.set_id(res.getInt("UserId"));
+			user.set_password(res.getString("Password"));
+			user.set_email(res.getString("Email"));
+			user.set_first_name(res.getString("FirstName"));
+			user.set_last_name(res.getString("LastName"));
+			user.set_birth_date(res.getString("BirthDate"));
+			user.set_gender(res.getString("Gender"));
+			user.set_nationality(res.getString("Nationality"));
+			user.set_is_active(res.getInt("IsActive"));
+			user.set_profile_img(res.getString("ProfileImage"));
+			_poll_list.add(user);
+			System.out.println(user);
+		}
+    	}catch(SQLException e) {
+    		e.printStackTrace();}
+		return (ArrayList<_poll>) _poll_list;
 	}
 
 	@Override

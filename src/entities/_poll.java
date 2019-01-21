@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class _poll implements Serializable{
 	private int _pollId;
@@ -9,14 +10,21 @@ public class _poll implements Serializable{
 	private String _category;
 	private int _userId;
 	private String _type;
+	private Date _pollDate;
 	
+	public Date get_pollDate() {
+		return _pollDate;
+	}
+	public void set_pollDate(Date _pollDate) {
+		this._pollDate = _pollDate;
+	}
 	public String get_type() {
 		return _type;
 	}
 	public void set_type(String type) {
 		this._type = type;
 	}
-	public _poll(int pollId, String description, int duration, String category, int userId, String type ) {
+	public _poll(int pollId, String description, int duration, String category, int userId, String type ,Date pollDate) {
 		super();
 		_pollId = pollId;
 		_description = description;
@@ -24,6 +32,14 @@ public class _poll implements Serializable{
 		_category = category;
 		_userId = userId;
 		_type = type;
+		_pollDate = pollDate;
+	}
+	
+	@Override
+	public String toString() {
+		return "_poll [_pollId=" + _pollId + ", _description=" + _description + ", _duration=" + _duration
+				+ ", _category=" + _category + ", _userId=" + _userId + ", _type=" + _type + ", _pollDate=" + _pollDate
+				+ "]";
 	}
 	public _poll() {
 		// TODO Auto-generated constructor stub

@@ -3,7 +3,15 @@ package entities;
 import java.io.Serializable;
 
 public class _user extends _person implements Serializable {
-    private String _first_name;
+    @Override
+	public String toString() {
+		return "_user [_first_name=" + _first_name + ", _last_name=" + _last_name + ", _birth_date=" + _birth_date
+				+ ", _nationality=" + _nationality + ", _gender=" + _gender + ", _is_active=" + _is_active
+				+ ", _profile_img=" + _profile_img + ", _id=" + _id + ", _email=" + _email + ", _password=" + _password
+				+ "]";
+	}
+
+	private String _first_name;
     private String _last_name;
     private String _birth_date;
     private String _nationality;
