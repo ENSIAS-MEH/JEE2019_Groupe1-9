@@ -34,7 +34,7 @@ public class _implPoll implements _interfacePoll {
 		}
 	}
 
-	@Override
+	/*@Override
 	public  ArrayList<_poll>  _search_vote_by_Type(String typ){
 		Connection con =db_interaction._get_connection();
 		ArrayList<_poll> listevote= new ArrayList<_poll>();
@@ -61,7 +61,7 @@ public class _implPoll implements _interfacePoll {
 		return listevote;
 		
 	
-	}
+	}*/
 	
 	
 	
@@ -71,7 +71,7 @@ public class _implPoll implements _interfacePoll {
 	
 	
 			
-			public  _poll  _last_poll_for_user(int i){
+			/*public  _poll  _last_poll_for_user(int i){
 		Connection con =db_interaction._get_connection();
 		_poll p = null;
 		
@@ -98,7 +98,7 @@ public class _implPoll implements _interfacePoll {
 		return p;
 		
 	
-	}
+	}*/
 
 			@Override
 			public void _delete_poll(long _id) {
@@ -139,6 +139,18 @@ public class _implPoll implements _interfacePoll {
 
 			@Override
 			public _poll _get_poll_by_id(long _id) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public ArrayList<_poll> _search_vote_by_Type(String type) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public _poll _last_poll_for_user(int i) {
 				// TODO Auto-generated method stub
 				return null;
 			}

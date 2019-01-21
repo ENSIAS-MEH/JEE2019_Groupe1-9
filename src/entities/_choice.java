@@ -3,6 +3,11 @@ package entities;
 import java.io.Serializable;
 
 public class _choice implements Serializable{
+	@Override
+	public String toString() {
+		return "_choice [_choiceId=" + _choiceId + ", _description=" + _description + ", _numberOfVoters="
+				+ _numberOfVoters + ", _pollId=" + _pollId + "]";
+	}
 	private int _choiceId;
 	private String _description;
 	private int _numberOfVoters;

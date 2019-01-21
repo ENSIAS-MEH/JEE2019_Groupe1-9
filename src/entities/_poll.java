@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class _poll implements Serializable{
 	private int _pollId;
@@ -10,12 +11,12 @@ public class _poll implements Serializable{
 	private String _category;
 	private int _userId;
 	private String _type;
-	private Date _pollDate;
+	private LocalDate _pollDate;
 	
-	public Date get_pollDate() {
+	public LocalDate get_pollDate() {
 		return _pollDate;
 	}
-	public void set_pollDate(Date _pollDate) {
+	public void set_pollDate(LocalDate _pollDate) {
 		this._pollDate = _pollDate;
 	}
 	public String get_type() {
@@ -24,7 +25,7 @@ public class _poll implements Serializable{
 	public void set_type(String type) {
 		this._type = type;
 	}
-	public _poll(int pollId, String description, int duration, String category, int userId, String type ,Date pollDate) {
+	public _poll(int pollId, String description, int duration, String category, int userId, String type ,LocalDate pollDate) {
 		super();
 		_pollId = pollId;
 		_description = description;

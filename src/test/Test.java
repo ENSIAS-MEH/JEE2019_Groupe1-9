@@ -68,7 +68,8 @@ public class Test {
 		 
 */		
 		
-		 _user_dao metier = new _user_dao_impl();
+		 /*test user_dao Done
+		  * _user_dao metier = new _user_dao_impl();
 			_user user = new _user();
 			ArrayList<_user> _user_list = metier._get_all_users();
 			metier._get_number_of_users();
@@ -76,8 +77,10 @@ public class Test {
 			 _user_list = metier._get_all_users();
 			 metier._get_number_of_users();
 			 metier._get_recent_users(1);
-			
-			
+			metier._get_poll_of_user(user);
+			System.out.println("Votes");
+			metier._get_vote_of_user(user);
+		*/
 		
 		
 		//Connection conn = DAO.db_interaction._get_connection();

@@ -12,9 +12,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class _user_dao_impl implements _user_dao {
 
@@ -232,23 +235,22 @@ public class _user_dao_impl implements _user_dao {
 		conn = db_interaction._get_connection();
     	List<_poll> _poll_list= new ArrayList<_poll>();
     	try {
-		PreparedStatement ps = conn.prepareStatement("SELECT * FROM USER WHERE 1");
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM POLL WHERE USERID = ?");
+		ps.setLong(1, u.get_id());
 		ResultSet res = ps.executeQuery();
 		while(res.next()) {
-			System.out.print("here");
 			_poll poll = new _poll();
-			user.set_id(res.getInt("UserId"));
-			user.set_password(res.getString("Password"));
-			user.set_email(res.getString("Email"));
-			user.set_first_name(res.getString("FirstName"));
-			user.set_last_name(res.getString("LastName"));
-			user.set_birth_date(res.getString("BirthDate"));
-			user.set_gender(res.getString("Gender"));
-			user.set_nationality(res.getString("Nationality"));
-			user.set_is_active(res.getInt("IsActive"));
-			user.set_profile_img(res.getString("ProfileImage"));
-			_poll_list.add(user);
-			System.out.println(user);
+			poll.set_id_poll(res.getInt("POLLID"));
+			poll.set_description(res.getString("DESCRIPTION"));
+			poll.set_duration(res.getInt("DURATION"));
+			poll.set_category(res.getString("CATEGORY"));
+			poll.set_user_id(res.getInt("USERID"));
+			
+			// turn the String POLLDATE in database to LocalDate
+			LocalDate _date_poll = LocalDate.parse(res.getString("POLLDATE"),DateTimeFormatter.ISO_LOCAL_DATE);    
+			poll.set_pollDate(_date_poll);
+			_poll_list.add(poll);
+			System.out.println(poll);
 		}
     	}catch(SQLException e) {
     		e.printStackTrace();}
@@ -257,8 +259,35 @@ public class _user_dao_impl implements _user_dao {
 
 	@Override
 	public HashMap<_poll, _choice> _get_vote_of_user(_user u) {
-		// TODO Auto-generated method stub
-		return null;
+		conn = db_interaction._get_connection();
+    	Map<_poll,_choice> _vote_list= new HashMap<_poll,_choice>();
+    	try {
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM POLL,CHOICE,VOTE WHERE POLL.PollId=CHOICE.PollId and CHOICE.choiceId = Vote.ChoiceId and Vote.userId = ?");
+		ps.setLong(1, u.get_id());
+		ResultSet res = ps.executeQuery();
+		while(res.next()) {
+			_poll poll = new _poll();
+			poll.set_id_poll(res.getInt("POLLID"));
+			poll.set_description(res.getString("DESCRIPTION"));
+			poll.set_duration(res.getInt("DURATION"));
+			poll.set_category(res.getString("CATEGORY"));
+			poll.set_user_id(res.getInt(5));          // 5 is the column_index of UserId of the user that creates the poll
+			
+			// turn the String POLLDATE in database to LocalDate
+			LocalDate _date_poll = LocalDate.parse(res.getString("POLLDATE"),DateTimeFormatter.ISO_LOCAL_DATE);    
+			poll.set_pollDate(_date_poll);
+			_choice choice = new _choice();
+			choice.set_choiceId(res.getInt("CHOICEID"));
+			choice.set_description(res.getString(8));   // 8 is the column_index of Description of the choice
+			choice.set_number_of_voters(res.getInt("VOTERSNUMBER"));
+			choice.set_pollId(res.getInt("POLLID"));
+			System.out.println(poll);
+			System.out.println(choice);
+			_vote_list.put(poll, choice);
+		}
+    	}catch(SQLException e) {
+    		e.printStackTrace();}
+		return (HashMap<_poll, _choice>) _vote_list;
 	}
 
 	@Override

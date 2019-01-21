@@ -89,4 +89,5 @@ public class _user extends _person implements Serializable {
     public void set_first_name(String _first_name) {
         this._first_name = _first_name;
     }
+	
 }
