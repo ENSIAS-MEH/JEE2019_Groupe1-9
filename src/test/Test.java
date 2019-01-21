@@ -96,6 +96,7 @@ public class Test {
 		metier_Poll._get_choice_for_poll(poll);
 		metier_Poll._get_number_of_polls();
 		metier_Poll._get_user_of_poll(poll);
+		metier_Poll._get_number_of_voters(poll);
 		
 		
 	}

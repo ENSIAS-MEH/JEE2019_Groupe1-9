@@ -169,7 +169,21 @@ public class _implPoll implements _interfacePoll {
 
 			@Override
 			public int _get_number_of_voters(_poll _p) {
-				return 0;
+				int _number_of_voters = 0;
+				try{
+					conn = db_interaction._get_connection();
+					PreparedStatement ps = conn.prepareStatement("SELECT SUM(VOTERSNUMBER) AS NUMBER FROM CHOICE WHERE POLLID = ? ");
+					ps.setInt(1, _p.get_id_poll());
+					ResultSet res = ps.executeQuery();
+					if(res.next()) {
+						_number_of_voters = res.getInt("NUMBER");
+						System.out.println(_number_of_voters);
+					}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				return _number_of_voters;
 			}
 
 			@Override
