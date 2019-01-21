@@ -85,10 +85,19 @@ public class Test {
 		
 		//Connection conn = DAO.db_interaction._get_connection();
 		
-		_implChoice metier_choice = new _implChoice();
-		_choice c = new _choice();
-		c.set_choiceId(3);
-		metier_choice._list_of_voters(c);
+		/*
+		 * _implChoice metier_choice = new _implChoice(); _choice c = new _choice();
+		 * c.set_choiceId(3); metier_choice._list_of_voters(c);
+		 */
+		
+		_implPoll metier_Poll = new _implPoll();
+		metier_Poll._get_recent_polls(3);
+		_poll poll =metier_Poll._get_poll_by_id(3);
+		metier_Poll._get_choice_for_poll(poll);
+		metier_Poll._get_number_of_polls();
+		metier_Poll._get_user_of_poll(poll);
+		
+		
 	}
 
 }

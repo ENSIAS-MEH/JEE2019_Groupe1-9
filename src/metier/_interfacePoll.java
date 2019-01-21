@@ -15,7 +15,7 @@ public interface _interfacePoll {
 	public  _poll  _last_poll_for_user(int i);
 	
 	
-	public void _delete_poll(long _id);
+	public void _delete_poll(_poll p);
 	public ArrayList<_poll> _get_recent_polls(int _number_of_polls);
 	public ArrayList<_choice> _get_choice_for_poll(_poll _p);
 	public int _get_number_of_voters(_poll _p);

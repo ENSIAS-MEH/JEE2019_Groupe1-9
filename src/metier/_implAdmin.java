@@ -19,7 +19,6 @@ public class _implAdmin implements _interfaceAdmin {
 		ps.setString(1,a. get_password());
 		ps.setString(2,a.get_email());
 		ps.executeUpdate();
-		System.out.println("test1");
 		}catch(SQLException e){
 		e.printStackTrace();
 		}
