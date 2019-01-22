@@ -22,7 +22,7 @@
 							</div>
 						</form> -->
 	<ul class="nav nav-sidebar">
-		<li><a href="dashboard.admin" class="active"><span
+		<li><a href="dashboard.admin"><span
 				class="glyphicon glyphicon-home"></span> Dashboard</a></li>
 		<li><a href="polls.admin"><span
 				class="glyphicon glyphicon-th-list"></span> Polls</a></li>

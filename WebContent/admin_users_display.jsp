@@ -36,9 +36,9 @@
 									class="glyphicon glyphicon-home"></span> Dashboard</a></li>
 							<li><a href="polls.admin"><span
 									class="glyphicon glyphicon-th-list"></span> Polls</a></li>
-							<li><a href="users.admin"><span
+							<li><a href="users.admin" class="active"><span
 									class="glyphicon glyphicon-user"></span> Users</a></li>
-							<li><a href="settings.admin" class="active"><span
+							<li><a href="settings.admin"><span
 									class="glyphicon glyphicon-cog"></span> Settings</a></li>
 						</ul>
 						<h3>
@@ -55,101 +55,32 @@
 						</div>
 					</div>
 				</div>
-
-
 				<div class="col-md-10 content">
 					<div class='ads ad728'>
 						<img src="http://placehold.it/728x90/E8117F/FFFFFF">
 					</div>
-					<div class='row'>
-						<div class='col-md-4'>
-							<form action='https://gempixel.com/polls/user/settings'
-								class='box-holder' method='post'>
-								<!-- 	<div class='form-group'>
-									<label for='name'>Full Name</label> <input type='text'
-										class='form-control' id='name' placeholder='Enter Name'
-										name='name' value=''>
-								</div> -->
-								<div class='form-group'>
-									<label for='email'>Email address</label> <input type='email'
-										class='form-control' id='email' placeholder='Enter email'
-										name='email' value='bananifatimazahra.fzb@gmail.com'>
-								</div>
-								<div class='form-group'>
-									<label for='pass'>New Password</label> <input type='password'
-										class='form-control' id='pass'
-										placeholder='Leave empty to keep current one' name='password'>
-								</div>
-								<div class='form-group'>
-									<label for='pass2'>Confirm Password</label> <input
-										type='password' class='form-control' id='pass2'
-										placeholder='Leave empty to keep current one' name='cpassword'>
-								</div>
-								<!-- <div class='form-group'>
-									<label for='ga'>Google Analytics ID <a
-										href='https://gempixel.com/polls/upgrade'>(Upgrade)</a></label> <input
-										type='text' class='form-control' id='ga'
-										placeholder='Please upgrade to a premium package to unlock this feature.'
-										disabled>
-									<p class='help-block'>Please upgrade to a premium package
-										to unlock this feature.</p>
-								</div> -->
-								<!-- <div class='form-group'>
-									<label for='lang'>Language</label> <select name='lang'
-										id='lang' class='selectized'>
-										<option value='en' selected>English</option>
-										<option value='jp'>Japanese</option>
-										<option value='de'>German</option>
-										<option value='vn'>Vietnamese</option>
-										<option value='it'>Italian</option>
-										<option value='kr'>Korean</option>
-										<option value='ro'>Romanian</option>
-										<option value='tu'>Turkish</option>
-										<option value='ru'>Russian</option>
-										<option value='es'>Spanish</option>
-										<option value='sw'>Swedish</option>
-										<option value='fr'>French</option>
-									</select>
-								</div> -->
-								<input type='hidden' name='token'
-									value='b05989724d6ed5549588d2c374e38493815ef150' />
-								<button type='submit' class='btn btn-primary'>Update</button>
-								<button type='submit' class='btn btn-primary'>Add Admin</button>
-							</form>
-							<br>
-							<br> <br>
 
-						</div>
-						<div class='col-md-8'>
-							<h4>Admins List</h4>
-							<div class='table-responsive'>
-								<table class='table table-condensed'>
-									<thead>
-										<tr>
-											<th>Admin ID</th>
-											<th>Email</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>bananifatimazahra@live.fr</td>
-										</tr>
-									</tbody>
-								</table>
-								<br> <br> <!-- <a href="Add/Admin.admin">
-									<button type='submit' class='btn btn-primary'>Add
-										Admin</button>
-								</a> -->
-							</div>
-						</div>
+					<div class="container">
+						<h3>User Informations</h3>
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info">ID :
+								${user_model.user._id }</li>
+							<li class="list-group-item list-group-item-info">Email :
+								${user_model.user._email }</li>
+							<li class="list-group-item list-group-item-info">FirstName :
+								${user_model.user._first_name }</li>
+							<li class="list-group-item list-group-item-info">LastName :
+								${user_model.user._last_name }</li>
+							<li class="list-group-item list-group-item-info">Birth Date
+								: ${user_model.user._birth_date }</li>
+							<li class="list-group-item list-group-item-info">Nationality
+								: ${user_model.user._nationality }</li>
+							<li class="list-group-item list-group-item-info">Gender :
+								${user_model.user._gender }</li>
+						</ul>
 					</div>
-				</div>
-			</div>
-		</div>
 
-
-		<%-- <div class="row">
+					<%-- <div class="row">
 							<div class="container">
 								<div class="col-lg-3 col-md-6">
 									<div class="card">
@@ -190,8 +121,8 @@
 									</div>
 								</div>
 							</div> --%>
-		<br> <br>
-		<%-- <div class="container">
+
+					<%-- <div class="container">
 						<div class="h4">All Users</div>
 						<table class="table table-hover">
 							<thead>
@@ -223,9 +154,80 @@
 							</tbody>
 						</table>
 					</div> --%>
+					<br>
 
+					<div class="container">
+						<div class="h3">Polls Created By User</div>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Description</th>
+									<th>Date</th>
+									<th>Category</th>
+									<th>User ID</th>
+									<th>Number Of Voters</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${user_model.all_polls_of_user}" var="p">
+									<tr>
+										<td>${p._description}</td>
+										<td>${p._pollDate}</td>
+										<td>${p._category}</td>
+										<td>${p._userId}</td>
+										<td>${poll_metier._get_number_of_voters(p)}</td>
+										<td><a onclick="return confirm('Etes vous sur?')"
+											href="Supprime.admin?id=${p._pollId }">Delete</a></td>
+										<td><a href="Edit.admin?id=${p._pollId}">Check</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<br><br>
+					<div class="container">
+						<div class="h3">Votes Of User</div>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Poll Creator ID</th>
+									<th>Poll ID</th>
+									<th>Poll Description</th>
+									<th>Choice Of User</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${user_model.all_votes_of_users}" var="map">
+									<tr>
+										<td><c:out value="${map.key._userId}"/></td>	
+										<td><c:out value="${map.key._pollId}"/></td>
+										<td><c:out value="${map.key._description}"/></td>
+										<td><c:out value="${map.value._description}"/></td>
+										<td><a href="Edit.admin?id=<c:out value="${map.key._pollId}"/>">Check Poll</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<br>
+					<div class="container">
+					<a onclick="return confirm('Etes vous sur?')"
+											href="users_delete.admin?id=${user_model.user_id}">Delete this User</a>
+					</div>
+					<%-- <div class="container">
+						<div class="h3">Votes Of User</div>
+						<div class="container">
+							<div class="card" style="width: 30rem;">
+								<div class="card-header">Votes Of User</div>
+								<ul class="list-group">
+									<li class="list-group-item list-group-item-info">ID
+										:${user_model.user._id }</li>
+								</ul>
+							</div>
+						</div>
+					</div --%>
 
-		<%-- <div class="container">
+					<%-- <div class="container">
 								<div class="h4">Recent Polls</div>
 								<table class="table table-hover">
 									<thead>
@@ -253,15 +255,15 @@
 									</tbody>
 								</table>
 							</div>--%>
-
-		</div>
-		<br> <br>
-		<form action='https://gempixel.com/polls/user/delete'
-			id='delete_all_form' method='post'>
-			<ul class='poll-list'></ul>
-			<input type='hidden' name='token'
-				value='d4aa544fe947aa33eec030ed601b100e1a9400d6' />
-		</form>
+				</div>
+			</div>
+			<br> <br>
+			<form action='https://gempixel.com/polls/user/delete'
+				id='delete_all_form' method='post'>
+				<ul class='poll-list'></ul>
+				<input type='hidden' name='token'
+					value='d4aa544fe947aa33eec030ed601b100e1a9400d6' />
+			</form>
 		</div>
 		<br> <br>
 		</div>
