@@ -1,6 +1,5 @@
 package metier;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,22 +14,18 @@ public class _implPoll implements _interfacePoll {
 	public void _create_poll(_poll p) {
 		Connection connection=db_interaction._get_connection();
 		try{
-		PreparedStatement ps = connection.prepareStatement
-				("insert into poll (Description, Duration, Category, UserId, question, pollDate, numChoice,expires)  " +
-						"values (?,?,?,?,?,?,?,?)");
-		//ps.setInt(1,p.getPollId());
-		ps.setString(1,p.get_description());
-		ps.setInt(2,p.get_duration());
-		ps.setString(3,p.get_category());
-		ps.setInt(4,p.get_user_id());
-		ps.setString(5,p.get_question());
-		ps.setTimestamp(6,p.get_date());
-		ps.setInt(7,p.get_number_choices());
-		ps.setDate(8,p.get_expires());
+			PreparedStatement ps = connection.prepareStatement
+					("insert into poll (Description, Category, UserId, pollDate,expires)  " +
+							"values (?,?,?,?,?)");
 
-
+			//ps.setInt(1,p.getPollId());
+			ps.setString(1,p.get_description());
+			ps.setString(2,p.get_category());
+			ps.setInt(3,p.get_userId());
+			ps.setTimestamp(4,p.get_date());
+			ps.setDate(5,p.get_expires());
 			ps.executeUpdate();
-
+			System.out.println("poll created");
 		}catch(SQLException e){
 		e.printStackTrace();
 		}
@@ -47,15 +42,19 @@ public class _implPoll implements _interfacePoll {
 		ArrayList<_poll> listevote= new ArrayList<_poll>();
 		try {
 		PreparedStatement statement =
-				con.prepareStatement("SELECT pollid, description, duration,question ," +
+				con.prepareStatement("SELECT pollid, description," +
 				" userid, type FROM POLL WHERE  category =? ");
 		statement.setString(1,typ);
 		ResultSet result = statement.executeQuery();
 		
 		while (result.next()) {
-			_poll p  = new _poll(result.getInt("pollid"), result.getString("description"),
-					result.getInt("duration"), result.getString("category"),
-					result.getInt("userid"),result.getString("type"));
+			_poll p  = null;
+			p.set_pollId(result.getInt("pollId"));
+			p.set_description(result.getString("description"));
+			p.set_date(result.getTimestamp("pollDate"));
+			p.set_category(result.getString("category"));
+			p.set_userId(result.getInt("userId"));
+			p.set_expires(result.getDate("expires"));
 			listevote.add(p);
 			
 		}
@@ -66,21 +65,17 @@ public class _implPoll implements _interfacePoll {
 		return listevote;
 	}
 
-	public  _poll  _last_poll_for_user(int i){
+	public int _last_poll_for_user(int i){
 		Connection con =db_interaction._get_connection();
-		_poll p = null;
+		int poll_id = -1;
 
 		try {
-		PreparedStatement statement = con.prepareStatement("SELECT pollid, description, duration, category, " +
-				"userid, type FROM POLL WHERE   pollid = (SELECT MAX(pollid) FROM POLL WHERE userid=?) ");
+		PreparedStatement statement = con.prepareStatement("SELECT MAX(pollid) FROM POLL WHERE userid=?");
 		statement.setInt(1,i);
 		ResultSet result = statement.executeQuery();
-		while (result.next()) {
-			 p  = new _poll(result.getInt("pollid"), result.getString("description"),
-					 result.getInt("duration"), result.getString("category"),
-					 result.getInt("userid"),result.getString("type"));
-
-
+			System.out.println(""+result);
+		if  (result.next()) {
+			poll_id=result.getInt("MAX(pollid)");
 		}
 		System.out.println("last poll selected");
 
@@ -88,8 +83,7 @@ public class _implPoll implements _interfacePoll {
 			e.printStackTrace();
 			}
 
-
-		return p;
+		return poll_id;
 
 
 	}

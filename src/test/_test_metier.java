@@ -18,10 +18,16 @@ public class _test_metier {
 //        _user my_test = _user_dao_impl._login(test_user);
 //        System.out.println(my_test.get_last_name()+"here you are");
         java.sql.Timestamp  sqlDate = new java.sql.Timestamp(new java.util.Date().getTime());
-        _poll _new_poll = new _poll("This is the description of the poll",99999,
-                "who is Bihy the one you don't know",
-                sqlDate,"this is the category",5,null,3);
-        poll_dao._create_poll(_new_poll);
+        java.sql.Date  sqlDateexpires = new java.sql.Date(new java.util.Date().getTime());
+        _poll p = new _poll();
+        p.set_description("ok ok  this is my test");
+        p.set_date(sqlDate);
+        p.set_category("an other test");
+        p.set_userId(2);
+        p.set_expires(sqlDateexpires);
+        poll_dao._create_poll(p);
+        int _the_poll = poll_dao._last_poll_for_user(2);
+        System.out.println("this is after creating the account :"+_the_poll);
 
 
     }
