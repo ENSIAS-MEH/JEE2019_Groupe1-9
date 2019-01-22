@@ -226,7 +226,7 @@
 							</div>--%>
 					<div class="container">
 						<a onclick="return confirm('Etes vous sur?')"
-							href="users_delete.admin?id=${user_model.user_id}">Delete
+							href="poll_delete.admin?id=${poll_model.poll_id}">Delete
 							this Poll</a>
 					</div>
 				</div>

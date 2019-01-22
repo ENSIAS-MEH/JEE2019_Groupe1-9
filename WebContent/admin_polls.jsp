@@ -155,7 +155,7 @@
 											<td>${p._userId}</td>
 											<td>${poll_metier._get_number_of_voters(p)}</td>
 											<td><a onclick="return confirm('Etes vous sur?')"
-												href="Supprime.admin?id=${p._pollId }">Delete</a></td>
+												href="poll_delete.admin?id=${p._pollId }">Delete</a></td>
 											<td><a href="poll_check.admin?id=${p._pollId}&choice_id=0">Check</a></td>
 										</tr>
 									</c:forEach>
