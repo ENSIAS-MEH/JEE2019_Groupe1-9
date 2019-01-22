@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
@@ -83,7 +84,7 @@
 <input type="text" class="form-control" id="poll_search_q" placeholder="Search of a poll by type" name="type">
 
 </div>
-<button name="action" value="search">search</button>
+<button name="actionn" value="search">search</button>
 </form>
 <ul class="nav nav-sidebar">
 
@@ -96,9 +97,11 @@
        
            
                 <c:forEach items="${listepoll}" var="poll">
-                 <button type="button" class="list-group-item list-group-item-action list-group-item-warning" name="action" value="choice">${poll._description}</button> 
-                  
-                        
+               
+                 
+                 
+                 <c:out value="${poll._description}"/>
+                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning" name="actionn" value="${poll._pollId}">
                 </c:forEach>
             
        
@@ -116,8 +119,21 @@
 </div>
 </div>
 <div class="col-md-10 content">
-<div class='ads ad728'><img src="http://placehold.it/728x90/E8117F/FFFFFF"></div>
+
 <div class='btn-group'>
+<div class="container">
+       
+           
+                <c:forEach items="${listechoice}" var="choice">
+                 <button type="button" class="list-group-item list-group-item-action list-group-item-warning" name="action" value="vote">${choice._description}</button> 
+                  
+                        
+                </c:forEach>
+            
+       
+    </div>
+
+
 
 </div><br><br>
 <form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>

@@ -75,7 +75,7 @@ public class _controller_creat_poll extends HttpServlet {
 		//choice
 		model1.getChoice().set_description(request.getParameter("option[]"));
 		model1.getChoice().set_number_of_voters(0);
-		model1.getChoice().set_pollId(pp._last_poll_for_user(model1.getPoll().get_user_id()).get_id_poll());
+		model1.getChoice().set_pollId(pp._last_poll_for_user(model1.getPoll().get_user_id()).get_pollId());
 		model1.getChoice().set_choiceId(1);
 		_implChoice oo=new _implChoice();
 		oo._add_choice(model1.getChoice());

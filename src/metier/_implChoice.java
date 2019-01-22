@@ -65,7 +65,7 @@ public class _implChoice implements _interfaceChoice {
 			
 			
 			
-			_choice c= new _choice(result.getInt("choiceid"), result.getString("description"), result.getInt("voternumber"),result.getInt("pollid"));
+			_choice c= new _choice(result.getInt("choiceid"), result.getString("description"), result.getInt("votersnumber"),result.getInt("pollid"));
 			listechoice.add(c);
 			
 		}

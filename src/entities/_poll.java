@@ -28,10 +28,10 @@ public class _poll implements Serializable{
 	public _poll() {
 		// TODO Auto-generated constructor stub
 	}
-	public int get_id_poll() {
+	public int get_pollId() {
 		return _pollId;
 	}
-	public void set_id_poll(int pollId) {
+	public void set_pollId(int pollId) {
 		_pollId = pollId;
 	}
 	public String get_description() {

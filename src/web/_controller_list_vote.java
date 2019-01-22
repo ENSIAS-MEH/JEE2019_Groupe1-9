@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entities._choice;
 import entities._poll;
+import metier._implChoice;
 import metier._implPoll;
 
 /**
@@ -44,7 +46,7 @@ public class _controller_list_vote extends HttpServlet {
 		//doGet(request, response);
 		_model_list_vote model2 = new _model_list_vote();
 		request.setAttribute("model2", model2);
-		String action =request.getParameter("action");
+		String action =request.getParameter("actionn");
 		if(action!=null) {
 			
 		if(action.equals("search")) {
@@ -61,6 +63,24 @@ public class _controller_list_vote extends HttpServlet {
 		
 		
 		
+		}
+		//else if(action.equals("choice"))
+		else
+		{
+			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1");
+			int myid =Integer.parseInt(request.getParameter("actionn"));
+			//a
+			String id =request.getParameter("id");
+			System.out.println(id);
+			//int numId = ((Integer) request.getAttribute("id"));
+			System.out.println(myid);
+			_implChoice choiceimplement=new _implChoice();
+			model2.setListechoice(choiceimplement._search_choice_for_poll(myid));
+			ArrayList<_choice> listechoice = model2.getListechoice();
+			request.setAttribute("listechoice", listechoice);
+			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2");
+			
+			
 		}
 		}
 		request.getRequestDispatcher("pollListAndVote.jsp").forward(request, response);
