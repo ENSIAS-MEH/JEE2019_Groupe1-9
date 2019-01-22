@@ -45,23 +45,23 @@ public class _controller_creat_poll extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo2");
+		//System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo2");
 		//doGet(request, response);
-		System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo3");
+		//System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo3");
 		_model_create_poll model1 = new _model_create_poll();
 		request.setAttribute("model1", model1);
-		System.out.println("helloooo1");
+		//System.out.println("helloooo1");
 		
 		String action =request.getParameter("actionn");
-		System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo4");
+		//System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo4");
 		if(action!=null) {
-			System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo5");
+			//System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo5");
 		if(action.equals("create")) {
 			//poll
-			System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo6");
+			//System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo6");
 		model1.getPoll().set_category(request.getParameter("category"));
 		model1.getPoll().set_description(request.getParameter("description"));
-		System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo7");
+		//System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo7");
 		model1.getPoll().set_duration(Integer.parseInt(request.getParameter("duration")));
 		model1.getPoll().set_type(request.getParameter("type"));
 		model1.getPoll().set_user_id(1);
@@ -70,7 +70,7 @@ public class _controller_creat_poll extends HttpServlet {
 		pp._create_poll(model1.getPoll());
 		//metier.interfacePoll._create_poll(model1.getPoll());
 		//metier.interfacePoll._create_poll(new Poll(8,request.getParameter("description"),Integer.parseInt(request.getParameter("duration")),request.getParameter("category"),1,request.getParameter("type")));
-		System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo8");
+		//System.out.println("hellooooooooooooooooooooooooooooooooooooooooooooooooooooo8");
 		System.out.println(request.getParameter("description"));
 		//choice
 		model1.getChoice().set_description(request.getParameter("option[]"));

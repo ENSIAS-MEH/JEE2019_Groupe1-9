@@ -40,7 +40,7 @@
     <![endif]-->
 </head>
 <body>
-<form action="" method="post">
+<form action="_controller_list_vote" method="post">
 <header class="full">
 <div class="navbar" role="navigation">
 <div class="container-fluid">
@@ -55,8 +55,8 @@
 </div>
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav navbar-right">
-<li><a href="https://gempixel.com/polls/upgrade" class="active">Upgrade</a></li>
-<li><a href="https://gempixel.com/polls/create" class="active">Create your Poll</a></li>
+<li><a href="https://gempixel.com/polls/upgrade" class="active">Go back to dashboard</a></li>
+
 <li><a href="https://gempixel.com/polls/user/logout">Logout</a></li>
 </ul>
 </div>
@@ -79,17 +79,36 @@
 </div>
 <form action="https://gempixel.com/polls/user/search" class="search" id="poll_search_form">
 <div class="input-group">
-<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-<input type="text" class="form-control" id="poll_search_q" placeholder="Search of a poll by type">
+<span   class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+<input type="text" class="form-control" id="poll_search_q" placeholder="Search of a poll by type" name="type">
+
 </div>
+<button name="action" value="search">search</button>
 </form>
 <ul class="nav nav-sidebar">
-<li><a href="https://gempixel.com/polls/user" class="active"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
-<li><a href="https://gempixel.com/polls/user/active"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
-<li><a href="https://gempixel.com/polls/user/expired"><span class="glyphicon glyphicon-time"></span> Expired Polls</a></li>
-<li><a href="https://gempixel.com/polls/user/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+
 </ul>
-<h3>Account info <span class="label label-primary pull-right">Free</span></h3>
+</br>
+</br>
+
+
+ <div class="container">
+       
+           
+                <c:forEach items="${listepoll}" var="poll">
+                 <button type="button" class="list-group-item list-group-item-action list-group-item-warning" name="action" value="choice">${poll._description}</button> 
+                  
+                        
+                </c:forEach>
+            
+       
+    </div>
+
+
+
+
+
+<h3>Account info <span class="label label-primary pull-right"></span></h3>
 <div class="stats">
 <p><span>0</span> Polls</p>
 <p><span>0</span> Votes</p>
@@ -99,8 +118,7 @@
 <div class="col-md-10 content">
 <div class='ads ad728'><img src="http://placehold.it/728x90/E8117F/FFFFFF"></div>
 <div class='btn-group'>
-<button type='button' class='btn btn-primary' id='select_all'>Select All</button>
-<button type='button' class='btn btn-danger' id='delete_all'>Delete All</button>
+
 </div><br><br>
 <form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>
 <ul class='poll-list'></ul><input type='hidden' name='token' value='b334bbe96c62af26780af74cc1e01579a18c6da6' /></form> </div>
