@@ -2,10 +2,13 @@ package metier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import DAO.db_interaction;
 import entities._choice;
+import entities._poll;
 
 public class _implChoice implements _interfaceChoice {
 
@@ -48,5 +51,41 @@ public class _implChoice implements _interfaceChoice {
 		e.printStackTrace();
 		}
 	}
+
+	@Override
+	public ArrayList<_choice> _search_choice_for_poll(int id){
+		Connection con =db_interaction._get_connection();
+		ArrayList<_choice> listechoice= new ArrayList<_choice>();
+		try {
+		PreparedStatement statement = con.prepareStatement("SELECT choiceid, description, votersnumber, pollid FROM CHOICE WHERE pollid=? ");
+		statement.setInt(1,id);
+		ResultSet result = statement.executeQuery();
+		
+		while (result.next()) {
+			
+			
+			
+			_choice c= new _choice(result.getInt("choiceid"), result.getString("description"), result.getInt("voternumber"),result.getInt("pollid"));
+			listechoice.add(c);
+			
+		}
+		
+		System.out.println("choices selected");
+		
+		}catch(SQLException e){
+			e.printStackTrace();
+			}
+		
+		
+		return listechoice;
+		
+	
+	}
+	
+	
+	
+	
+	
+	
 }	
 
