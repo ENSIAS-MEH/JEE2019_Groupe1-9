@@ -90,11 +90,18 @@ public class _poll_model implements Serializable{
 	public void set_poll_metier(_interfacePoll _poll_metier) {
 		this._poll_metier = _poll_metier;
 	}
+	public ArrayList<_user> getVoters() {
+		return voters;
+	}
+	public void setVoters(ArrayList<_user> voters) {
+		this.voters = voters;
+	}
 	private int poll_id;
 	private ArrayList<_poll> all_polls = new ArrayList<_poll>();
 	private ArrayList<_choice> all_choices_of_poll = new ArrayList<_choice>();
 	private HashMap<_poll,_choice> all_votes_of_polls = new HashMap<_poll,_choice>();
 	private ArrayList<_poll> recent_polls = new ArrayList<_poll>();
+	private ArrayList<_user> voters =new ArrayList<_user>(); 
 	private int number_of_voters_of_poll;
 	private int number_of_polls;
 	private _user user_creator_of_poll = new _user();

@@ -1,6 +1,7 @@
 package web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entities._user;
+
+import entities.*;
 import metier.*;
 @WebServlet(name="c_admin" ,urlPatterns="*.admin")
 public class _admin_controlleur extends HttpServlet{
@@ -125,6 +127,52 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		resp.sendRedirect("users.admin");
 
 	}
+	
+	else if(path.equals("/poll_check.admin")) 
+	{
+		int _poll_id = Integer.parseInt(req.getParameter("id"));
+		_user_model user_model = new _user_model();
+		_poll_model poll_model = new _poll_model();
+		_poll poll = _poll_metier._get_poll_by_id(_poll_id);
+		poll_model.setPoll(poll);
+		poll_model.setPoll_id(_poll_id);
+		ArrayList<_choice> _choices_poll = _poll_metier._get_choice_for_poll(poll);
+		poll_model.setAll_choices_of_poll(_choices_poll);
+		int _choice_id =Integer.parseInt(req.getParameter("choice_id"));
+		_choice choice = _choice_metier._get_choice_by_id(_choice_id);
+		ArrayList<_user> voters =_choice_metier._list_of_voters(choice);
+		System.out.println(voters);
+		poll_model.setVoters(voters);
+		// get user to check out
+		
+		user_model.setNumber_of_users(_user_metier._get_number_of_users());
+		poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+		req.setAttribute("user_model", user_model);
+		req.setAttribute("poll_model", poll_model);
+		req.setAttribute("poll_metier", _poll_metier);
+		req.getRequestDispatcher("admin_poll_display.jsp").forward(req, resp);
+
+	}
+	
+		/*
+		 * else if(path.equals("/poll_delete.admin")) { int _id =
+		 * Integer.parseInt(req.getParameter("id"));
+		 * 
+		 * // get user to delete _user user = _user_metier._get_user_by_id(_id);
+		 * System.out.println(user); _user_metier._delete_user(user);
+		 * 
+		 * _user_model user_model = new _user_model(); _poll_model poll_model = new
+		 * _poll_model();
+		 * 
+		 * user_model.setNumber_of_users(_user_metier._get_number_of_users());
+		 * poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+		 * user_model.setAll_users(_user_metier._get_all_users());
+		 * req.setAttribute("user_model", user_model); req.setAttribute("poll_model",
+		 * poll_model); req.setAttribute("poll_metier", _poll_metier);
+		 * resp.sendRedirect("polls.admin");
+		 * 
+		 * }
+		 */
 	
 }
 

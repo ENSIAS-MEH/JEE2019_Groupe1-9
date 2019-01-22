@@ -21,6 +21,14 @@ public class _choice implements Serializable{
 		_pollId = pollId;
 	}
 	
+	public int get_numberOfVoters() {
+		return _numberOfVoters;
+	}
+
+	public void set_numberOfVoters(int _numberOfVoters) {
+		this._numberOfVoters = _numberOfVoters;
+	}
+
 	public _choice() {
 		// TODO Auto-generated constructor stub
 	}

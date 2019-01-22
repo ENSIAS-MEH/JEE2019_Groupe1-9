@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,6 +78,30 @@ public class _implChoice implements _interfaceChoice {
 		return (ArrayList<_user>) _user_list;
 	}
 
+	@Override
+	public _choice _get_choice_by_id(int _choice_id) {
+		_choice choice = new _choice();
+		try{
+			conn = db_interaction._get_connection();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM CHOICE WHERE CHOICEID = ?");
+			ps.setLong(1, _choice_id);
+			ResultSet res = ps.executeQuery();
+			if(res.next()){
+				choice.set_choiceId(res.getInt("CHOICEID"));
+				choice.set_description(res.getString("DESCRIPTION"));
+				choice.set_number_of_voters(res.getInt("VOTERSNUMBER"));
+				choice.set_pollId(res.getInt("POLLID"));
+				System.out.println(choice);
+			}
+		}
+	catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		return choice;
+	}
+	
+	
 
 }	
 

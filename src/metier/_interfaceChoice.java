@@ -13,4 +13,5 @@ public interface _interfaceChoice {
 	public  void _vote(_choice c, int d);
 	
 	public ArrayList<_user> _list_of_voters(_choice c);
+	public _choice _get_choice_by_id(int _choice_id);
 	}

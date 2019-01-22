@@ -34,9 +34,9 @@
 						<ul class="nav nav-sidebar">
 							<li><a href="dashboard.admin"><span
 									class="glyphicon glyphicon-home"></span> Dashboard</a></li>
-							<li><a href="polls.admin"><span
+							<li><a href="polls.admin" class="active"><span
 									class="glyphicon glyphicon-th-list"></span> Polls</a></li>
-							<li><a href="users.admin" class="active"><span
+							<li><a href="users.admin"><span
 									class="glyphicon glyphicon-user"></span> Users</a></li>
 							<li><a href="settings.admin"><span
 									class="glyphicon glyphicon-cog"></span> Settings</a></li>
@@ -61,24 +61,24 @@
 					</div>
 
 					<div class="container">
-						<h3>User Informations</h3>
-						<ul class="list-group">
-							<li class="list-group-item list-group-item-info">ID :
-								${user_model.user._id }</li>
-							<li class="list-group-item list-group-item-info">Email :
-								${user_model.user._email }</li>
-							<li class="list-group-item list-group-item-info">FirstName :
-								${user_model.user._first_name }</li>
-							<li class="list-group-item list-group-item-info">LastName :
-								${user_model.user._last_name }</li>
-							<li class="list-group-item list-group-item-info">Birth Date
-								: ${user_model.user._birth_date }</li>
-							<li class="list-group-item list-group-item-info">Nationality
-								: ${user_model.user._nationality }</li>
-							<li class="list-group-item list-group-item-info">Gender :
-								${user_model.user._gender }</li>
-						</ul>
+						<div class="h3">Poll</div>
+						<div class="container">
+							<div class="card" style="width: 50rem;">
+								<div class="card-header">${poll_model.poll._description }</div>
+								<ul class="list-group">
+									<c:forEach items="${poll_model.all_choices_of_poll}"
+										var="choice">
+										<li class="list-group-item list-group-item-info"><a
+											href="poll_check.admin?id=${poll_model.poll_id}&choice_id=${choice._choiceId}">${choice._numberOfVoters}
+												Voters</a> :${choice._description}</li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
 					</div>
+
+					<br>
+					<br>
 
 					<%-- <div class="row">
 							<div class="container">
@@ -122,8 +122,8 @@
 								</div>
 							</div> --%>
 
-					<%-- <div class="container">
-						<div class="h4">All Users</div>
+					<div class="container">
+						<div class="h4">Voters</div>
 						<table class="table table-hover">
 							<thead>
 								<tr>
@@ -137,7 +137,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${user_model.all_users}" var="u">
+								<c:forEach items="${poll_model.voters}" var="u">
 									<tr>
 										<td>${u._id}</td>
 										<td>${u._first_name}</td>
@@ -146,18 +146,16 @@
 										<td>${u._birth_date}</td>
 										<td>${u._nationality}</td>
 										<td>${u._gender}</td>
-										<td><a onclick="return confirm('Etes vous sur?')"
-											href="Supprime.admin?id=${u._id}">Delete</a></td>
-										<td><a href="Edit.admin?id=${u._id}">Check</a></td>
+										<td><a href="users_check.admin?id=${u._id}">Check Voter</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-					</div> --%>
+					</div>
 					<br>
 
-					<div class="container">
-						<div class="h3">Polls Created By User</div>
+					<%-- <div class="container">
+						<div class="h3">Voters</div>
 						<table class="table table-hover">
 							<thead>
 								<tr>
@@ -178,42 +176,13 @@
 										<td>${poll_metier._get_number_of_voters(p)}</td>
 										<td><a onclick="return confirm('Etes vous sur?')"
 											href="Supprime.admin?id=${p._pollId }">Delete Poll</a></td>
-										<td><a href="poll_check.admin?id=${p._pollId}&choice_id=0">Check Poll</a></td>
+										<td><a href="Edit.admin?id=${p._pollId}">Check Poll</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-					</div>
-					<br><br>
-					<div class="container">
-						<div class="h3">Votes Of User</div>
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th>Poll Creator ID</th>
-									<th>Poll ID</th>
-									<th>Poll Description</th>
-									<th>Choice Of User</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${user_model.all_votes_of_users}" var="map">
-									<tr>
-										<td><c:out value="${map.key._userId}"/></td>	
-										<td><c:out value="${map.key._pollId}"/></td>
-										<td><c:out value="${map.key._description}"/></td>
-										<td><c:out value="${map.value._description}"/></td>
-										<td><a href="poll_check.admin?id=<c:out value="${map.key._pollId}"/>&choice_id=0">Check Poll</a></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
+					</div> --%>
 					<br>
-					<div class="container">
-					<a onclick="return confirm('Etes vous sur?')"
-											href="users_delete.admin?id=${user_model.user_id}">Delete this User</a>
-					</div>
 					<%-- <div class="container">
 						<div class="h3">Votes Of User</div>
 						<div class="container">
@@ -255,9 +224,15 @@
 									</tbody>
 								</table>
 							</div>--%>
+					<div class="container">
+						<a onclick="return confirm('Etes vous sur?')"
+							href="users_delete.admin?id=${user_model.user_id}">Delete
+							this Poll</a>
+					</div>
 				</div>
 			</div>
-			<br> <br>
+			<br>
+
 			<form action='https://gempixel.com/polls/user/delete'
 				id='delete_all_form' method='post'>
 				<ul class='poll-list'></ul>
