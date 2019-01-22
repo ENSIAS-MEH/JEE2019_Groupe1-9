@@ -11,6 +11,18 @@ public class _poll implements Serializable{
 	private String _category;
 	private int _userId;
 	private String _type;
+	public int get_pollId() {
+		return _pollId;
+	}
+	public void set_pollId(int _pollId) {
+		this._pollId = _pollId;
+	}
+	public int get_userId() {
+		return _userId;
+	}
+	public void set_userId(int _userId) {
+		this._userId = _userId;
+	}
 	private LocalDate _pollDate;
 	
 	public LocalDate get_pollDate() {

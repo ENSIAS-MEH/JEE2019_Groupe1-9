@@ -261,6 +261,30 @@ public class _implPoll implements _interfacePoll {
 				// TODO Auto-generated method stub
 				return null;
 			}
+
+			@Override
+			public ArrayList<_poll> _get_all_polls() {
+				conn = db_interaction._get_connection();
+		    	List<_poll> _poll_list= new ArrayList<_poll>();
+		    	try {
+				PreparedStatement ps = conn.prepareStatement("SELECT * FROM POLL");
+				ResultSet res = ps.executeQuery();
+				while((res.next()) ) {
+					_poll poll = new _poll();
+					poll.set_id_poll(res.getInt("POLLID"));
+					poll.set_description(res.getString("DESCRIPTION"));
+					poll.set_duration(res.getInt("DURATION"));
+					poll.set_category(res.getString("CATEGORY"));
+					poll.set_user_id(res.getInt("USERID"));
+					LocalDate _date_poll = LocalDate.parse(res.getString("POLLDATE"),DateTimeFormatter.ISO_LOCAL_DATE);    
+					poll.set_pollDate(_date_poll);
+					_poll_list.add(poll);
+					System.out.println(poll);
+				}
+		    	}catch(SQLException e) {
+		    		e.printStackTrace();}
+				return (ArrayList<_poll>) _poll_list;
+			}
 	
 	
 			

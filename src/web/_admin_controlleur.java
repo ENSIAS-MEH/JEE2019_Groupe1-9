@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.*;
-@WebServlet(name="Cadmin" ,urlPatterns="*.admin")
-public class AdminControlleur extends HttpServlet{
+@WebServlet(name="c_admin" ,urlPatterns="*.admin")
+public class _admin_controlleur extends HttpServlet{
 	_user_dao _user_metier;
 	_interfaceVote _vote_metier;
 	_interfacePoll _poll_metier;
@@ -29,7 +29,21 @@ public void init() throws ServletException {
 
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+	String path =req.getServletPath();
+	if(path.equals("/dashboard.admin")) 
+	{
+		_user_model user_model = new _user_model();
+		_poll_model poll_model = new _poll_model();
+		user_model.setNumber_of_users(_user_metier._get_number_of_users());
+		user_model.setRecent_users(_user_metier._get_recent_users(5));
+		poll_model.setRecent_polls(_poll_metier._get_recent_polls(5));
+		poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+		req.setAttribute("user_model", user_model);
+		req.setAttribute("poll_model", poll_model);
+		req.setAttribute("poll_metier", _poll_metier);
+		req.getRequestDispatcher("admin_dashboard.jsp").forward(req, resp);
+
+	}
 }
 
 @Override

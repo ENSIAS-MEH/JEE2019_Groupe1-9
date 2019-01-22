@@ -24,5 +24,5 @@ public interface  _user_dao {
     public HashMap<_poll,_choice> _get_vote_of_user(_user u);
     public ArrayList<_user> _get_recent_users(int _number_of_users);
     public int _get_number_of_users();
-	_user _get_user_by_id(int id) ;
+	public _user _get_user_by_id(int id) ;
 }

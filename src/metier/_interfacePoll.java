@@ -14,7 +14,7 @@ public interface _interfacePoll {
 	public ArrayList<_poll>  _search_vote_by_Type(String type);
 	public  _poll  _last_poll_for_user(int i);
 	
-	
+	public ArrayList<_poll> _get_all_polls();
 	public void _delete_poll(_poll p);
 	public ArrayList<_poll> _get_recent_polls(int _number_of_polls);
 	public ArrayList<_choice> _get_choice_for_poll(_poll _p);
