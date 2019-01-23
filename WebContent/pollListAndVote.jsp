@@ -133,7 +133,9 @@
        
            
                 <c:forEach items="${listechoice}" var="choice">
-                 <button type="button" class="list-group-item list-group-item-action list-group-item-warning btn-block" name="action" value="vote">${choice._description}</button> 
+                <c:set var="a" value="-" />
+                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="actionn" value="${a}${choice._description}">
+                  
                   
                         
                 </c:forEach>

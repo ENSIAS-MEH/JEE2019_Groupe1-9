@@ -66,12 +66,27 @@ public class _controller_list_vote extends HttpServlet {
 		}
 		//else if(action.equals("choice"))
 		else
+		
+		
 		{
+			//hna les choices derthoum taybdaw b '-' baxh nfere9 ma bine choice ou poll bach nfer9 traitement hit la kan choice
+			//y9der yvoti ou ila kan poll ty3tih les choices dial hadak poll 
+			//ou f jsp bdelt l value dial choice dertha bdarora tatbda b '-' ze3ma tanzidha l ga3 choices... xD
+			String description= request.getParameter("actionn");
+		char lettre = description.charAt(0);
+		if(lettre=='-') {
+			System.out.println("yeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah");
+			
+			
+			
+			
+		}
+		else {
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1");
 			int myid =Integer.parseInt(request.getParameter("actionn"));
 			//a
-			String id =request.getParameter("id");
-			System.out.println(id);
+			//String id =request.getParameter("id");
+			//System.out.println(id);
 			//int numId = ((Integer) request.getAttribute("id"));
 			System.out.println(myid);
 			_implChoice choiceimplement=new _implChoice();
@@ -79,6 +94,10 @@ public class _controller_list_vote extends HttpServlet {
 			ArrayList<_choice> listechoice = model2.getListechoice();
 			request.setAttribute("listechoice", listechoice);
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2");
+			
+			
+			
+		}
 			
 			
 		}
