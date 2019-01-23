@@ -74,16 +74,14 @@ public class _controller_list_vote extends HttpServlet {
 			//ou f jsp bdelt l value dial choice dertha bdarora tatbda b '-' ze3ma tanzidha l ga3 choices... xD
 			String description= request.getParameter("actionn");
 		char lettre = description.charAt(0);
-		if(lettre=='-') {
-			System.out.println("yeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah");
+		
+			int myid;
 			
 			
-			
-			
-		}
-		else {
+		
+		if(lettre!='-') {
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1");
-			int myid =Integer.parseInt(request.getParameter("actionn"));
+			 myid =Integer.parseInt(request.getParameter("actionn"));
 			//a
 			//String id =request.getParameter("id");
 			//System.out.println(id);
@@ -94,7 +92,12 @@ public class _controller_list_vote extends HttpServlet {
 			ArrayList<_choice> listechoice = model2.getListechoice();
 			request.setAttribute("listechoice", listechoice);
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2");
-			
+		}
+			else {
+				System.out.println("yeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah");
+				String type=request.getParameter("type");
+				String descriptionchoice=description.substring(1);
+				
 			
 			
 		}

@@ -81,6 +81,34 @@ public class _implChoice implements _interfaceChoice {
 		
 	
 	}
+
+	@Override
+	public _choice _get_choice_bydescription_andpollid(int pollid, String description) {
+		Connection con =db_interaction._get_connection();
+		_choice c=new _choice();
+		try {
+		PreparedStatement statement = con.prepareStatement("SELECT choiceid, description, votersnumber, pollid FROM CHOICE WHERE pollid=? description=? ");
+		statement.setInt(1,pollid);
+		statement.setString(2,description);
+		ResultSet result = statement.executeQuery();
+		
+		while (result.next()) {
+			
+			
+			
+			 c= new _choice(result.getInt("choiceid"), result.getString("description"), result.getInt("votersnumber"),result.getInt("pollid"));
+			
+		}
+		
+		System.out.println("choices selected");
+		
+		}catch(SQLException e){
+			e.printStackTrace();
+			}
+		
+		
+		return c;
+	}
 	
 	
 	

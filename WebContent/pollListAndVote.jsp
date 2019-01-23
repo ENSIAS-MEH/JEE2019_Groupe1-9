@@ -130,6 +130,19 @@
 </div>
 </div>
 <div class="col-md-10 content">
+<div>
+
+
+</div>
+
+
+<select class="form-control" name="type">
+  <option>visible</option>
+  <option>anonymous</option>
+</select>
+</br>
+</br>
+</br>
 
 <div class='btn-group'>
 <div class="container">

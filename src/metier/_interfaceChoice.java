@@ -12,4 +12,5 @@ public interface _interfaceChoice {
 	}
 	public  void _vote(_choice c, int d);
 	public  ArrayList<_choice>  _search_choice_for_poll(int id);
+	public _choice _get_choice_bydescription_andpollid(int pollid, String description);
 }
