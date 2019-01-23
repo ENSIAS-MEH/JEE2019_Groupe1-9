@@ -134,7 +134,7 @@
            
                 <c:forEach items="${listechoice}" var="choice">
                 <c:set var="a" value="-" />
-                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="actionn" value="${a}${choice._description}">
+                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="actionn" value="${a}${choice._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
                   
                   
                         
