@@ -79,12 +79,14 @@
 </div>
 </div>
 <form action="https://gempixel.com/polls/user/search" class="search" id="poll_search_form">
-<div class="input-group">
-<span   class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+<div>
+<div class="input-group pull-left"">
+
 <input type="text" class="form-control" id="poll_search_q" placeholder="Search of a poll by type" name="type">
 
 </div>
-<button name="actionn" value="search">search</button>
+<button name="actionn" value="search" class="btn btn-info">search</button>
+</div>
 </form>
 <ul class="nav nav-sidebar">
 
@@ -99,9 +101,15 @@
                 <c:forEach items="${listepoll}" var="poll">
                
                  
-                 
+                
+                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="actionn" value="${poll._pollId}">
+                <div style="font-size: 20px">
                  <c:out value="${poll._description}"/>
-                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning" name="actionn" value="${poll._pollId}">
+                 </div>
+               
+               </br>
+               </br>
+               </br>
                 </c:forEach>
             
        
@@ -125,7 +133,7 @@
        
            
                 <c:forEach items="${listechoice}" var="choice">
-                 <button type="button" class="list-group-item list-group-item-action list-group-item-warning" name="action" value="vote">${choice._description}</button> 
+                 <button type="button" class="list-group-item list-group-item-action list-group-item-warning btn-block" name="action" value="vote">${choice._description}</button> 
                   
                         
                 </c:forEach>
