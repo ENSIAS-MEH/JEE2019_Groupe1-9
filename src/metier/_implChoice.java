@@ -35,11 +35,12 @@ public class _implChoice implements _interfaceChoice {
 	}
 
 	@Override
-	public  void _vote(_choice c, int d) {
+	public  void _vote(_choice c) {
 	    Connection con =db_interaction._get_connection();
 	 try {
 	PreparedStatement posted = con.prepareStatement("UPDATE CHOICE SET  VOTERSNUMBER=?  WHERE CHOICEID=?");
 	int p=c.get_number_of_voters() +1;
+	int d=c.get_choiceId();
 	posted.setInt(1,p);
 	posted.setInt(2,d);
 	
@@ -87,7 +88,7 @@ public class _implChoice implements _interfaceChoice {
 		Connection con =db_interaction._get_connection();
 		_choice c=new _choice();
 		try {
-		PreparedStatement statement = con.prepareStatement("SELECT choiceid, description, votersnumber, pollid FROM CHOICE WHERE pollid=? description=? ");
+		PreparedStatement statement = con.prepareStatement("SELECT choiceid, description, votersnumber, pollid FROM CHOICE WHERE pollid=? AND description=? ");
 		statement.setInt(1,pollid);
 		statement.setString(2,description);
 		ResultSet result = statement.executeQuery();
@@ -109,6 +110,7 @@ public class _implChoice implements _interfaceChoice {
 		
 		return c;
 	}
+	
 	
 	
 	

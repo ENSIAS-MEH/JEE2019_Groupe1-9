@@ -105,7 +105,8 @@
                
                  
                 
-                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="actionn" value="${poll._pollId}">
+                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="actionn" value="${poll._pollId}" onsubmit="return false">
+               
                 <div style="font-size: 20px">
                  <c:out value="${poll._description}"/>
                  </div>
@@ -136,7 +137,7 @@
 </div>
 
 
-<select class="form-control" name="type">
+<select class="form-control" name="typee">
   <option>visible</option>
   <option>anonymous</option>
 </select>
@@ -149,8 +150,8 @@
        
            
                 <c:forEach items="${listechoice}" var="choice">
-                <c:set var="a" value="-" />
-                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="actionn" value="${a}${choice._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
+                <c:set var="a" value="--" />
+                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="action" value="${a}${choice._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
                   
                   
                         
@@ -161,7 +162,8 @@
 
 
 
-</div><br><br>
+</div>
+<br><br>
 <form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>
 <ul class='poll-list'></ul><input type='hidden' name='token' value='b334bbe96c62af26780af74cc1e01579a18c6da6' /></form> </div>
 </div>

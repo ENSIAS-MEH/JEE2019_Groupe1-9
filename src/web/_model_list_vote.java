@@ -4,10 +4,52 @@ import java.util.ArrayList;
 
 import entities._choice;
 import entities._poll;
+import entities._vote;
 
-public class _model_list_vote {
-	public ArrayList<_poll> listepoll;
-	public ArrayList<_choice> listechoice;
+public   class _model_list_vote {
+	public ArrayList<_poll> listepoll = new ArrayList<_poll>();
+	public ArrayList<_choice> listechoice= new ArrayList<_choice>();
+	public _choice choice= new _choice();
+	public _vote vote= new _vote();
+	public int id;
+	public _poll poll= new _poll();
+	 public _poll pollclone =(_poll) poll.clone();
+	public _poll getPollclone() {
+		return pollclone;
+	}
+
+	public _poll getPoll() {
+		return poll;
+	}
+
+	public void setPoll(_poll poll) {
+		this.poll = poll;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public _vote getVote() {
+		return vote;
+	}
+
+	public void setVote(_vote vote) {
+		this.vote = vote;
+	}
+
+	public _choice getChoice() {
+		return choice;
+	}
+
+	public void setChoice(_choice choice) {
+		this.choice = choice;
+	}
+
 	public ArrayList<_choice> getListechoice() {
 		return listechoice;
 	}
@@ -33,5 +75,6 @@ public class _model_list_vote {
 	public void setListepoll(ArrayList<_poll> listepoll) {
 		this.listepoll = listepoll;
 	}
+	
 
 }

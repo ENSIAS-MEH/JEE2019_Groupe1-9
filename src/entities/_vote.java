@@ -37,4 +37,7 @@ public class _vote implements Serializable{
 		_userId = userId;
 		_choiceId = choiceId;
 	}
+	public _vote() {
+		
+	}
 }

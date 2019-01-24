@@ -10,7 +10,8 @@ public interface _interfaceChoice {
 		// TODO Auto-generated method stub
 		
 	}
-	public  void _vote(_choice c, int d);
+	public  void _vote(_choice c);
 	public  ArrayList<_choice>  _search_choice_for_poll(int id);
 	public _choice _get_choice_bydescription_andpollid(int pollid, String description);
+	
 }

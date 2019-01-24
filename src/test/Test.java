@@ -24,15 +24,16 @@ public class Test {
 		*/
 		
 		
-		/*//test2:done
-		Choice cc =new  Choice(1, "description", 0, 1 );
-		implChoice test2=new implChoice();
-		test2. _add_choice( cc);
+		//test2:done
+		//Choice cc =new  Choice(1, "description", 0, 1 );
+		//_implChoice test2=new _implChoice();
+		//System.out.println(test2._get_choice_bydescription_andpollid(17,"b").get_choiceId());
+	//	test2. _add_choice( cc);
 		
-		test2. _vote( cc, 1);
+		//test2. _vote( cc, 1);
 		
 		
-		*/
+		//*/
 		  
 		
 		//test3:done

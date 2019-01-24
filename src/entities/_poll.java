@@ -2,7 +2,7 @@ package entities;
 
 import java.io.Serializable;
 
-public class _poll implements Serializable{
+public class _poll extends Object implements Cloneable{
 	private int _pollId;
 	private String _description;
 	private int _duration;
@@ -27,6 +27,9 @@ public class _poll implements Serializable{
 	}
 	public _poll() {
 		// TODO Auto-generated constructor stub
+	}
+	public _poll(int pollId) {
+		_pollId =pollId;
 	}
 	public int get_pollId() {
 		return _pollId;
@@ -58,4 +61,15 @@ public class _poll implements Serializable{
 	public void set_user_id(int userId) {
 		_userId = userId;
 	}
+	
+	
+	
+	 public  Object clone(){
+		 try {
+		 return super.clone();
+		 }
+		 catch (CloneNotSupportedException e){
+		 throw new InternalError();
+		 }
+		 }
 }
