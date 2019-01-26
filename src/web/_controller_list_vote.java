@@ -121,8 +121,10 @@ public class _controller_list_vote extends HttpServlet {
 			 else break; 
 			}
 			int idpoll = Integer.parseInt(lettre1);
-			System.out.println("___________________________");
-			System.out.println(idpoll);
+			_implPoll implpoll=new _implPoll();
+			implpoll.delete_poll(idpoll);
+			
+	
 			
 			
 			

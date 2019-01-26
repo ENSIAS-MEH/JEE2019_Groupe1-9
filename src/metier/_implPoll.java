@@ -128,6 +128,26 @@ public class _implPoll implements _interfacePoll {
 				
 				
 			}
+
+			@Override
+			public void delete_poll(int id) {
+
+				Connection con =db_interaction._get_connection();
+					
+				 try {
+				PreparedStatement statement = con.prepareStatement("DELETE FROM POLL WHERE pollid=?");
+				statement.setInt(1, id);
+				 
+				int rowsDeleted = statement.executeUpdate();
+				if (rowsDeleted > 0) {
+				    System.out.println("A poll was deleted successfully!");
+				}
+				 }
+			catch(SQLException e){
+				e.printStackTrace();
+				}
+				
+			}
 	
 	
 			

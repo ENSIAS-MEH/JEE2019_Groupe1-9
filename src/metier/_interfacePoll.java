@@ -12,5 +12,5 @@ public interface _interfacePoll {
 	public ArrayList<_poll>  _search_vote_by_Type(String type);
 	public ArrayList<_poll>  _search_vote_by_userid(int id);
 	public  _poll  _last_poll_for_user(int i);
-
+	public void delete_poll(int id);
 }
