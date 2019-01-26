@@ -56,6 +56,7 @@ public class _controller_list_vote extends HttpServlet {
 		request.setAttribute("model2", model2);
 		String action =request.getParameter("actionn");
 		String action1 =request.getParameter("action");
+		String action2 =request.getParameter("action2");
 		if(action!=null) {
 			
 		if(action.equals("search")) {
@@ -73,8 +74,8 @@ public class _controller_list_vote extends HttpServlet {
 				model2.setListepoll1(pollimplement._search_vote_by_userid(1));
 				ArrayList<_poll> listepoll1 = model2.getListepoll1();
 				request.setAttribute("listepoll1", listepoll1);
-		
-		
+				
+				
 			}
 		
 	///////////////////////////	
@@ -103,6 +104,33 @@ public class _controller_list_vote extends HttpServlet {
 		}	
 		
 		}
+		
+		if(action2!=null) {
+			//had la partie pour récupérer l id dial poll hit f submit kaybda b * ou be3dou description dial poll...
+			String idstring1= request.getParameter("action2");
+			
+			int i=0;
+			char lettre;
+			String lettre1="";
+			while(true) {
+			 lettre= idstring1.charAt(i);
+			 if(Character.isDigit(lettre)) {
+			 lettre1=lettre1+lettre;
+			 i++;
+			 }
+			 else break; 
+			}
+			int idpoll = Integer.parseInt(lettre1);
+			System.out.println("___________________________");
+			System.out.println(idpoll);
+			
+			
+			
+			
+			
+			
+		}
+		
 		System.out.println(model2.getPoll().get_pollId());
 		if(action1!=null) {
 			HttpSession session =request.getSession();

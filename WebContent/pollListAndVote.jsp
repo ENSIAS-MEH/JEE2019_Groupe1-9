@@ -123,7 +123,7 @@
 <button name="actionn" value="mypolls" class="btn btn-info btn-block ">my polls</button>
 </br>
 </br>
-<button name="actionn" value="settings" class="btn btn-info btn-block ">settings</button>
+<button name="actionn" value="settings" class="btn btn-info  btn-block">settings</button>
 
 <h3>Account info <span class="label label-primary pull-right"></span></h3>
 <div class="stats">
@@ -150,11 +150,12 @@
 
 <div class='btn-group'>
 <div class="container">
-       
-           
+       <h3>click on poll to delete it</h3>
+           </br>
                 <c:forEach items="${listepoll1}" var="poll">
                 <c:set var="a" value="-" />
-                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action" value="${poll._pollId}${a}${poll._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
+                <c:set var="b" value="*" />
+                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action2" value="${poll._pollId}${a}${poll._description}" onclick="return confirm('Are you sure you want to delete this poll ')">
                   
                   
                         
