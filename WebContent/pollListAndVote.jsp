@@ -120,8 +120,10 @@
     </div>
 
 
-
-
+<button name="actionn" value="mypolls" class="btn btn-info btn-block ">my polls</button>
+</br>
+</br>
+<button name="actionn" value="settings" class="btn btn-info btn-block ">settings</button>
 
 <h3>Account info <span class="label label-primary pull-right"></span></h3>
 <div class="stats">
@@ -145,13 +147,41 @@
 </br>
 </br>
 
+
+<div class='btn-group'>
+<div class="container">
+       
+           
+                <c:forEach items="${listepoll1}" var="poll">
+                <c:set var="a" value="-" />
+                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action" value="${poll._pollId}${a}${poll._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
+                  
+                  
+                        
+                </c:forEach>
+            
+       
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
 <div class='btn-group'>
 <div class="container">
        
            
                 <c:forEach items="${listechoice}" var="choice">
                 <c:set var="a" value="--" />
-                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="action" value="${a}${choice._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
+                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action" value="${a}${choice._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
                   
                   
                         

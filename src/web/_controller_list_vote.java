@@ -64,34 +64,25 @@ public class _controller_list_vote extends HttpServlet {
 			model2.setListepoll(pollimplement._search_vote_by_Type(model2.getType()));
 			ArrayList<_poll> listepoll = model2.getListepoll();
 			request.setAttribute("listepoll", listepoll);
-		
-		
-		
-		
-		
-		
-		
-		
 		}
-		//else if(action.equals("choice"))
+	//////////////////////////	
+			else if(action.equals("mypolls")) {
+				//model2.setType(request.getParameter("type"));
+				_implPoll pollimplement=new _implPoll();
+				//hna tu dois passer la variable de session 3la hsab achnou smitiha mais dirha f blast 1 had 1 tantesti bih
+				model2.setListepoll1(pollimplement._search_vote_by_userid(1));
+				ArrayList<_poll> listepoll1 = model2.getListepoll1();
+				request.setAttribute("listepoll1", listepoll1);
+		
+		
+			}
+		
+	///////////////////////////	
+		
 		else
-		
-		
 		{
-			//hna les choices derthoum taybdaw b '-' baxh nfere9 ma bine choice ou poll bach nfer9 traitement hit la kan choice
-			//y9der yvoti ou ila kan poll ty3tih les choices dial hadak poll 
-			//ou f jsp bdelt l value dial choice dertha bdarora tatbda b '-' ze3ma tanzidha l ga3 choices... xD
-			//String description= request.getParameter("actionn");
-		//char lettre = description.charAt(0);
-		
+		//a
 			int myid;
-			//String description= request.getParameter("actionn");
-			//char lettre = description.charAt(0);
-			//char lettre1 = description.charAt(1);
-			//char lettre = description.charAt(0);
-		
-		//  if(lettre1!='-') {
-			   
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1");
 			 myid =Integer.parseInt(request.getParameter("actionn"));
 			 model2.setId(myid);
@@ -104,34 +95,13 @@ public class _controller_list_vote extends HttpServlet {
 			request.setAttribute("listechoice", listechoice);
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2");
 			request.setAttribute("poll", poll);
-			//request.setAttribute("pollclone", pollclone);
 			request.setAttribute("model2", model2);
-		HttpSession session =request.getSession();
-		session.setAttribute("myid", myid);
-			 
-		 // }
-		 
-		 // pollclone =(_poll) model2.getPoll().clone();
-		System.out.println(model2.getPoll().get_pollId());
+			HttpSession session =request.getSession();
+			session.setAttribute("myid", myid);
 		
-		
-		
-		//int a=model2.getPoll().get_pollId();
-			
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//System.out.println(model2.getId());
-		//System.out.println(model2.getPoll().get_pollId());
 		
 		}	
-		//System.out.println(model2.getPoll().get_pollId());
+		
 		}
 		System.out.println(model2.getPoll().get_pollId());
 		if(action1!=null) {
@@ -141,33 +111,26 @@ public class _controller_list_vote extends HttpServlet {
 			System.out.println(idpoll);
 			String description= request.getParameter("action");
 			char lettre = description.charAt(0);
-			//System.out.println(model2.getPoll().get_pollId());
-			//if(lettre=='-') {
-				
+			
 				System.out.println("yeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah");
-				//System.out.println(idpoll);
-		
-				//System.out.println();
+				
 				String type=request.getParameter("typee");
 				System.out.println(type);
 				String descriptionchoice1=description.substring(1);
 				String descriptionchoice=descriptionchoice1.substring(1);
 				System.out.println(descriptionchoice);
-				//System.out.println(model2.getId());
 				_implChoice choiceimplement=new _implChoice();
 				System.out.println("aaaaaaaaaaaaaaaaaaaaa");
 				System.out.println(model2.getPoll().get_pollId());
 				model2.setChoice(choiceimplement._get_choice_bydescription_andpollid(idpoll, descriptionchoice));
 				choiceimplement._vote(model2.getChoice());
-				System.out.println(model2.getChoice().get_choiceId());
-				_implVote voteimplement=new _implVote();
-				//ici normalmemnt a la place de 1 je dois mettre l id d user (session...)
+				_implVote voteimplement=new _implVote();				
 				model2.setVote(new _vote(type,1,model2.getChoice().get_choiceId()));
 				voteimplement._add_vote(model2.getVote());
 				request.setAttribute("model2", model2);
 			
 			
-		//}
+		
 			
 			
 			

@@ -8,6 +8,15 @@ import entities._vote;
 
 public   class _model_list_vote {
 	public ArrayList<_poll> listepoll = new ArrayList<_poll>();
+	public ArrayList<_poll> listepoll1 = new ArrayList<_poll>();
+	public ArrayList<_poll> getListepoll1() {
+		return listepoll1;
+	}
+
+	public void setListepoll1(ArrayList<_poll> listepoll1) {
+		this.listepoll1 = listepoll1;
+	}
+
 	public ArrayList<_choice> listechoice= new ArrayList<_choice>();
 	public _choice choice= new _choice();
 	public _vote vote= new _vote();

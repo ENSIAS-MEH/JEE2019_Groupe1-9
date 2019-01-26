@@ -96,6 +96,38 @@ public class _implPoll implements _interfacePoll {
 		
 	
 	}
+
+			@Override
+			public ArrayList<_poll> _search_vote_by_userid(int id) {
+				Connection con =db_interaction._get_connection();
+				ArrayList<_poll> listevote= new ArrayList<_poll>();
+				try {
+				PreparedStatement statement = con.prepareStatement("SELECT pollid, description, duration, category, userid, type FROM POLL WHERE userid=? ");
+				statement.setInt(1,id);
+				ResultSet result = statement.executeQuery();
+				
+				while (result.next()) {
+					
+					
+					_poll p  = new _poll(result.getInt("pollid"), result.getString("description"), result.getInt("duration"), result.getString("category"), result.getInt("userid"),result.getString("type"));
+					listevote.add(p);
+					
+				}
+				
+				System.out.println("poll selected");
+				
+				}catch(SQLException e){
+					e.printStackTrace();
+					}
+				
+				
+				return listevote;	
+				
+				
+				
+				
+				
+			}
 	
 	
 			
