@@ -83,9 +83,26 @@ public class _controller_list_vote extends HttpServlet {
 		else
 		{
 		//a
-			int myid;
+			String myid1;
+			
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1");
-			 myid =Integer.parseInt(request.getParameter("actionn"));
+			 myid1 =request.getParameter("actionn");
+			 //ici pour récupérer la valeur d l id a partir du button cliqué 
+			 int i=0;
+				char lettre;
+				String lettre1="";
+				while(true) {
+				 lettre= myid1.charAt(i);
+				 if(Character.isDigit(lettre)) {
+				 lettre1=lettre1+lettre;
+				 i++;
+				 }
+				 else break; 
+				}
+				int myid = Integer.parseInt(lettre1);
+			 ////////
+			 
+			 
 			 model2.setId(myid);
 			 model2.setPoll(new _poll(myid));
 			 _poll poll =model2.getPoll();
@@ -97,6 +114,8 @@ public class _controller_list_vote extends HttpServlet {
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2");
 			request.setAttribute("poll", poll);
 			request.setAttribute("model2", model2);
+			
+			
 			HttpSession session =request.getSession();
 			session.setAttribute("myid", myid);
 		
@@ -146,8 +165,8 @@ public class _controller_list_vote extends HttpServlet {
 				
 				String type=request.getParameter("typee");
 				System.out.println(type);
-				String descriptionchoice1=description.substring(1);
-				String descriptionchoice=descriptionchoice1.substring(1);
+				String descriptionchoice=description.substring(1);
+				//String descriptionchoice=descriptionchoice1.substring(1);
 				System.out.println(descriptionchoice);
 				_implChoice choiceimplement=new _implChoice();
 				System.out.println("aaaaaaaaaaaaaaaaaaaaa");

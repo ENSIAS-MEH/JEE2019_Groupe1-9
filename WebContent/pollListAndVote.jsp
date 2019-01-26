@@ -88,7 +88,7 @@
 <input type="text" class="form-control" id="poll_search_q" placeholder="Search of a poll by type" name="type">
 
 </div>
-<button name="actionn" value="search" class="btn btn-info">search</button>
+<button name="actionn" value="search" class="btn btn-info ">search</button>
 </div>
 </form>
 <ul class="nav nav-sidebar">
@@ -98,17 +98,17 @@
 </br>
 
 
- <div class="container">
+ <div class="container btn-block">
        
            
                 <c:forEach items="${listepoll}" var="poll">
-               
+               <c:set var="a" value="-" />
                  
                 
-                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-xs " name="actionn" value="${poll._pollId}" onsubmit="return false">
+                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="actionn" value="${poll._pollId}${a}${poll._description}" onsubmit="return false">
                
                 <div style="font-size: 20px">
-                 <c:out value="${poll._description}"/>
+                 
                  </div>
                
                </br>
@@ -138,7 +138,7 @@
 
 </div>
 
-
+<h4>choose the type of vote</h4>
 <select class="form-control" name="typee">
   <option>visible</option>
   <option>anonymous</option>
@@ -146,11 +146,11 @@
 </br>
 </br>
 </br>
-
+<h4>click on poll to delete it or click on choice to vote</h4>
 
 <div class='btn-group'>
 <div class="container">
-       <h3>click on poll to delete it</h3>
+       
            </br>
                 <c:forEach items="${listepoll1}" var="poll">
                 <c:set var="a" value="-" />
@@ -181,7 +181,7 @@
        
            
                 <c:forEach items="${listechoice}" var="choice">
-                <c:set var="a" value="--" />
+                <c:set var="a" value="-" />
                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action" value="${a}${choice._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
                   
                   
