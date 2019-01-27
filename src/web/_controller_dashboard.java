@@ -71,7 +71,12 @@ public class _controller_dashboard extends HttpServlet {
 			
 			
 		}
-		
+		if (path.equals("/settings.user")) {
+			System.out.println("22");
+			request.getRequestDispatcher("settings.jsp").forward(request, response);
+			
+			
+		}
 		
 		
 		

@@ -104,7 +104,7 @@
 <li><a href="https://gempixel.com/polls/user" class="active"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
 <li><a href="activepoll.user" name="action" value="activepoll"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
 <li><button class="btn" and style="background-color:transparent" name="action" value="expiredpoll"><span class="glyphicon glyphicon-time"></span> Expired Polls</a></li>
-<li><a href="https://gempixel.com/polls/user/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+<li><a href="settings.user"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 </ul>
 <h3>Account info <span class="label label-primary pull-right">Free</span></h3>
 <div class="stats">
