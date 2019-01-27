@@ -175,6 +175,7 @@ public class _controller_list_vote extends HttpServlet {
 				choiceimplement._vote(model2.getChoice());
 				_implVote voteimplement=new _implVote();				
 				model2.setVote(new _vote(type,1,model2.getChoice().get_choiceId()));
+				//h,a je dois ajouter traitement 3la wach kayna deja f la table ou nn bach mayvotich 3la nefs lhaja ktar mn mera
 				voteimplement._add_vote(model2.getVote());
 				request.setAttribute("model2", model2);
 			

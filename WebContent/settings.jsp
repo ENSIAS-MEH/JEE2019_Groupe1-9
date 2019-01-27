@@ -13,9 +13,9 @@
 <meta name="description" content="The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!" />
 <meta property='og:type' content='website' />
 <meta property='og:url' content='https://gempixel.com/polls' />
-<meta property='og:title' content='User Account - Premium Poll Script' />
+<meta property='og:title' content='My Settings - Premium Poll Script' />
 <meta property='og:description' content='The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!' />
-<title>User Account - Premium Poll Script</title>
+<title>My Settings - Premium Poll Script</title>
 
 <link href="https://gempixel.com/polls/themes/default/css/bootstrap.min.css" rel="stylesheet">
 
@@ -39,12 +39,9 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    
-    
 </head>
 <body>
-<form action="_controller_list_vote" method="post">
+<form action="_controller_settings" method="post">
 <header class="full">
 <div class="navbar" role="navigation">
 <div class="container-fluid">
@@ -54,13 +51,13 @@
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 <span class="glyphicon glyphicon-align-justify"></span>
 </button>
-<a class="navbar-brand" href="https://gempixel.com/polls">Poll Appilcation</a>
+<a class="navbar-brand" href="https://gempixel.com/polls">Poll Application</a>
 </div>
 </div>
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav navbar-right">
 
-
+<li><a href="https://gempixel.com/polls/create" class="active">Go back to dashboard</a></li>
 <li><a href="https://gempixel.com/polls/user/logout">Logout</a></li>
 </ul>
 </div>
@@ -77,129 +74,72 @@
 <div class="row">
 <div class="col-md-3 avatar"><img src="https://www.gravatar.com/avatar/062da5078de84305d043fb6a1d21ddd5?s=150" alt="Gravatar"></div>
 <div class="col-md-9">
-<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94fffcf5f0fdf9bae7f5f2f5f5d4f3f9f5fdf8baf7fbf9">[email&#160;protected]</a>
+<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="42292a23262b2f6c312324232302252f232b2e6c212d2f">[email&#160;protected]</a>
 </div>
 </div>
 </div>
 <form action="https://gempixel.com/polls/user/search" class="search" id="poll_search_form">
-<div>
-<div class="input-group pull-left"">
+<div class="input-group">
 
-<input type="text" class="form-control" id="poll_search_q" placeholder="Search of a poll by type" name="type">
-
-</div>
-<button name="actionn" value="search" class="btn btn-info ">search</button>
 </div>
 </form>
-<ul class="nav nav-sidebar">
-
-</ul>
-</br>
-</br>
-
-
- <div class="container btn-block">
-       
-           
-                <c:forEach items="${listepoll}" var="poll">
-               <c:set var="a" value="-" />
-                 
-                
-                 <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="actionn" value="${poll._pollId}${a}${poll._description}" onsubmit="return false">
-               
-                <div style="font-size: 20px">
-                 
-                 </div>
-               
-               </br>
-               </br>
-               </br>
-                </c:forEach>
-            
-       
-    </div>
-
-
-<button name="actionn" value="mypolls" class="btn btn-info btn-block ">my polls</button>
-</br>
-</br>
-<button name="actionn" value="settings" class="btn btn-info  btn-block">settings</button>
 
 <h3>Account info <span class="label label-primary pull-right"></span></h3>
-<div class="stats">
-<p><span>0</span> Polls</p>
-<p><span>0</span> Votes</p>
-</div>
+
 </div>
 </div>
 <div class="col-md-10 content">
-<div>
 
+<div class='row'>
+<div class='col-md-4'>
+<form action='https://gempixel.com/polls/user/settings' class='box-holder' method='post'>
+<div class='form-group'>
+<label for='name'>First name</label>
+<input type='text' class='form-control' id='firstname' placeholder='Enter Name' name='firstname' value=''>
+</div>
+<div class='form-group'>
+<label for='name'>Last name</label>
+<input type='text' class='form-control' id='lastname' placeholder='Enter Name' name='lastname' value=''>
+</div>
+<div class='form-group'>
+<label for='name'>Birth date</label>
+<input type='text' class='form-control' id='birthdate' placeholder='Enter Name' name='birthdate' value=''>
+</div>
+<div class='form-group'>
+<label for='name'>Gender</label>
+<input type='text' class='form-control' id='gender' placeholder='Enter Name' name='gender' value=''>
+</div>
+<div class='form-group'>
+<label for='name'>Nationality</label>
+<input type='text' class='form-control' id='nationality' placeholder='Enter Name' name='nationality' value=''>
+</div>
+<div class='form-group'>
+<label for='name'>Profile image</label>
+<input type='text' class='form-control' id='image' placeholder='Enter Name' name='image' value=''>
+</div>
+<div class='form-group'>
+<label for='email'>Email address</label>
+<input type='email' class='form-control' id='email' placeholder='Enter email' name='email' value=''>
+</div>
+<div class='form-group'>
+<label for='pass'>New Password</label>
+<input type='password' class='form-control' id='pass' placeholder='password' name='password' value=''>
+</div>
+</form>
 
 </div>
 
-<h4>choose the type of vote</h4>
-<select class="form-control" name="typee">
-  <option>visible</option>
-  <option>anonymous</option>
-</select>
-</br>
-</br>
-</br>
-<h4>click on poll to delete it or click on choice to vote</h4>
 
-<div class='btn-group'>
-<div class="container">
-       
-           </br>
-                <c:forEach items="${listepoll1}" var="poll">
-                <c:set var="a" value="-" />
-                <c:set var="b" value="*" />
-                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action2" value="${poll._pollId}${a}${poll._description}" onclick="return confirm('Are you sure you want to delete this poll ')">
-                  
-                  
-                        
-                </c:forEach>
+ <input type="hidden" name="update" value="up" /> <button type="submit" class="btn btn-primary">Update</button>
             
-       
-    </div>
-
-
 
 </div>
 
-
-
-
-
-
-
-
-
-<div class='btn-group'>
-<div class="container">
-       
-           
-                <c:forEach items="${listechoice}" var="choice">
-                <c:set var="a" value="-" />
-                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action" value="${a}${choice._description}" onclick="return confirm('Are you sure you want to voite for this choice ')">
-                  
-                  
-                        
-                </c:forEach>
-            
-       
-    </div>
-
-
-
-</div>
-<br><br>
-<form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>
-<ul class='poll-list'></ul><input type='hidden' name='token' value='b334bbe96c62af26780af74cc1e01579a18c6da6' /></form> </div>
+</div> </div>
 </div>
 </div>
 </section>
+
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="https://gempixel.com/polls/static/application.js?v=1.0"></script>
 </form>
 </body>
