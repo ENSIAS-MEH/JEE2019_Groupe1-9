@@ -92,7 +92,8 @@
 
 <div class='row'>
 <div class='col-md-4'>
-<form action='https://gempixel.com/polls/user/settings' class='box-holder' method='post'>
+<div class='box-holder'>
+
 <div class='form-group'>
 <label for='name'>First name</label>
 <input type='text' class='form-control' id='firstname' placeholder='Enter Name' name="firstname" >
@@ -124,6 +125,7 @@
 <div class='form-group'>
 <label for='pass'>New Password</label>
 <input type='password' class='form-control' id='pass' placeholder='password' name='password' value=''>
+</div>
 </div>
 </form>
 
