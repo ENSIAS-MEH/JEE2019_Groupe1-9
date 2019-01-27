@@ -61,7 +61,7 @@ public class _controller_settings extends HttpServlet {
 			model1.getUser().set_profile_img(request.getParameter("image"));
 			model1.getUser().set_email(request.getParameter("email"));
 			model1.getUser().set_password(request.getParameter("password"));
-			//ici tu dois ajouter hadik la variable de session f blast 1 hit had wa7ed ghir tantesti bih
+			// todo ici tu dois ajouter hadik la variable de session f blast 1 hit had wa7ed ghir tantesti bih
 			model1.getUser().set_id(1);
 			//had isactive nsit wach kandirouha 0 oula 1
 			model1.getUser().set_is_active(0);

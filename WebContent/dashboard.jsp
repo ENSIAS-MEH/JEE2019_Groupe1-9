@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
@@ -29,6 +33,19 @@
 <script type="text/javascript" src="https://gempixel.com/polls/static/js/jquery-ui.min.js?v=1.10.3"></script>
 <script type="text/javascript" src="https://gempixel.com/polls/static/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://gempixel.com/polls/static/application.fn.js?v=1.0"></script>
+<link href="themes/default/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="themes/default/style.css">
+  <link rel="stylesheet" type="text/css" href="themes/default/css/widgets.css">
+  <link rel="stylesheet" type="text/css" href="static/js/flat/_all.css">
+  <link rel="stylesheet" type="text/css" href="static/js/chosen.min.css">
+
+  <script type="text/javascript" src="../static/js/jquery.min707e.js?v=1.11.0"></script>
+  <script type="text/javascript" src="../static/js/chosen.minc118.js?v=0.8.5"></script>
+  <script type="text/javascript" src="../static/js/icheck.minf700.js?v=1.0.1"></script>
+  <script type="text/javascript" src="../static/js/jquery-ui.min1ff9.js?v=1.10.3"></script>
+  <script type="text/javascript" src="../static/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../static/application.fnc619.js?v=1.0"></script>
 <script>
       var appurl="https://gempixel.com/polls";
       var token="703dbf82c57d85152e84d99365a0494a";
@@ -40,7 +57,7 @@
     <![endif]-->
 </head>
 <body>
-<form action="" method="post">
+<form action="Controllerdashboard" method="post">
 <header class="full">
 <div class="navbar" role="navigation">
 <div class="container-fluid">
@@ -50,12 +67,12 @@
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 <span class="glyphicon glyphicon-align-justify"></span>
 </button>
-<a class="navbar-brand" href="https://gempixel.com/polls">Premium Poll Script</a>
+<a class="navbar-brand" href="https://gempixel.com/polls"> Poll Application</a>
 </div>
 </div>
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav navbar-right">
-<li><a href="https://gempixel.com/polls/upgrade" class="active">Upgrade</a></li>
+
 <li><a href="https://gempixel.com/polls/create" class="active">Create your Poll</a></li>
 <li><a href="https://gempixel.com/polls/user/logout">Logout</a></li>
 </ul>
@@ -85,8 +102,8 @@
 </form>
 <ul class="nav nav-sidebar">
 <li><a href="https://gempixel.com/polls/user" class="active"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
-<li><a href="https://gempixel.com/polls/user/active"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
-<li><a href="https://gempixel.com/polls/user/expired"><span class="glyphicon glyphicon-time"></span> Expired Polls</a></li>
+<li><button class="btn" and style="background-color:transparent" name="action" value="activepoll"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
+<li><button class="btn" and style="background-color:transparent" name="action" value="expiredpoll"><span class="glyphicon glyphicon-time"></span> Expired Polls</a></li>
 <li><a href="https://gempixel.com/polls/user/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 </ul>
 <h3>Account info <span class="label label-primary pull-right">Free</span></h3>
@@ -102,6 +119,30 @@
 <button type='button' class='btn btn-primary' id='select_all'>Select All</button>
 <button type='button' class='btn btn-danger' id='delete_all'>Delete All</button>
 </div><br><br>
+
+ <c:forEach items="${listepoll1}" var="list">
+ 
+<form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>
+<ul class='poll-list'>
+<li class='col-sm-4'>
+<div class='option-holder'>
+<div class='checkbox'><input type='checkbox' name='delete-id[]' value='347' data-class='blue' class='input-check-delete' /> </div>
+<h4>${list.poll._description}</h4>
+<p><strong>${list.number}</strong></p>
+</div>
+<div class='btn-group btn-group-xs'>
+<a href='https://gempixel.com/polls/nTXVu' class='btn btn-xs btn-success' target='_blank'>View</a>
+<a href='https://gempixel.com/polls/user/stats/347' class='btn btn-xs btn-success'>Analyze</a>
+</div>
+<div class='btn-group btn-group-xs pull-right'><a href='https://gempixel.com/polls/user/server/' data-request='close' data-id='347' data-target='this' class='get_stats btn btn-xs btn-success'>Close</a><a href='https://gempixel.com/polls/user/edit/347' class='btn btn-xs btn-primary'>Edit</a>
+<a href='https://gempixel.com/polls/user/delete/347' class='btn btn-xs btn-danger delete'>Delete</a>
+</div>
+</li>
+</ul>
+</form>
+
+</c:forEach>
+
 <form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>
 <ul class='poll-list'></ul><input type='hidden' name='token' value='b334bbe96c62af26780af74cc1e01579a18c6da6' /></form> </div>
 </div>

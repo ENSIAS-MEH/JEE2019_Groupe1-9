@@ -95,7 +95,7 @@
 <form action='https://gempixel.com/polls/user/settings' class='box-holder' method='post'>
 <div class='form-group'>
 <label for='name'>First name</label>
-<input type='text' class='form-control' id='firstname' placeholder='Enter Name' name="firstname" value=''>
+<input type='text' class='form-control' id='firstname' placeholder='Enter Name' name="firstname" >
 </div>
 <div class='form-group'>
 <label for='name'>Last name</label>

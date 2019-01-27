@@ -20,7 +20,7 @@ public class _implPoll implements _interfacePoll {
 				("insert into poll( DESCRIPTION, DURATION, CATEGORY, USERID, TYPE) values (?,?,?,?,?)");
 		//ps.setInt(1,p.getPollId());
 		ps.setString(1,p.get_description());
-		ps.setInt(2,p.get_duration());
+		ps.setInt(2,p.get_duration()); 
 		ps.setString(3,p.get_category());
 		ps.setInt(4,p.get_user_id());
 		ps.setString(5,p.get_type());
@@ -123,11 +123,45 @@ public class _implPoll implements _interfacePoll {
 				
 				return listevote;	
 				
-				
-				
-				
+		
 				
 			}
+			@Override
+			public int _get_number_of_voters(int id) {
+				Connection con =db_interaction._get_connection();
+				int a=0;
+				try {
+				PreparedStatement statement = con.prepareStatement("SELECT votersnumber FROM CHOICE WHERE pollid=? ");
+				statement.setInt(1,id);
+				ResultSet result = statement.executeQuery();
+			
+				while (result.next()) {
+					
+					a=a+result.getInt("votersnumber");
+					
+					
+				}
+				
+				System.out.println("nombre de vote calculé");
+				
+				}catch(SQLException e){
+					e.printStackTrace();
+					}
+				
+				
+				return a;	
+				
+		
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
 
 			@Override
 			public void delete_poll(int id) {
