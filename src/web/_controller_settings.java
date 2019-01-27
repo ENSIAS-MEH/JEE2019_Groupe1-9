@@ -65,6 +65,8 @@ public class _controller_settings extends HttpServlet {
 			model1.getUser().set_id(1);
 			//had isactive nsit wach kandirouha 0 oula 1
 			model1.getUser().set_is_active(0);
+			System.out.println(request.getParameter("password"));
+			System.out.println(request.getParameter("firstname"));
 			request.setAttribute("user", user);
 			_user_dao_impl userimpl =new _user_dao_impl();
 			userimpl._modify_user(model1.getUser());
@@ -73,7 +75,7 @@ public class _controller_settings extends HttpServlet {
 		}
 		System.out.println("aaaaaaaaaaaaaaaaaaa4");
 		request.getRequestDispatcher("settings.jsp").forward(request, response);
-		
+		System.out.println("aaaaaaaaaaaaaaaaaaa4");
 	}
 
 }

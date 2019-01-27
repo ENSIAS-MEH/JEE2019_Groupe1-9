@@ -126,6 +126,7 @@ public class _controller_list_vote extends HttpServlet {
 		
 		if(action2!=null) {
 			//had la partie pour récupérer l id dial poll hit f submit kaybda b * ou be3dou description dial poll...
+			//anas ila knti 9aditi deja l fct li tatrje3 wach kayn vote li 3endou hadak l id d user ou id d poll zid test hna fhad la partie
 			String idstring1= request.getParameter("action2");
 			
 			int i=0;

@@ -79,7 +79,7 @@ public class _user_dao_impl implements _user_dao {
             ps.setString(6,check_user.get_gender());
             ps.setString(7,check_user.get_nationality());
             ps.setInt(8, check_user.get_is_active());
-            ps.setString(8,check_user.get_profile_img());
+            ps.setString(9,check_user.get_profile_img());
             ps.setInt(10,check_user.get_id());
 
             int rowsUpdated = ps.executeUpdate();
