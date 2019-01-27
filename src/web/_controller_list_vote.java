@@ -179,7 +179,7 @@ public class _controller_list_vote extends HttpServlet {
 				//h,a je dois ajouter traitement 3la wach kayna deja f la table ou nn bach mayvotich 3la nefs lhaja ktar mn mera
 				voteimplement._add_vote(model2.getVote());
 				request.setAttribute("model2", model2);
-			
+			 
 			
 		
 			

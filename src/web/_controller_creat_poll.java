@@ -24,7 +24,7 @@ public class _controller_creat_poll extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public _controller_creat_poll() {
-        super();
+        super(); 
         // TODO Auto-generated constructor stub
     }
 

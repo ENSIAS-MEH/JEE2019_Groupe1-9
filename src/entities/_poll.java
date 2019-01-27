@@ -19,7 +19,7 @@ public class _poll extends Object implements Cloneable{
 	public _poll(int pollId, String description, int duration, String category, int userId, String type ) {
 		super();
 		_pollId = pollId;
-		_description = description;
+		_description = description; 
 		_duration = duration;
 		_category = category;
 		_userId = userId;

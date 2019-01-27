@@ -102,7 +102,7 @@
 </form>
 <ul class="nav nav-sidebar">
 <li><a href="https://gempixel.com/polls/user" class="active"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
-<li><button class="btn" and style="background-color:transparent" name="action" value="activepoll"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
+<li><a href="activepoll.user" name="action" value="activepoll"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
 <li><button class="btn" and style="background-color:transparent" name="action" value="expiredpoll"><span class="glyphicon glyphicon-time"></span> Expired Polls</a></li>
 <li><a href="https://gempixel.com/polls/user/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 </ul>
@@ -135,7 +135,7 @@
 <a href='https://gempixel.com/polls/user/stats/347' class='btn btn-xs btn-success'>Analyze</a>
 </div>
 <div class='btn-group btn-group-xs pull-right'><a href='https://gempixel.com/polls/user/server/' data-request='close' data-id='347' data-target='this' class='get_stats btn btn-xs btn-success'>Close</a><a href='https://gempixel.com/polls/user/edit/347' class='btn btn-xs btn-primary'>Edit</a>
-<a href='https://gempixel.com/polls/user/delete/347' class='btn btn-xs btn-danger delete'>Delete</a>
+<a href="delete.user?id=${list.poll._pollId}" class='btn btn-xs btn-danger delete' onclick="return confirm('are you sur you want to delete this poll?')">Delete</a>
 </div>
 </li>
 </ul>
