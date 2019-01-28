@@ -9,6 +9,7 @@ import java.util.*;
 
 public class _model_forgot {
 
+
 	
 	public String _sender_email_iD = "yourmail@gmail.com";
 	public String _sender_password = "yourpassword";
@@ -93,7 +94,7 @@ public class _model_forgot {
 	
 	//functions i ll need 
 	
-	//generer un mdp aléatoire 
+	//generer un mdp alï¿½atoire 
 	public String generate(int length) {
 	    String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; 
 	    String pass = "";

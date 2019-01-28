@@ -21,21 +21,7 @@
     <meta property='og:url' content='https://gempixel.com/polls' />
     <meta property='og:title' content='Create your poll for free - Premium Poll Script' />
     <meta property='og:description' content='The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!' />
-    <title>Create your poll for free - Premium Poll Script</title>
-
-    <link href="https://gempixel.com/polls/themes/default/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="https://gempixel.com/polls/themes/default/style.css">
-    <link rel="stylesheet" type="text/css" href="https://gempixel.com/polls/themes/default/css/widgets.css">
-    <link rel="stylesheet" type="text/css" href="https://gempixel.com/polls/static/js/flat/_all.css">
-    <link rel="stylesheet" type="text/css" href="https://gempixel.com/polls/static/js/chosen.min.css">
-
-    <script type="text/javascript" src="https://gempixel.com/polls/static/js/jquery.min.js?v=1.11.0"></script>
-    <script type="text/javascript" src="https://gempixel.com/polls/static/js/chosen.min.js?v=0.8.5"></script>
-    <script type="text/javascript" src="https://gempixel.com/polls/static/js/icheck.min.js?v=1.0.1"></script>
-    <script type="text/javascript" src="https://gempixel.com/polls/static/js/jquery-ui.min.js?v=1.10.3"></script>
-    <script type="text/javascript" src="https://gempixel.com/polls/static/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://gempixel.com/polls/static/application.fn.js?v=1.0"></script>
+    <title>Create your poll for free - Azerf Poll</title>
 
 
 
@@ -53,7 +39,7 @@
     <script type="text/javascript" src="../static/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/application.fn.js?v=1.0"></script>
     <script>
-        var appurl="https://gempixel.com/polls";
+        var appurl="http://localhost:8080/Azerf_Poll_war_exploded/index.jsp";
         var token="703dbf82c57d85152e84d99365a0494a";
         var max_count= 10;
     </script>
@@ -72,13 +58,13 @@
                     <span class="glyphicon glyphicon-list"></span>
                 </button>
                 <div class="site_logo">
-                    <a class="navbar-brand" href="https://gempixel.com/polls">Premium Poll Script</a>
+                    <a class="navbar-brand" href="http://localhost:8080/Azerf_Poll_war_exploded/index.jsp">Azerf Poll</a>
                 </div>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li><a href="https://gempixel.com/polls/user/register" class="active">Get Started</a></li>
-                    <li><a href="https://gempixel.com/polls/user/login">Login</a></li>
+                    <li><a href="http://localhost:8080/Azerf_Poll_war_exploded/user/register.jsp" class="active">Get Started</a></li>
+                    <li><a href="http://localhost:8080/Azerf_Poll_war_exploded/user/login.jsp">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -89,7 +75,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="box-holder">
-                    <form  method="get" action="user.poll">
+                    <form  method="get" action="create.poll">
                         <div id="container_questions" class="tabbed">
                             <div class="form-group">
                                 <label for="questions">Your Question</label>
@@ -150,10 +136,6 @@
                                 </li>
                                 <li><a href="https://gempixel.com/polls/upgrade" class='pull-right round'>Upgrade</a></li>
                             </ul>
-                            <div class="form-group">
-                                <label for="pass">Password <a href="https://gempixel.com/polls/upgrade" class='pull-right'><small>(Upgrade)</small></a></label>
-                                <input type="text" class="form-control" id="pass" placeholder="Please upgrade to a premium package to unlock this feature." disabled>
-                            </div>
                             <div class="form-group">
                                 <label for="expires">Expires in</label>
                                 <select id="expires" name="expires">
@@ -245,7 +227,7 @@
                         <button class="btn btn-widget">Vote</button>
                         <button class="btn btn-widget" id="view_results_button">View Results</button>
                         <span class="branding pull-right">
-Powered by <a href="https://gempixel.com/polls">Premium Poll Script</a>
+Powered by <a href="http://localhost:8080/Azerf_Poll_war_exploded/index.jsp">Azerf Poll</a>
 </span>
                     </div>
                 </div>
@@ -255,14 +237,7 @@ Powered by <a href="https://gempixel.com/polls">Premium Poll Script</a>
 </section> <section>
     <div class="container">
         <footer class="row">
-            <div class="pull-right footer">
-                <div class="languages">
-                    <a href="#lang" class="active" id="show-language"><i class="glyphicon glyphicon-globe"></i> Language</a>
-                    <div class="langs">
-                        <a href='?lang=en'>English</a><a href='?lang=jp'>Japanese</a><a href='?lang=de'>German</a><a href='?lang=vn'>Vietnamese</a><a href='?lang=it'>Italian</a><a href='?lang=kr'>Korean</a><a href='?lang=ro'>Romanian</a><a href='?lang=tu'>Turkish</a><a href='?lang=ru'>Russian</a><a href='?lang=es'>Spanish</a><a href='?lang=sw'>Swedish</a><a href='?lang=fr'>French</a> </div>
-                </div>
-            </div>
-            <p>&copy; 2019 <a href="https://gempixel.com/polls">Premium Poll Script</a></p>
+            <p>&copy; 2019 <a href="http://localhost:8080/Azerf_Poll_war_exploded/index.jsp">Azerf Poll </a></p>
         </footer>
     </div>
 </section>

@@ -14,5 +14,16 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/java-mail-1.4.4.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/jsp-api-2.1.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/jstl-impl.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/jstl-standard.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/jstl.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/protobuf-java-3.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/taglibs-standard-impl-1.2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/mac/Libs/jar_files/taglibs-standard-spec-1.2.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
