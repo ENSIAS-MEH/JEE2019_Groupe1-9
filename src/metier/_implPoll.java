@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import DAO.db_interaction;
@@ -70,6 +71,93 @@ public class _implPoll implements _interfacePoll {
 
 
 	}
+	@Override
+	public ArrayList<_poll> _search_activevote_by_userid(int id,Date date) {
+		Connection con =db_interaction._get_connection();
+		ArrayList<_poll> listevote= new ArrayList<_poll>();
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT *  FROM POLL WHERE userid=? ");
+			statement.setInt(1,id);
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+
+				if (result.getDate("expires").compareTo(date) > 0) {
+     
+		            
+				_poll p  = new _poll(result.getInt("pollid"),
+						result.getString("description"),
+						result.getDate("expires"),
+						result.getString("category"),
+						result.getInt("userid"));
+				listevote.add(p);
+				}
+			}
+
+			System.out.println("poll selected");
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+
+		return listevote;
+
+
+
+	}
+	
+	@Override
+	public ArrayList<_poll> _search_expiredvote_by_userid(int id,Date date) {
+		Connection con =db_interaction._get_connection();
+		ArrayList<_poll> listevote= new ArrayList<_poll>();
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT *  FROM POLL WHERE userid=? ");
+			statement.setInt(1,id);
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+
+				if (result.getDate("expires").compareTo(date) < 0) {
+     
+		            
+				_poll p  = new _poll(result.getInt("pollid"),
+						result.getString("description"),
+						result.getDate("expires"),
+						result.getString("category"),
+						result.getInt("userid"));
+				listevote.add(p);
+				}
+			}
+
+			System.out.println("poll selected");
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+
+		return listevote;
+
+
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public void delete_poll(int id) {
 

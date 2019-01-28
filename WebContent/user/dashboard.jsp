@@ -117,15 +117,14 @@
 
                         </form>
                         <ul class="nav nav-sidebar">
-                            <li><a href="dashboard.jsp" class="active"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
-                            <li><a href="/tp3/user/activepoll.user" name="action" value="activepoll"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
+                            <li><a href="/dashboard.user" name="action" value="activepoll"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
+                            <li><a href="activepoll.user" name="action" value="activepoll"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
                             <li><a href="expiredpoll.user" name="action" value="expiredpoll"><span class="glyphicon glyphicon-time"></span> Expired Polls</a></li>
                             <li><a href="settings.user"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
                         </ul>
                         <h3>Account info <span class="label label-primary pull-right">Free</span></h3>
                         <div class="stats">
-                            <p><span>0</span> Polls</p>
-                            <p><span>0</span> Votes</p>
+                            
                         </div>
                     </div>
                 </div>
