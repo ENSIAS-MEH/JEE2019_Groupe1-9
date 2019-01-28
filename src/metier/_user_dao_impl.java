@@ -224,6 +224,17 @@ public class _user_dao_impl implements _user_dao {
 			ps = conn.prepareStatement("DELETE FROM USER WHERE USERID = ?");
 			ps.setLong(1, u.get_id());
 			ps.executeUpdate();
+			ps = conn.prepareStatement("SELECT POLLID FROM POLL WHERE USERID = ?");
+			ps.setLong(1, u.get_id());
+			ResultSet rs = ps.executeQuery();
+			_implPoll _metier_poll = new _implPoll();
+			while (rs.next()) {
+				_poll poll = _metier_poll._get_poll_by_id(rs.getInt("POLLID"));
+				_metier_poll._delete_poll(poll);
+			}
+			ps = conn.prepareStatement("DELETE FROM VOTE WHERE USERID = ?");
+			ps.setLong(1, u.get_id());
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

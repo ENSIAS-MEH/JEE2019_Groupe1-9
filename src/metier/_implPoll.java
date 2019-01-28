@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import DAO.db_interaction;
 import entities._choice;
@@ -111,6 +112,14 @@ public class _implPoll implements _interfacePoll {
 					ps = conn.prepareStatement("DELETE FROM POLL WHERE POLLID = ?");
 					ps.setLong(1, p.get_id_poll());
 					ps.executeUpdate();
+					_interfaceChoice _choice_metier = new _implChoice();
+					ps = conn.prepareStatement("SELECT CHOICEID FROM CHOICE WHERE POLLID = ?");
+					ps.setLong(1, p.get_id_poll());
+					ResultSet rs = ps.executeQuery();
+					while (rs.next()) {
+						_choice c = _choice_metier._get_choice_by_id(rs.getInt("CHOICEID"));
+						_choice_metier._delete_choice(c);
+					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

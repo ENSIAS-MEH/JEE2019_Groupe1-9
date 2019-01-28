@@ -90,13 +90,25 @@ public class Test {
 		 * c.set_choiceId(3); metier_choice._list_of_voters(c);
 		 */
 		
-		_implPoll metier_Poll = new _implPoll();
+		/*_implPoll metier_Poll = new _implPoll();
 		metier_Poll._get_recent_polls(3);
 		_poll poll =metier_Poll._get_poll_by_id(3);
 		metier_Poll._get_choice_for_poll(poll);
 		metier_Poll._get_number_of_polls();
 		metier_Poll._get_user_of_poll(poll);
-		metier_Poll._get_number_of_voters(poll);
+		metier_Poll._get_number_of_voters(poll);*/
+		
+		/*_implAdmin admin_metier = new _implAdmin();
+		_admin admin = new _admin("NEWAD","root");
+		admin_metier._add_admin(admin);
+		admin_metier._get_admin_by_id(1);
+		admin = new _admin("new","root",3);
+		admin_metier._update_admin(admin);
+		admin_metier._get_all_admins();*/
+		_user_dao_impl metier = new _user_dao_impl();
+		_user poll = metier._get_user_by_id(3);
+		metier._delete_user(poll);
+		
 		
 		
 	}

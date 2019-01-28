@@ -12,13 +12,19 @@ public class _person implements Serializable {
         this._email = email;
         this._password = password;
     }
+    
+    public _person(String email, String password, int id) {
+    	this._id = id;
+        this._email = email;
+        this._password = password;
+    }
 
     public void set_id(int _id) {
         this._id = _id;
     }
 
     public _person() {
-
+    	super();
     }
 
     public int get_id() {
