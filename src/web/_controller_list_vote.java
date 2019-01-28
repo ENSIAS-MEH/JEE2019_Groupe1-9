@@ -87,7 +87,7 @@ public class _controller_list_vote extends HttpServlet {
 			
 			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1");
 			 myid1 =request.getParameter("actionn");
-			 //ici pour récupérer la valeur d l id a partir du button cliqué 
+			 //ici pour rï¿½cupï¿½rer la valeur d l id a partir du button cliquï¿½ 
 			 int i=0;
 				char lettre;
 				String lettre1="";
@@ -125,7 +125,7 @@ public class _controller_list_vote extends HttpServlet {
 		}
 		
 		if(action2!=null) {
-			//had la partie pour récupérer l id dial poll hit f submit kaybda b * ou be3dou description dial poll...
+			//had la partie pour rï¿½cupï¿½rer l id dial poll hit f submit kaybda b * ou be3dou description dial poll...
 			//anas ila knti 9aditi deja l fct li tatrje3 wach kayn vote li 3endou hadak l id d user ou id d poll zid test hna fhad la partie
 			String idstring1= request.getParameter("action2");
 			
@@ -173,7 +173,7 @@ public class _controller_list_vote extends HttpServlet {
 				System.out.println("aaaaaaaaaaaaaaaaaaaaa");
 				System.out.println(model2.getPoll().get_pollId());
 				model2.setChoice(choiceimplement._get_choice_bydescription_andpollid(idpoll, descriptionchoice));
-				choiceimplement._vote(model2.getChoice());
+				choiceimplement._vote(model2.getChoice().get_choiceId());
 				_implVote voteimplement=new _implVote();				
 				model2.setVote(new _vote(type,1,model2.getChoice().get_choiceId()));
 				//h,a je dois ajouter traitement 3la wach kayna deja f la table ou nn bach mayvotich 3la nefs lhaja ktar mn mera
@@ -192,4 +192,4 @@ public class _controller_list_vote extends HttpServlet {
 	}
 
 }
-//ps: hadchi kaaaaaaaaaaaaaaaaaaaaaaaaaaaml hit je savais pas bli submit ta t reloadi la page so les informations tidi3ou donc khas nkhdem b session ou voila le prob résolu
+//ps: hadchi kaaaaaaaaaaaaaaaaaaaaaaaaaaaml hit je savais pas bli submit ta t reloadi la page so les informations tidi3ou donc khas nkhdem b session ou voila le prob rï¿½solu

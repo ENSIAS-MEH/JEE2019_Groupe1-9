@@ -18,9 +18,9 @@
     <meta name="description" content="Login into your account and manage your polls and your subscription." />
     <meta property='og:type' content='website' />
     <meta property='og:url' content='https://ensias.com' />
-    <meta property='og:title' content='Login into your account - Premium Poll Script' />
+    <meta property='og:title' content='Login into your account - Azerf Poll' />
     <meta property='og:description' content='Login into your account and manage your polls and your subscription.' />
-    <title>Login into your account - Premium Poll Script</title>
+    <title>Login into your account - Azerf Poll </title>
 
     <link href="../themes/default/css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,12 +29,12 @@
     <link rel="stylesheet" type="text/css" href="../static/js/flat/_all.css">
     <link rel="stylesheet" type="text/css" href="../static/js/chosen.min.css">
 
-    <script type="text/javascript" src="../static/js/jquery.min707e.js?v=1.11.0"></script>
-    <script type="text/javascript" src="../static/js/chosen.minc118.js?v=0.8.5"></script>
-    <script type="text/javascript" src="../static/js/icheck.minf700.js?v=1.0.1"></script>
-    <script type="text/javascript" src="../static/js/jquery-ui.min1ff9.js?v=1.10.3"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js?v=1.11.0"></script>
+    <script type="text/javascript" src="../static/js/chosen.min.js?v=0.8.5"></script>
+    <script type="text/javascript" src="../static/js/icheck.min.js?v=1.0.1"></script>
+    <script type="text/javascript" src="../static/js/jquery-ui.min.js?v=1.10.3"></script>
     <script type="text/javascript" src="../static/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../static/application.fnc619.js?v=1.0"></script>
+    <script type="text/javascript" src="../static/application.fn.js?v=1.0"></script>
     <script>
         var appurl="https://ensias.com";
         var token="703dbf82c57d85152e84d99365a0494a";
@@ -46,6 +46,12 @@
     <![endif]-->
 </head>
 <body class='dark'>
+<%
+    //this one to  prevent the user from going back to the index.jsp after signing
+    if (session.getAttribute("_current_user")!=null){
+        response.sendRedirect("dashboard.jsp");
+    }
+%>
 <section>
     <div class="container">
         <div class="centered form">

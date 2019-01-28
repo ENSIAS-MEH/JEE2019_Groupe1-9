@@ -18,9 +18,9 @@
     <meta name="description" content="Register an account and gain control over your polls. Manage them, edit them or remove them without hassle." />
     <meta property='og:type' content='website' />
     <meta property='og:url' content='https://ensias.com' />
-    <meta property='og:title' content='Register and manage your polls. - Premium Poll Script' />
+    <meta property='og:title' content='Register and manage your polls. - Azef Poll' />
     <meta property='og:description' content='Register an account and gain control over your polls. Manage them, edit them or remove them without hassle.' />
-    <title>Register and manage your polls. - Premium Poll Script</title>
+    <title>Register and manage your polls. - Azerf Poll</title>
 
     <link href="../themes/default/css/bootstrap.min.css" rel="stylesheet">
 
@@ -46,6 +46,12 @@
     <![endif]-->
 </head>
 <body class='dark'>
+<%
+    //this one to  prevent the user from going back to the index.jsp after signing
+    if (session.getAttribute("_current_user")!=null){
+        response.sendRedirect("dashboard.jsp");
+    }
+%>
 <section>
     <div class="container">
         <div class="centered form">

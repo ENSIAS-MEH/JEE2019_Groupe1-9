@@ -1,6 +1,8 @@
 package entities;
 
-public class _number_of_voters {
+import java.io.Serializable;
+
+public class _number_of_voters implements Serializable {
 public _poll poll;
 public int number;
 public _poll getPoll() {

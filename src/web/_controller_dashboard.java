@@ -18,6 +18,7 @@ import metier._implPoll;
  */
 @WebServlet(name="Controllerdashboard",urlPatterns = "*.user")
 public class _controller_dashboard extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -42,7 +43,7 @@ public class _controller_dashboard extends HttpServlet {
 		
 		String path = request.getServletPath();
 		System.out.println(path);
-		if (path.equals("/delete.user")) {
+		if (path.equals("/user/delete.user")) {
 			System.out.println("1");
 			String _id1 =request.getParameter("id");	
 			int _id = Integer.parseInt(_id1);
@@ -55,32 +56,36 @@ public class _controller_dashboard extends HttpServlet {
 		}
 		
 		
-		if(path.equals("/activepoll.user")) {
-			
+		if(path.equals("/user/activepoll.user")) {
+				System.out.println("daba dkhelt l if dial /user/activepoll.user ");
 				_implPoll pollimplement=new _implPoll();
 				//hna tu dois passer la variable de session 3la hsab achnou smitiha mais dirha f blast 1 had 1 tantesti bih
-				model1.setListepoll(pollimplement._search_vote_by_userid(1));
+				////////////////////
+				model1.setListepoll(pollimplement._search_vote_by_userid(2));
 				ArrayList<_poll> listepoll = model1.getListepoll();
 				//request.setAttribute("listepoll", listepoll);
 				model1.setMylist(listepoll);
 				ArrayList<_number_of_voters> listepoll1 = model1.getMylist();
+				System.out.println("model m9ad");
+				//System.out.println(listepoll.get(0));
 				request.setAttribute("listepoll1", listepoll1);
+				System.out.println("khrejt mn if");
 				
 	
 		}
-		if (path.equals("/settings.user")) {
+		if (path.equals("/user/settings.user")) {
 			System.out.println("22");
-			request.getRequestDispatcher("settings.jsp").forward(request, response);
-			
+			//request.getRequestDispatcher("settings.jsp").forward(request, response);
+			response.sendRedirect("settings.jsp");
 			
 		}
 		
-		if (path.equals("/search.user")) {
+		if (path.equals("/user/search.user")) {
 			System.out.println("action");
 		
 			System.out.println("search");
-			request.getRequestDispatcher("vote.jsp").forward(request, response);
-			
+			//request.getRequestDispatcher("vote.jsp").forward(request, response);
+			response.sendRedirect("vote.jsp");
 		}
 		
 

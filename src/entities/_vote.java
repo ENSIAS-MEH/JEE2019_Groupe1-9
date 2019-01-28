@@ -6,8 +6,12 @@ public class _vote implements Serializable{
 	private String _type;
 	private int _userId;
 	private int _choiceId;
-	
-	public String get_type() {
+
+    public _vote() {
+
+    }
+
+    public String get_type() {
 		return _type;
 	}
 
@@ -36,8 +40,5 @@ public class _vote implements Serializable{
 		_type = type;
 		_userId = userId;
 		_choiceId = choiceId;
-	}
-	public _vote() {
-		
 	}
 }

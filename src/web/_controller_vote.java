@@ -15,7 +15,7 @@ import metier._implPoll;
 /**
  * Servlet implementation class _controller_vote
  */
-@WebServlet("/_controller_vote")
+@WebServlet("/user/_controller_vote")
 public class _controller_vote extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,7 +47,7 @@ public class _controller_vote extends HttpServlet {
 		//if(action!=null) {
 			
 			//if(action.equals("search")) {
-		
+		System.out.println("dkhelna l search");
 		System.out.println(i);
 		 _model_dashboard model1= new _model_dashboard();
 		request.setAttribute("model1", model1);

@@ -1,12 +1,13 @@
 package web;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import entities._choice;
 import entities._poll;
 import entities._vote;
 
-public   class _model_list_vote {
+public   class _model_list_vote implements Serializable {
 	public ArrayList<_poll> listepoll = new ArrayList<_poll>();
 	public ArrayList<_poll> listepoll1 = new ArrayList<_poll>();
 	public ArrayList<_poll> getListepoll1() {
