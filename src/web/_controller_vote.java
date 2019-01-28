@@ -43,10 +43,10 @@ public class _controller_vote extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		String i=request.getParameter("type");
-		String action=request.getParameter("action");
-		if(action!=null) {
+		//String action=request.getParameter("action");
+		//if(action!=null) {
 			
-			if(action.equals("search")) {
+			//if(action.equals("search")) {
 		
 		System.out.println(i);
 		 _model_dashboard model1= new _model_dashboard();
@@ -55,12 +55,13 @@ public class _controller_vote extends HttpServlet {
 		System.out.println(request.getParameter("type"));
 		_implPoll pollimplement=new _implPoll();
 		//model1.setListepoll2(pollimplement._search_vote_by_Type(model1.getType()));
-		model1.setListepoll2(pollimplement._search_vote_by_Type("i"));
+		model1.setListepoll2(pollimplement._search_vote_by_Type(i));
 		ArrayList<_poll> listepoll2 = model1.getListepoll2();
 		request.setAttribute("listepoll2", listepoll2);
+		//System.out.println(listepoll2.get(0).get_description());
 		
-	}
-		}
+	//}
+		//}
 		request.getRequestDispatcher("vote.jsp").forward(request, response);}
 
 }

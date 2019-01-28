@@ -103,7 +103,7 @@
     <div>
         <div class="input-group">
             <input type="text" class="form-control" name="type" placeholder="Search of a poll by type">
-            <button name="action" value="search" class="btn btn-info ">search</button>
+            
         </div>
     </div>
 </div>
@@ -136,40 +136,12 @@
 <ul class='poll-list'>
 <li class='col-sm-4'>
 <div class='option-holder'>
-<div class='checkbox'><input type='checkbox' name='delete-id[]' value='347' data-class='blue' class='input-check-delete' /> </div>
+<div class='checkbox'> </div>
 <h4>${list._description}</h4>
 <p><strong></strong></p>
 </div>
 <div class='btn-group btn-group-xs'>
-<a href='https://gempixel.com/polls/nTXVu' class='btn btn-xs btn-success' target='_blank'>View</a>
-<a href='https://gempixel.com/polls/user/stats/347' class='btn btn-xs btn-success'>Analyze</a>
-</div>
-<div class='btn-group btn-group-xs pull-right'><a href='https://gempixel.com/polls/user/server/' data-request='close' data-id='347' data-target='this' class='get_stats btn btn-xs btn-success'>Close</a><a href='https://gempixel.com/polls/user/edit/347' class='btn btn-xs btn-primary'>Edit</a>
-<a href="delete.user?id=${list._pollId}" class='btn btn-xs btn-danger delete' onclick="return confirm('are you sur you want to delete this poll?')">Delete</a>
-</div>
-</li>
-</ul>
-</form>
-
-</c:forEach>
-
-
-
-
-<c:forEach items="${listepoll2}" var="poll">
-<form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>
-
- 
-
-<ul class='poll-list'>
-<li class='col-sm-4'>
-<div class='option-holder'>
-<div class='checkbox'></div>
-<h4>${poll._description}</h4>
-<p><strong></strong></p>
-</div>
-<div class='btn-group btn-group-xs'>
-<a href="viewchoice.user?id=${poll._pollId}" class='btn btn-xs btn-success' target='_blank'>View Choices</a>
+<a href='https://gempixel.com/polls/nTXVu' class='btn btn-xs btn-success' target='_blank'>View choices</a>
 
 </div>
 
@@ -180,6 +152,17 @@
 </form>
 
 </c:forEach>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
