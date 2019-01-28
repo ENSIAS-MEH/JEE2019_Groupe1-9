@@ -63,7 +63,7 @@ public class _controller_settings extends HttpServlet {
 			model1.getUser().set_password(request.getParameter("password"));
 			// todo ici tu dois ajouter hadik la variable de session f blast 1 hit had wa7ed ghir tantesti bih
 			model1.getUser().set_id(1);
-			//had isactive nsit wach kandirouha 0 oula 1 ze3ma achnahia la valeur par defaut
+			// todo had isactive nsit wach kandirouha 0 oula 1 ze3ma achnahia la valeur par defaut
 			model1.getUser().set_is_active(1);
 			System.out.println(request.getParameter("password"));
 			System.out.println(request.getParameter("firstname"));

@@ -51,8 +51,7 @@ public class _controller_dashboard extends HttpServlet {
 			System.out.println(_id);
 			_implPoll implpoll=new _implPoll();
 			implpoll.delete_poll(_id);
-			System.out.println("3");
-			//response.sendRedirect("delete.user");
+			
 			
 		}
 		
@@ -60,16 +59,16 @@ public class _controller_dashboard extends HttpServlet {
 		if(path.equals("/user/activepoll.user")) {
 				System.out.println("daba dkhelt l if dial /user/activepoll.user ");
 				_implPoll pollimplement=new _implPoll();
-				//hna tu dois passer la variable de session 3la hsab achnou smitiha mais dirha f blast 1 had 1 tantesti bih
+				// todo hna tu dois passer la variable de session 3la hsab achnou smitiha mais dirha f blast 7 had 7 tantesti bih
 				////////////////////
 				Date todayDate = new Date();
 				model1.setListepoll(pollimplement._search_activevote_by_userid(7,  todayDate));
 				ArrayList<_poll> listepoll = model1.getListepoll();
-				//request.setAttribute("listepoll", listepoll);
+				
 				model1.setMylist(listepoll);
 				ArrayList<_number_of_voters> listepoll1 = model1.getMylist();
 				System.out.println("model m9ad");
-				//System.out.println(listepoll.get(0));
+				
 				request.setAttribute("listepoll1", listepoll1);
 				System.out.println("khrejt mn if");
 				
@@ -80,16 +79,16 @@ public class _controller_dashboard extends HttpServlet {
 		if(path.equals("/user/expiredpoll.user")) {
 			System.out.println("daba dkhelt l if dial /user/activepoll.user ");
 			_implPoll pollimplement=new _implPoll();
-			//hna tu dois passer la variable de session 3la hsab achnou smitiha mais dirha f blast 1 had 1 tantesti bih
-			////////////////////
+			// todo hna tu dois passer la variable de session 3la hsab achnou smitiha mais dirha f blast 7 had 7 tantesti bih
+			
 			Date todayDate = new Date();
 			model1.setListepoll(pollimplement._search_expiredvote_by_userid(7,  todayDate));
 			ArrayList<_poll> listepoll = model1.getListepoll();
-			//request.setAttribute("listepoll", listepoll);
+			
 			model1.setMylist(listepoll);
 			ArrayList<_number_of_voters> listepoll1 = model1.getMylist();
 			System.out.println("model m9ad");
-			//System.out.println(listepoll.get(0));
+			
 			request.setAttribute("listepoll1", listepoll1);
 			System.out.println("khrejt mn if");
 			
@@ -105,15 +104,15 @@ public class _controller_dashboard extends HttpServlet {
 		if(path.equals("/user/dashboard.user")) {
 			System.out.println("daba dkhelt l if dial /user/activepoll.user ");
 			_implPoll pollimplement=new _implPoll();
-			//hna tu dois passer la variable de session 3la hsab achnou smitiha mais dirha f blast 1 had 1 tantesti bih
-			////////////////////
+			// todo hna tu dois passer la variable de session 3la hsab achnou smitiha mais dirha f blast 7 had 7 tantesti bih
+			
 			model1.setListepoll(pollimplement._search_vote_by_userid(2));
 			ArrayList<_poll> listepoll = model1.getListepoll();
-			//request.setAttribute("listepoll", listepoll);
+			
 			model1.setMylist(listepoll);
 			ArrayList<_number_of_voters> listepoll1 = model1.getMylist();
 			System.out.println("model m9ad");
-			//System.out.println(listepoll.get(0));
+			
 			request.setAttribute("listepoll1", listepoll1);
 			System.out.println("khrejt mn if");
 			
@@ -129,7 +128,7 @@ public class _controller_dashboard extends HttpServlet {
 		
 		if (path.equals("/user/settings.user")) {
 			System.out.println("22");
-			//request.getRequestDispatcher("settings.jsp").forward(request, response);
+			
 			response.sendRedirect("settings.jsp");
 			
 		}
@@ -138,7 +137,7 @@ public class _controller_dashboard extends HttpServlet {
 			System.out.println("action");
 		
 			System.out.println("search");
-			//request.getRequestDispatcher("vote.jsp").forward(request, response);
+			
 			response.sendRedirect("vote.jsp");
 		}
 		
