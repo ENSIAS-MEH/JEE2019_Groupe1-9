@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import entities.*;
 import metier.*;
@@ -34,142 +33,196 @@ public class _admin_controlleur extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();
-        HttpSession session = req.getSession();
+		if (path.equals("/dashboard.admin")) {
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			user_model.setRecent_users(_user_metier._get_recent_users(5));
+			poll_model.setRecent_polls(_poll_metier._get_recent_polls(5));
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			req.getRequestDispatcher("admin_dashboard.jsp").forward(req, resp);
 
-        if (session.getAttribute("admin_id") ==null){
-            System.out.println(" I'm inside ----------->");
-            resp.sendRedirect("admin.login");
+		} else if (path.equals("/users.admin")) {
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			user_model.setAll_users(_user_metier._get_all_users());
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			req.getRequestDispatcher("admin_users.jsp").forward(req, resp);
 
-        }else {
-            if (path.equals("/dashboard.admin")) {
-                _user_model user_model = new _user_model();
-                _poll_model poll_model = new _poll_model();
-                user_model.setNumber_of_users(_user_metier._get_number_of_users());
-                user_model.setRecent_users(_user_metier._get_recent_users(5));
-                poll_model.setRecent_polls(_poll_metier._get_recent_polls(5));
-                poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
-                req.setAttribute("user_model", user_model);
-                req.setAttribute("poll_model", poll_model);
-                req.setAttribute("poll_metier", _poll_metier);
-                req.getRequestDispatcher("admin/admin_dashboard.jsp").forward(req, resp);
+		} else if (path.equals("/polls.admin")) {
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			poll_model.setAll_polls(_poll_metier._get_all_polls());
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			req.getRequestDispatcher("admin_polls.jsp").forward(req, resp);
 
-            } else if (path.equals("/users.admin")) {
-                _user_model user_model = new _user_model();
-                _poll_model poll_model = new _poll_model();
-                user_model.setNumber_of_users(_user_metier._get_number_of_users());
-                user_model.setAll_users(_user_metier._get_all_users());
-                poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
-                req.setAttribute("user_model", user_model);
-                req.setAttribute("poll_model", poll_model);
-                req.setAttribute("poll_metier", _poll_metier);
-                req.getRequestDispatcher("admin/admin_users.jsp").forward(req, resp);
+		} else if (path.equals("/settings.admin")) {
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
+			_admin_model admin_model = new _admin_model();
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			// poll_model.setAll_polls(_poll_metier._get_all_polls());
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			admin_model.setAll_admins(_admin_metier._get_all_admins()); 
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			req.setAttribute("admin_model", admin_model);
+			req.getRequestDispatcher("admin_setting.jsp").forward(req, resp);
 
-            } else if (path.equals("/polls.admin")) {
-                _user_model user_model = new _user_model();
-                _poll_model poll_model = new _poll_model();
-                user_model.setNumber_of_users(_user_metier._get_number_of_users());
-                poll_model.setAll_polls(_poll_metier._get_all_polls());
-                poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
-                req.setAttribute("user_model", user_model);
-                req.setAttribute("poll_model", poll_model);
-                req.setAttribute("poll_metier", _poll_metier);
-                req.getRequestDispatcher("admin/admin_polls.jsp").forward(req, resp);
+		} else if(path.equals("/Add_Admin.admin")) {
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
 
-            } else if (path.equals("/settings.admin")) {
-                _user_model user_model = new _user_model();
-                _poll_model poll_model = new _poll_model();
-                user_model.setNumber_of_users(_user_metier._get_number_of_users());
-                // poll_model.setAll_polls(_poll_metier._get_all_polls());
-                poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
-                req.setAttribute("user_model", user_model);
-                req.setAttribute("poll_model", poll_model);
-                req.setAttribute("poll_metier", _poll_metier);
-                req.getRequestDispatcher("admin/admin_setting.jsp").forward(req, resp);
+			// poll_model.setAll_polls(_poll_metier._get_all_polls());
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			req.getRequestDispatcher("admin_add_admin.jsp").forward(req, resp);
+		
+		
+	} else if(path.equals("/add_admin_2.admin")) {
+		String email= req.getParameter("email");
+		String password = req.getParameter("password");
+		String cpassword = req.getParameter("cpassword");
+		if (password.equals(cpassword)) {
+			_admin admin = new _admin();
+			admin.set_email(email);
+			admin.set_password(password);
+			_admin_metier._add_admin(admin);
+		}
+		_user_model user_model = new _user_model();
+		_poll_model poll_model = new _poll_model();
+		_admin_model admin_model = new _admin_model();
+		user_model.setNumber_of_users(_user_metier._get_number_of_users());
+		// poll_model.setAll_polls(_poll_metier._get_all_polls());
+		poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+		admin_model.setAll_admins(_admin_metier._get_all_admins()); 
+		req.setAttribute("user_model", user_model);
+		req.setAttribute("poll_model", poll_model);
+		req.setAttribute("poll_metier", _poll_metier);
+		req.setAttribute("admin_model", admin_model);
+		resp.sendRedirect("settings.admin");
+		
+	}
+		
+		
+		else if (path.equals("/users_check.admin")) {
+			int _id = Integer.parseInt(req.getParameter("id"));
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
+			// get user to check out
+			_user user = _user_metier._get_user_by_id(_id);
+			System.out.println(user);
+			user_model.setUser_id(_id);
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			user_model.setAll_votes_of_users(_user_metier._get_vote_of_user(user));
+			user_model.setAll_polls_of_user(_user_metier._get_poll_of_user(user));
+			user_model.setUser(user);
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			req.getRequestDispatcher("admin_users_display.jsp").forward(req, resp);
 
-            } else if (path.equals("/users_check.admin")) {
-                int _id = Integer.parseInt(req.getParameter("id"));
-                _user_model user_model = new _user_model();
-                _poll_model poll_model = new _poll_model();
-                // get user to check out
-                _user user = _user_metier._get_user_by_id(_id);
-                System.out.println(user);
-                user_model.setUser_id(_id);
-                user_model.setNumber_of_users(_user_metier._get_number_of_users());
-                user_model.setAll_votes_of_users(_user_metier._get_vote_of_user(user));
-                user_model.setAll_polls_of_user(_user_metier._get_poll_of_user(user));
-                user_model.setUser(user);
-                poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
-                req.setAttribute("user_model", user_model);
-                req.setAttribute("poll_model", poll_model);
-                req.setAttribute("poll_metier", _poll_metier);
-                req.getRequestDispatcher("admin/admin_users_display.jsp").forward(req, resp);
+		} else if (path.equals("/users_delete.admin")) {
+			int _id = Integer.parseInt(req.getParameter("id"));
 
-            } else if (path.equals("/users_delete.admin")) {
-                int _id = Integer.parseInt(req.getParameter("id"));
+			// get user to delete
+			_user user = _user_metier._get_user_by_id(_id);
+			System.out.println(user);
+			_user_metier._delete_user(user);
 
-                // get user to delete
-                _user user = _user_metier._get_user_by_id(_id);
-                System.out.println(user);
-                _user_metier._delete_user(user);
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
 
-                _user_model user_model = new _user_model();
-                _poll_model poll_model = new _poll_model();
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			user_model.setAll_users(_user_metier._get_all_users());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			resp.sendRedirect("users.admin");
 
-                user_model.setNumber_of_users(_user_metier._get_number_of_users());
-                poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
-                user_model.setAll_users(_user_metier._get_all_users());
-                req.setAttribute("user_model", user_model);
-                req.setAttribute("poll_model", poll_model);
-                req.setAttribute("poll_metier", _poll_metier);
-                resp.sendRedirect("users.admin");
+		}
 
-            }
+		else if (path.equals("/poll_check.admin")) {
+			int _poll_id = Integer.parseInt(req.getParameter("id"));
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
+			_poll poll = _poll_metier._get_poll_by_id(_poll_id);
+			poll_model.setPoll(poll);
+			poll_model.setPoll_id(_poll_id);
+			ArrayList<_choice> _choices_poll = _poll_metier._get_choice_for_poll(poll);
+			poll_model.setAll_choices_of_poll(_choices_poll);
+			int _choice_id = Integer.parseInt(req.getParameter("choice_id"));
+			_choice choice = _choice_metier._get_choice_by_id(_choice_id);
+			ArrayList<_user> voters = _choice_metier._list_of_voters(choice);
+			System.out.println(voters);
+			poll_model.setVoters(voters);
+			// get user to check out
 
-            else if (path.equals("/poll_check.admin")) {
-                int _poll_id = Integer.parseInt(req.getParameter("id"));
-                _user_model user_model = new _user_model();
-                _poll_model poll_model = new _poll_model();
-                _poll poll = _poll_metier._get_poll_by_id(_poll_id);
-                poll_model.setPoll(poll);
-                poll_model.setPoll_id(_poll_id);
-                ArrayList<_choice> _choices_poll = _poll_metier._get_choice_for_poll(poll);
-                poll_model.setAll_choices_of_poll(_choices_poll);
-                int _choice_id = Integer.parseInt(req.getParameter("choice_id"));
-                _choice choice = _choice_metier._get_choice_by_id(_choice_id);
-                ArrayList<_user> voters = _choice_metier._list_of_voters(choice);
-                System.out.println(voters);
-                poll_model.setVoters(voters);
-                // get user to check out
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			req.getRequestDispatcher("admin_poll_display.jsp").forward(req, resp);
 
-                user_model.setNumber_of_users(_user_metier._get_number_of_users());
-                poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
-                req.setAttribute("user_model", user_model);
-                req.setAttribute("poll_model", poll_model);
-                req.setAttribute("poll_metier", _poll_metier);
-                req.getRequestDispatcher("admin/admin_poll_display.jsp").forward(req, resp);
+		}
 
-            }
+		else if (path.equals("/poll_delete.admin")) {
+			int _poll_id = Integer.parseInt(req.getParameter("id"));
 
-            else if (path.equals("/poll_delete.admin")) {
-                int _poll_id = Integer.parseInt(req.getParameter("id"));
+			// get user to delete _user user = _user_metier._get_user_by_id(_id);
+			_poll poll = _poll_metier._get_poll_by_id(_poll_id);
+			_poll_metier._delete_poll(poll);
 
-                // get user to delete _user user = _user_metier._get_user_by_id(_id);
-                _poll poll = _poll_metier._get_poll_by_id(_poll_id);
-                _poll_metier._delete_poll(poll);
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
 
-                _user_model user_model = new _user_model();
-                _poll_model poll_model = new _poll_model();
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			poll_model.setAll_polls(_poll_metier._get_all_polls());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			resp.sendRedirect("polls.admin");
 
-                user_model.setNumber_of_users(_user_metier._get_number_of_users());
-                poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
-                poll_model.setAll_polls(_poll_metier._get_all_polls());
-                req.setAttribute("user_model", user_model);
-                req.setAttribute("poll_model", poll_model);
-                req.setAttribute("poll_metier", _poll_metier);
-                resp.sendRedirect("polls.admin");
+		}
+		
+		else if (path.equals("/poll_delete.admin")) {
+			int _poll_id = Integer.parseInt(req.getParameter("id"));
 
-            }
-        }
+			// get user to delete _user user = _user_metier._get_user_by_id(_id);
+			_poll poll = _poll_metier._get_poll_by_id(_poll_id);
+			_poll_metier._delete_poll(poll);
+
+			_user_model user_model = new _user_model();
+			_poll_model poll_model = new _poll_model();
+
+			user_model.setNumber_of_users(_user_metier._get_number_of_users());
+			poll_model.setNumber_of_polls(_poll_metier._get_number_of_polls());
+			poll_model.setAll_polls(_poll_metier._get_all_polls());
+			req.setAttribute("user_model", user_model);
+			req.setAttribute("poll_model", poll_model);
+			req.setAttribute("poll_metier", _poll_metier);
+			resp.sendRedirect("polls.admin");
+
+		}
 
 	}
 

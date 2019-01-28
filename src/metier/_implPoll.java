@@ -71,23 +71,25 @@ public class _implPoll implements _interfacePoll {
 
 	}
 	@Override
-	public void delete_poll(int id) {
-
-		Connection con =db_interaction._get_connection();
-
+	public void _delete_poll(_poll p) {
+		conn = db_interaction._get_connection();
+		PreparedStatement ps;
 		try {
-			PreparedStatement statement = con.prepareStatement("DELETE FROM POLL WHERE pollid=?");
-			statement.setInt(1, id);
-
-			int rowsDeleted = statement.executeUpdate();
-			if (rowsDeleted > 0) {
-				System.out.println("A poll was deleted successfully!");
+			ps = conn.prepareStatement("DELETE FROM POLL WHERE POLLID = ?");
+			ps.setLong(1, p.get_id_poll());
+			ps.executeUpdate();
+			_interfaceChoice _choice_metier = new _implChoice();
+			ps = conn.prepareStatement("SELECT CHOICEID FROM CHOICE WHERE POLLID = ?");
+			ps.setLong(1, p.get_id_poll());
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				_choice c = _choice_metier._get_choice_by_id(rs.getInt("CHOICEID"));
+				_choice_metier._delete_choice(c);
 			}
-		}
-		catch(SQLException e){
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override

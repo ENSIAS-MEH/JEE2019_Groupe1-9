@@ -63,7 +63,7 @@
 					</div>
 					<div class='row'>
 						<div class='col-md-4'>
-							<form action='update_admin.admin?adminid='
+							<form action='add_admin_2.admin'
 								class='box-holder' method='post'>
 								<!-- 	<div class='form-group'>
 									<label for='name'>Full Name</label> <input type='text'
@@ -113,12 +113,12 @@
 								</div> -->
 								<input type='hidden' name='token'
 									value='b05989724d6ed5549588d2c374e38493815ef150' />
-								<button type='submit' class='btn btn-primary'>Update</button>
+								<button type='submit' class='btn btn-primary'>Add</button>
 							</form>
 							<br>
 							<br> <br>
 
-						</div>
+						<%-- </div>
 						<div class='col-md-8'>
 							<h4>Admins List</h4>
 							<div class='table-responsive'>
@@ -150,7 +150,7 @@
 		</div>
 
 
-		<%-- <div class="row">
+		<div class="row">
 							<div class="container">
 								<div class="col-lg-3 col-md-6">
 									<div class="card">
@@ -190,9 +190,9 @@
 										</div>
 									</div>
 								</div>
-							</div> --%>
+							</div>
 		<br> <br>
-		<%-- <div class="container">
+		<div class="container">
 						<div class="h4">All Users</div>
 						<table class="table table-hover">
 							<thead>
@@ -223,10 +223,10 @@
 								</c:forEach>
 							</tbody>
 						</table>
-					</div> --%>
+					</div>
 
 
-		<%-- <div class="container">
+		<div class="container">
 								<div class="h4">Recent Polls</div>
 								<table class="table table-hover">
 									<thead>
@@ -253,8 +253,8 @@
 										</c:forEach>
 									</tbody>
 								</table>
-							</div>--%>
-
+							</div>
+ --%>
 		</div>
 		<br> <br>
 		<form action='https://gempixel.com/polls/user/delete'

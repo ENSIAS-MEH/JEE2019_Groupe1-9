@@ -11,6 +11,7 @@ public interface _interfaceChoice {
 
 	public ArrayList<_user> _list_of_voters(_choice c);
 	public _choice _get_choice_by_id(int _choice_id);
+	public void _delete_choice(_choice c);
 	public ArrayList<_choice> _search_choice_for_poll(int id);
 	public _choice _get_choice_bydescription_andpollid(int pollid, String description);
 }

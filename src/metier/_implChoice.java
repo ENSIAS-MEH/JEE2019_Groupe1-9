@@ -195,5 +195,22 @@ public class _implChoice implements _interfaceChoice {
 		}
 		return choice;
 	}
+	
+	@Override
+	public void _delete_choice(_choice c) {
+		conn = db_interaction._get_connection();
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement("DELETE FROM VOTE WHERE CHOICEID = ?");
+			ps.setLong(1, c.get_choiceId());
+			ps.executeUpdate();
+			ps = conn.prepareStatement("DELETE FROM CHOICE WHERE CHOICEID = ?");
+			ps.setLong(1, c.get_choiceId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }	
 
