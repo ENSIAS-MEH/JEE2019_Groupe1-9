@@ -8,7 +8,28 @@ import metier._implPoll;
 
 public class _model_dashboard { 
 	public ArrayList<_poll> listepoll = new ArrayList<_poll>();
+	public ArrayList<_poll> listepoll2 = new ArrayList<_poll>();
 	public ArrayList<_number_of_voters> mylist=new ArrayList<_number_of_voters>();
+	public String type;
+	
+	
+	public ArrayList<_poll> getListepoll2() {
+		return listepoll2;
+	}
+
+	public void setListepoll2(ArrayList<_poll> listepoll2) {
+		this.listepoll2 = listepoll2;
+	}
+
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	_implPoll impl =new _implPoll();
 	
 	public ArrayList<_number_of_voters> getMylist() {

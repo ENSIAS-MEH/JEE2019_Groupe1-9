@@ -35,6 +35,7 @@ public class _controller_dashboard extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//doPost(request,response);
+		
 		_model_dashboard model1= new _model_dashboard();
 		request.setAttribute("model1", model1);
 		
@@ -53,7 +54,7 @@ public class _controller_dashboard extends HttpServlet {
 			
 		}
 		
-		String action =request.getParameter("action"); 
+		
 		if(path.equals("/activepoll.user")) {
 			
 				_implPoll pollimplement=new _implPoll();
@@ -64,12 +65,8 @@ public class _controller_dashboard extends HttpServlet {
 				model1.setMylist(listepoll);
 				ArrayList<_number_of_voters> listepoll1 = model1.getMylist();
 				request.setAttribute("listepoll1", listepoll1);
-					
 				
-				
-			
-			
-			
+	
 		}
 		if (path.equals("/settings.user")) {
 			System.out.println("22");
@@ -78,16 +75,20 @@ public class _controller_dashboard extends HttpServlet {
 			
 		}
 		
+		if (path.equals("/search.user")) {
+			System.out.println("action");
 		
+			System.out.println("search");
+			request.getRequestDispatcher("vote.jsp").forward(request, response);
+			
+		}
 		
-		
-		
-		
-		
+
 	
 	
 		request.getRequestDispatcher("dashboard.jsp").forward(request, response);
-	
+	 
+	 
 	
 	}
 
@@ -96,9 +97,29 @@ public class _controller_dashboard extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		doGet(request,response);
+		
+		
+		
+		
 		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
