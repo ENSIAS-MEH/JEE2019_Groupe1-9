@@ -68,7 +68,6 @@ public class _poll_model implements Serializable{
 	}
 	public _poll_model() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public _poll_model(int poll_id, ArrayList<_poll> all_polls, ArrayList<_choice> all_choices_of_poll,
 			HashMap<_poll, _choice> all_votes_of_polls, ArrayList<_poll> recent_polls, int number_of_voters_of_poll,

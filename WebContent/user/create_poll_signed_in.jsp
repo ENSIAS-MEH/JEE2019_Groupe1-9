@@ -51,6 +51,12 @@
     <![endif]-->
 </head>
 <body class='dark'>
+<%
+    //this one to  prevent the any user from going back to the dashboard.jsp if he didn't login
+    if (session.getAttribute("_current_user")==null){
+        response.sendRedirect("../index.jsp");
+    }
+%>
 <header>
     <div class="navbar" role="navigation">
         <div class="container">

@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
 <meta name="description" content="The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!" />
 <meta property='og:type' content='website' />
-<meta property='og:url' content='https://gempixel.com/polls' />
+<meta property='og:url' content='dashboard.user' />
 <meta property='og:title' content='User Account - Premium Poll Script' />
 <meta property='og:description' content='The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!' />
 <title>User Account - Azerf Poll</title>
@@ -44,7 +44,7 @@
     <script type="text/javascript" src="../static/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/application.fn.js?v=1.0"></script>
 <script>
-      var appurl="https://gempixel.com/polls";
+      var appurl="dashboard.user";
       var token="703dbf82c57d85152e84d99365a0494a";
             var max_count= 10;      
           </script>
@@ -57,6 +57,13 @@
     
 </head>
 <body>
+<%
+    //this one to  prevent the any user from going back to the dashboard.jsp if he didn't login
+    if (session.getAttribute("_current_user")==null){
+        response.sendRedirect("/login.jsp");
+    }
+%>
+
 <form action="_controller_list_vote" method="post">
 <header class="full">
 <div class="navbar" role="navigation">
@@ -67,14 +74,14 @@
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 <span class="glyphicon glyphicon-align-justify"></span>
 </button>
-<a class="navbar-brand" href="https://gempixel.com/polls">Poll Appilcation</a>
+<a class="navbar-brand" href="dashboard.user">Azerf poll</a>
 </div>
 </div>
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav navbar-right">
 
 
-<li><a href="https://gempixel.com/polls/user/logout">Logout</a></li>
+<li><a href="user.logout">Logout</a></li>
 </ul>
 </div>
 </div>
@@ -94,9 +101,9 @@
 </div>
 </div>
 </div>
-<form action="https://gempixel.com/polls/user/search" class="search" id="poll_search_form">
+<form action="search.user" class="search" id="poll_search_form">
 <div>
-<div class="input-group pull-left"">
+<div class="input-group pull-left">
 
 <input type="text" class="form-control" id="poll_search_q" placeholder="Search of a poll by type" name="type">
 
@@ -138,7 +145,6 @@
 </br>
 <button name="actionn" value="settings" class="btn btn-info  btn-block">settings</button>
 
-<h3>Account info <span class="label label-primary pull-right"></span></h3>
 <div class="stats">
 <p><span>0</span> Polls</p>
 <p><span>0</span> Votes</p>
@@ -168,10 +174,7 @@
                 <c:forEach items="${listepoll1}" var="poll">
                 <c:set var="a" value="-" />
                 <c:set var="b" value="*" />
-                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action2" value="${poll._pollId}${a}${poll._description}" onclick="return confirm('Are you sure you want to delete this poll ')">
-                  
-                  
-                        
+                <input type="submit" class="list-group-item list-group-item-action list-group-item-warning btn-block " name="action2" value="${poll._pollId}${a}${poll._description}">
                 </c:forEach>
             
        
@@ -208,7 +211,7 @@
 
 </div>
 <br><br>
-<form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>
+<form action='delete' id='delete_all_form' method='post'>
 <ul class='poll-list'></ul><input type='hidden' name='token' value='b334bbe96c62af26780af74cc1e01579a18c6da6' /></form> </div>
 </div>
 </div>

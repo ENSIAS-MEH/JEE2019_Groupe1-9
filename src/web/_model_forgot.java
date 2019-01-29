@@ -11,8 +11,8 @@ public class _model_forgot {
 
 
 	
-	public String _sender_email_iD = "yourmail@gmail.com";
-	public String _sender_password = "yourpassword";
+	public String _sender_email_iD = "poll.application.ensias@gmail.com";
+	public String _sender_password = "poll1234";
 	public String _email_SMTPserver = "smtp.gmail.com";
 	public String _email_server_port = "465";
 	public String _receiver_email_iD;

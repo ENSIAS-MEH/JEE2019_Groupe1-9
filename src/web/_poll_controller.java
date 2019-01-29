@@ -1,6 +1,7 @@
 package web;
 
-import com.mysql.cj.Session;
+//import com.mysql.cj.Session;
+
 import entities._choice;
 import entities._poll;
 import entities._user;
@@ -86,7 +87,7 @@ public class _poll_controller extends HttpServlet {
 
             //send to display the poll already created
 
-            response.sendRedirect("/Azerf_Poll_war_exploded//"+_the_poll+"/poll.display");
+            response.sendRedirect("/Azerf_Poll_war_exploded/"+_the_poll+"/poll.display");
 
 
         }

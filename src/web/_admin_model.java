@@ -26,7 +26,6 @@ public class _admin_model implements Serializable{
 		this.all_admins = all_admins;
 	}
 	public _admin_model() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
 	

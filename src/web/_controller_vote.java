@@ -15,7 +15,7 @@ import metier._implPoll;
 /**
  * Servlet implementation class _controller_vote
  */
-@WebServlet("/_controller_vote")
+@WebServlet(name ="_controller_vote",urlPatterns ="*.search")
 public class _controller_vote extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,14 +24,12 @@ public class _controller_vote extends HttpServlet {
      */
     public _controller_vote() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	doPost(request,response);
 	}
@@ -40,14 +38,13 @@ public class _controller_vote extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//doGet(request, response);
 		String i=request.getParameter("type");
 		//String action=request.getParameter("action");
 		//if(action!=null) {
 			
 			//if(action.equals("search")) {
-		
+		System.out.println("dkhelna l search");
 		System.out.println(i);
 		 _model_dashboard model1= new _model_dashboard();
 		request.setAttribute("model1", model1);

@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
 <meta name="description" content="The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!" />
 <meta property='og:type' content='website' />
-<meta property='og:url' content='https://gempixel.com/polls' />
+<meta property='og:url' content='dashboard.user' />
 <meta property='og:title' content='My Settings - Premium Poll Script' />
 <meta property='og:description' content='The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!' />
 <title>My Settings - Azerf Poll </title>
@@ -54,6 +54,13 @@
     <![endif]-->
 </head>
 <body>
+<%
+    //this one to  prevent the any user from going back to the dashboard.jsp if he didn't login
+    if (session.getAttribute("_current_user")==null){
+        response.sendRedirect("/login.jsp");
+    }
+%>
+
 <form action="_controller_settings" method="post">
 <header class="full">
 <div class="navbar" role="navigation">
@@ -64,7 +71,7 @@
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 <span class="glyphicon glyphicon-align-justify"></span>
 </button>
-<a class="navbar-brand" href="https://gempixel.com/polls">Poll Application</a>
+<a class="navbar-brand" href="http://localhost:8080/Azerf_Poll_war_exploded/user/dashboard.jsp">Azerf Poll</a>
 </div>
 </div>
 <div class="navbar-collapse collapse">
@@ -107,38 +114,38 @@
 <div class='col-md-4'>
 <div class='box-holder'>
 
-<div class='form-group'>
-<label for='name'>First name</label>
-<input type='text' class='form-control' id='firstname' placeholder='Enter Name' name="firstname" >
-</div>
-<div class='form-group'>
-<label for='name'>Last name</label>
-<input type='text' class='form-control' id='lastname' placeholder='Enter Name' name="lastname" value=''>
-</div>
-<div class='form-group'>
-<label for='name'>Birth date</label>
-<input type='text' class='form-control' id='birthdate' placeholder='Enter Name' name='birthdate' value=''>
-</div>
-<div class='form-group'>
-<label for='name'>Gender</label>
-<input type='text' class='form-control' id='gender' placeholder='Enter Name' name='gender' value=''>
-</div>
-<div class='form-group'>
-<label for='name'>Nationality</label>
-<input type='text' class='form-control' id='nationality' placeholder='Enter Name' name='nationality' value=''>
-</div>
-<div class='form-group'>
-<label for='name'>Profile image</label>
-<input type='text' class='form-control' id='image' placeholder='Enter Name' name='image' value=''>
-</div>
-<div class='form-group'>
-<label for='email'>Email address</label>
-<input type='email' class='form-control' id='email' placeholder='Enter email' name='email' value=''>
-</div>
-<div class='form-group'>
-<label for='pass'>New Password</label>
-<input type='password' class='form-control' id='pass' placeholder='password' name='password' value=''>
-</div>
+    <div class='form-group'>
+        <label for='name'>First name</label>
+        <input type='text' class='form-control' id='firstname' placeholder='Enter Name' name="firstname" value=${firstname1}>
+    </div>
+    <div class='form-group'>
+        <label for='name'>Last name</label>
+        <input type='text' class='form-control' id='lastname' placeholder='Enter Name' name="lastname" value=${lastname1} >
+    </div>
+    <div class='form-group'>
+        <label for='name'>Birth date</label>
+        <input type='text' class='form-control' id='birthdate' placeholder='Enter Name' name='birthdate' value=${birth1}>
+    </div>
+    <div class='form-group'>
+        <label for='name'>Gender</label>
+        <input type='text' class='form-control' id='gender' placeholder='Enter Name' name='gender' value=${gender1}>
+    </div>
+    <div class='form-group'>
+        <label for='name'>Nationality</label>
+        <input type='text' class='form-control' id='nationality' placeholder='Enter Name' name='nationality' value=${nationality1}>
+    </div>
+    <div class='form-group'>
+        <label for='name'>Profile image</label>
+        <input type='text' class='form-control' id='image' placeholder='Enter Name' name='image' value=${img1}>
+    </div>
+    <div class='form-group'>
+        <label for='email'>Email address</label>
+        <input type='email' class='form-control' id='email' placeholder='Enter email' name='email' value=${email1}>
+    </div>
+    <div class='form-group'>
+        <label for='pass'>New Password</label>
+        <input type='password' class='form-control' id='pass' placeholder='password' name='password' value=${password1}>
+    </div>
 </div>
 </form>
 
@@ -155,7 +162,7 @@
 </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="https://gempixel.com/polls/static/application.js?v=1.0"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="../static/application.js?v=1.0"></script>
 </form>
 </body>
 </html>

@@ -140,7 +140,7 @@
 								<thead>
 									<tr>
 										<th>Description</th>
-										<th>Date</th>
+										<th>Expires</th>
 										<th>Category</th>
 										<th>User ID</th>
 										<th>Number Of Voters</th>
@@ -150,7 +150,7 @@
 									<c:forEach items="${poll_model.all_polls}" var="p">
 										<tr>
 											<td>${p._description}</td>
-											<td>${p._pollDate}</td>
+											<td>${p._expires}</td>
 											<td>${p._category}</td>
 											<td>${p._userId}</td>
 											<td>${poll_metier._get_number_of_voters(p)}</td>

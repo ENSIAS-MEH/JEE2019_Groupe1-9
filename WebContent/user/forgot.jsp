@@ -57,7 +57,7 @@
             <div class="site_logo">
                 <h3><a href="https://ensias.com">Azerf Poll</a></h3>
             </div>
-            <form method="get" action="resetpword">
+            <form method="get" action="user.forgot">
                 <div class="form-group">
                     <label for="email">Email address
                         <a href="login.jsp" class="pull-right">(Back to login)</a>

@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
     <meta name="description" content="Register an account and gain control over your polls. Manage them, edit them or remove them without hassle." />
     <meta property='og:type' content='website' />
-    <meta property='og:url' content='https://ensias.com' />
+    <meta property='og:url' content='/index.jsp' />
     <meta property='og:title' content='Register and manage your polls. - Azef Poll' />
     <meta property='og:description' content='Register an account and gain control over your polls. Manage them, edit them or remove them without hassle.' />
     <title>Register and manage your polls. - Azerf Poll</title>
@@ -36,7 +36,7 @@
     <script type="text/javascript" src="../static/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/application.fnc619.js?v=1.0"></script>
     <script>
-        var appurl="https://ensias.com";
+        var appurl="/index.jsp";
         var token="703dbf82c57d85152e84d99365a0494a";
         var max_count= 10;
     </script>
@@ -56,7 +56,7 @@
     <div class="container">
         <div class="centered form">
             <div class="site_logo">
-                <h3><a href="https://ensias.com">Azerf Poll</a></h3>
+                <h3><a href="localhost:8080/Azerf_Poll_war_exploded/index.jsp">Azerf Poll</a></h3>
             </div>
             <form method="get" action="register.login">
                 <div class="form-group">

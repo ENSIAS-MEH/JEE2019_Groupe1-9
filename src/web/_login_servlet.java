@@ -43,15 +43,15 @@ public class _login_servlet extends HttpServlet {
             String _password = req.getParameter("password");
             _check_user.set_email(_email);
             _check_user.set_password(_password);
-            _user _check_user2 = (_user) _new_user_dao._login(_check_user);
+            _user _check_user2 =  _new_user_dao._login(_check_user);
             //check if the user is valid
             if (_check_user2!=null){
                 System.out.println("This is the right person");
                 ses.setAttribute("_current_user",_check_user2);
                 ses.setAttribute("user_id",_check_user2.get_id());
                 if (path.equals("/user.login")) {
-                    resp.sendRedirect("user/dashboard.jsp");
-                }else resp.sendRedirect("dashboard.jsp");
+                    resp.sendRedirect("user/dashboard.user");
+                }else resp.sendRedirect("dashboard.user");
             }else {
                 //if the user is not valid we redirect the user to the login page
                 System.out.println("this is a null one ");

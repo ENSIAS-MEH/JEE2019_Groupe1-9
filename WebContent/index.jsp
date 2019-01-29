@@ -77,7 +77,7 @@
       <div class="col-md-8 promo">
         <h2>Simple. Beautiful. Modern.</h2>
         <p>Create beautifully designed polls in under a minute. Choose from a library of templates or customize your own template. With many types of customization, you will make the poll <strong>your</strong> poll. Create an account to unlock even more features.</p>
-        <a href="user/create_poll.jsp" class="btn btn-transparent btn-lg">Create your Poll</a>
+        <a href="user/create_poll.jsp" class="btn btn-transparent btn-lg">Preview</a>
       </div>
       <div class="col-md-4">
         <div class="box-holder">

@@ -195,7 +195,6 @@ public class _implChoice implements _interfaceChoice {
 		}
 		return choice;
 	}
-	
 	@Override
 	public void _delete_choice(_choice c) {
 		conn = db_interaction._get_connection();

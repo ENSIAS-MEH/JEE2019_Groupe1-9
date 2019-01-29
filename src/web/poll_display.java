@@ -37,6 +37,7 @@ public class poll_display  extends HttpServlet {
         //this servlet is to display the poll so the user can vote or the poll after the user did vote
         // so he can see the result of the poll
         HttpSession ses = request.getSession();
+        int _dis_user_id = (int) request.getSession(false).getAttribute("user_id");
         String path = request.getServletPath();
         System.out.println(path);
         String[] da_splited_path = path.split("/");
@@ -47,7 +48,7 @@ public class poll_display  extends HttpServlet {
         if(da_poll.get_expires().getTime() >= System.currentTimeMillis()){
             System.out.println(""+da_poll.get_expires());
             System.out.println("you can use the poll ok");
-            String poll_url ="http://localhost:8080/Azerf_Poll_war_exploded"+da_splited_path[1]+"/poll.display";
+            String poll_url ="http://localhost:8080/Azerf_Poll_war_exploded/"+da_splited_path[1]+"/poll.display";
             ArrayList<_choice> list_choices= choice_dao.get_choices_by_poll_id(da_poll.get_pollId());
             request.setAttribute("question",da_poll);
             request.setAttribute("choices",list_choices);

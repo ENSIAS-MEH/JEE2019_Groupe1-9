@@ -15,10 +15,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
 <meta name="description" content="The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!" />
 <meta property='og:type' content='website' />
-<meta property='og:url' content='https://gempixel.com/polls' />
+<meta property='og:url' content='dashboard.user' />
 <meta property='og:title' content='User Account - Premium Poll Script' />
 <meta property='og:description' content='The best poll script that you will ever find on the internet. It comes packed with tones of awesome features. Give it a try!' />
-<title>User Account - Premium Poll Script</title>
+<title>User Account - Azerf Poll</title>
 
     <link href="https://gempixel.com/polls/themes/default/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
     <script type="text/javascript" src="../static/application.fn.js?v=1.0"></script>
 
 <script>
-      var appurl="https://gempixel.com/polls";
+      var appurl="dashboard.user";
       var token="703dbf82c57d85152e84d99365a0494a";
             var max_count= 10;      
           </script>
@@ -59,7 +59,14 @@
     <![endif]-->
 </head>
 <body>
-<form action="_controller_vote" method="post">
+<%
+    //this one to  prevent the any user from going back to the dashboard.jsp if he didn't login
+    if (session.getAttribute("_current_user")==null){
+        response.sendRedirect("/login.jsp");
+    }
+%>
+
+<form action="user.search" method="post">
 <header class="full">
 <div class="navbar" role="navigation">
 <div class="container-fluid">
@@ -69,7 +76,7 @@
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 <span class="glyphicon glyphicon-align-justify"></span>
 </button>
-<a class="navbar-brand" href="https://gempixel.com/polls"> Poll Application</a>
+<a class="navbar-brand" href="activepoll.user"> Azerf Poll</a>
 </div>
 </div>
 <div class="navbar-collapse collapse">
@@ -96,7 +103,7 @@
 </div>
 </div>
 </div>
-<form action="Controllerdashboard" class="search" id="poll_search_form">
+<form action="user.search" class="search" id="poll_search_form">
 
 <div>
     <div class="pull-left">
@@ -104,24 +111,21 @@
     </div>
     <div>
         <div class="input-group">
-            <input type="text" class="form-control" name="type" placeholder="Search of a poll by type">
+            <input type="text" class="form-control" name="type" placeholder="Search for poll">
             
         </div>
     </div>
 </div>
 
 
-</form>
+</form><br><br>
 <ul class="nav nav-sidebar">
-<li><a href="https://gempixel.com/polls/user" class="active"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
+<li><a href="dashboard.user" class="active"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
 <li><a href="activepoll.user" name="action" value="activepoll"><span class="glyphicon glyphicon-th-list"></span> Active Polls</a></li>
 <li><a href="expiredpoll.user" name="action" value="expiredpoll"><span class="glyphicon glyphicon-time"></span> Expired Polls</a></li>
 <li><a href="settings.user"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 </ul>
-<h3>Account info <span class="label label-primary pull-right">Free</span></h3>
 <div class="stats">
-<p><span>0</span> Polls</p>
-<p><span>0</span> Votes</p>
 </div>
 </div>
 </div>
@@ -129,7 +133,6 @@
 <div class='ads ad728'><img src="http://placehold.it/728x90/E8117F/FFFFFF"></div>
 <div class='btn-group'>
 <button type='button' class='btn btn-primary' id='select_all'>Select All</button>
-<button type='button' class='btn btn-danger' id='delete_all'>Delete All</button>
 </div><br><br>
 
  <c:forEach items="${listepoll2}" var="list">
@@ -143,7 +146,7 @@
 <p><strong></strong></p>
 </div>
 <div class='btn-group btn-group-xs'>
-<a href='https://gempixel.com/polls/nTXVu' class='btn btn-xs btn-success' target='_blank'>View choices</a>
+<a href='http://localhost:8080/Azerf_Poll_war_exploded/${list._pollId}/result.display' class='btn btn-xs btn-success' target='_blank'>View choices</a>
 
 </div>
 
@@ -172,12 +175,11 @@
 
 
 
-<form action='https://gempixel.com/polls/user/delete' id='delete_all_form' method='post'>
-<ul class='poll-list'></ul><input type='hidden' name='token' value='b334bbe96c62af26780af74cc1e01579a18c6da6' /></form> </div>
+ </div>
 </div>
 </div>
 </section>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="https://gempixel.com/polls/static/application.js?v=1.0"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="../static/application.js?v=1.0"></script>
 </form>
 </body>
 </html>

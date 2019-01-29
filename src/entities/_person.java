@@ -12,9 +12,8 @@ public class _person implements Serializable {
         this._email = email;
         this._password = password;
     }
-    
     public _person(String email, String password, int id) {
-    	this._id = id;
+        this._id = id;
         this._email = email;
         this._password = password;
     }
@@ -24,7 +23,7 @@ public class _person implements Serializable {
     }
 
     public _person() {
-    	super();
+
     }
 
     public int get_id() {

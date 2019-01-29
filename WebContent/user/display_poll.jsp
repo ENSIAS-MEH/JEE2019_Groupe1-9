@@ -63,6 +63,12 @@
     <![endif]-->
 </head>
 <body class='dark'>
+<%
+    //this one to  prevent the any user from going back to the dashboard.jsp if he didn't login
+    if (session.getAttribute("_current_user")==null){
+        response.sendRedirect("/login.jsp");
+    }
+%>
 <section>
     <div class="container">
         <div class="centered poll">

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import DAO.db_interaction;
@@ -71,30 +72,141 @@ public class _implPoll implements _interfacePoll {
 
 	}
 	@Override
-	public void _delete_poll(_poll p) {
-		conn = db_interaction._get_connection();
-		PreparedStatement ps;
+	public ArrayList<_poll> _search_activevote_by_userid(int id,Date date) {
+		Connection con =db_interaction._get_connection();
+		ArrayList<_poll> listevote= new ArrayList<_poll>();
 		try {
-			ps = conn.prepareStatement("DELETE FROM POLL WHERE POLLID = ?");
-			ps.setLong(1, p.get_id_poll());
-			ps.executeUpdate();
-			_interfaceChoice _choice_metier = new _implChoice();
-			ps = conn.prepareStatement("SELECT CHOICEID FROM CHOICE WHERE POLLID = ?");
-			ps.setLong(1, p.get_id_poll());
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				_choice c = _choice_metier._get_choice_by_id(rs.getInt("CHOICEID"));
-				_choice_metier._delete_choice(c);
+			PreparedStatement statement = con.prepareStatement("SELECT *  FROM POLL WHERE userid=? ");
+			statement.setInt(1,id);
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+
+				if (result.getDate("expires").compareTo(date) > 0) {
+     
+		            
+				_poll p  = new _poll(result.getInt("pollid"),
+						result.getString("description"),
+						result.getDate("expires"),
+						result.getString("category"),
+						result.getInt("userid"));
+				listevote.add(p);
+				}
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
+			System.out.println("poll selected");
+
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
+
+
+		return listevote;
+
+
+
+	}
+	
+	@Override
+	public ArrayList<_poll> _search_expiredvote_by_userid(int id,Date date) {
+		Connection con =db_interaction._get_connection();
+		ArrayList<_poll> listevote= new ArrayList<_poll>();
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT *  FROM POLL WHERE userid=? ");
+			statement.setInt(1,id);
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+
+				if (result.getDate("expires").compareTo(date) < 0) {
+     
+		            
+				_poll p  = new _poll(result.getInt("pollid"),
+						result.getString("description"),
+						result.getDate("expires"),
+						result.getString("category"),
+						result.getInt("userid"));
+				listevote.add(p);
+				}
+			}
+
+			System.out.println("poll selected");
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+
+		return listevote;
+
+
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public void delete_poll(int id) {
+
+		Connection con =db_interaction._get_connection();
+
+		try {
+			PreparedStatement statement = con.prepareStatement("DELETE FROM POLL WHERE pollid=?");
+			statement.setInt(1, id);
+
+			int rowsDeleted = statement.executeUpdate();
+			if (rowsDeleted > 0) {
+				System.out.println("A poll was deleted successfully!");
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override
 	public ArrayList<_poll> _search_vote_by_Type(String type) {
-		return null;
+		Connection con =db_interaction._get_connection();
+		ArrayList<_poll> listevote= new ArrayList<_poll>();
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT *  FROM POLL WHERE description like '%"+type+"%'");
+//			statement.setString(1,type);
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+
+
+				_poll p  = new _poll(result.getInt("pollid"),
+						result.getString("description"),
+						result.getDate("expires"),
+						result.getString("category"),
+						result.getInt("userid"));
+				listevote.add(p);
+
+			}
+
+			System.out.println("poll selected");
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+
+		return listevote;
 	}
 
 	public _poll _get_poll_by_id(int poll_id){
@@ -182,17 +294,27 @@ public class _implPoll implements _interfacePoll {
 		conn = db_interaction._get_connection();
 		PreparedStatement ps;
 		try {
-			ps = conn.prepareStatement("DELETE FROM POLL WHERE POLLID = ?");
-			ps.setLong(1, p.get_id_poll());
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				ps = conn.prepareStatement("DELETE FROM POLL WHERE POLLID = ?");
+				ps.setLong(1, p.get_id_poll());
+				ps.executeUpdate();
+				_interfaceChoice _choice_metier = new _implChoice();
+				ps = conn.prepareStatement("SELECT CHOICEID FROM CHOICE WHERE POLLID = ?");
+				ps.setLong(1, p.get_id_poll());
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					_choice c = _choice_metier._get_choice_by_id(rs.getInt("CHOICEID"));
+					_choice_metier._delete_choice(c);
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 
-	}
 
-	@Override
+		@Override
 	public ArrayList<_poll> _get_recent_polls(int _number_of_polls) {
 		conn = db_interaction._get_connection();
 		List<_poll> _poll_list= new ArrayList<_poll>();

@@ -69,7 +69,6 @@ public class _user_model implements Serializable{
 	}
 	public _user_model() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 }
